@@ -2,18 +2,18 @@ import java.util.Random;
 
 public class Dice {
 
-	Random rand = new Random();   //+1 for else it would be 0 - 5
+	Random rand = new Random();   
 
 	public int rollDieOne(){
 
-		int dieOne = rand.nextInt(6) + 1; 	
+		int dieOne = rand.nextInt(6) + 1;		//+1 --> else it would be 0 - 5	
 		
 		return dieOne;
 	}
 	
 	public int rollDieTwo(){
 		
-		int dieTwo = rand.nextInt(6) + 1;
+		int dieTwo = rand.nextInt(6) + 1;		//+1 --> else it would be 0 - 5
 
 		return dieTwo;
 	}
