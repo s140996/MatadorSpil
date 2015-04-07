@@ -8,7 +8,7 @@ public class GameLauncher {
 
 	public static void main(String[] args) {
 		
-		 Car car = new Car.Builder()
+	/*	 Car car = new Car.Builder()
          .typeRacecar()
          .primaryColor(Color.BLUE)
          .secondaryColor(Color.RED)
@@ -22,6 +22,10 @@ public class GameLauncher {
 		GUI.addPlayer("Pete", 1000);
 		GUI.addPlayer("diller", 1000, car);
 		
+	*/
+		
+		
+		GUIController.addPlayer("Hans");
 		GUI.setDice(5, 4);
 
 	}
