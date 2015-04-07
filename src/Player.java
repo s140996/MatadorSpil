@@ -4,44 +4,44 @@ public class Player {
 	private int worth;
 	private int position;
 	
-	private Account acc = new Account();
+	private Account acc = new Account(30000);
 	
-	public void setPosition()
+	private void setPosition()
 	{
 		
 	}
 	
-	public void getPosition()
+	private void getPosition()
 	{
 		
 	}
 	
-	public void changePosition(int diceRoll)
+	private void changePosition(int diceRoll)
 	{
 		
 	}
 	
-	public int setName()
+	private int setName()
 	{
 		
 	}
 	
-	public int getAcc()
+	private int getAcc()
 	{
 		
 	}
 	
-	public int setAcc()
+	private int setAcc()
 	{
 		
 	}
 	
-	public int getWorth()
+	private int getWorth()
 	{
 		
 	}
 	
-	public int setWorth()
+	private int setWorth()
 	{
 		
 	}
