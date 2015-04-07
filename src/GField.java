@@ -1,42 +1,40 @@
 public abstract class GField {
 	
-	private String Name;
-	private int ID;
+	private String name;
+	private int id;
 	private String type;
 	
-	public abstract void landOnField();
-	public abstract void removeOwner();
+	public abstract void landOnField(Player player, GUIController GGUI);
+	public abstract void removeOwner(Player player, int fieldnumber, GUIController GGUI);
 	
-	public String setName()
+	public void setName(String name)
 	{
-		return Name;
-		
+		this.name = name;
 	}
 	
 	public String getName()
 	{
-		return Name;
-		
+		return this.name;
 	}
 	
-	public int setID()
+	public void setID(int id)
 	{
-		return ID;
+		this.id = id;
 	}
 	
 	public int getID()
 	{
-		return ID;
+		return this.id;
 	}
 	
-	public String setType()
+	public void setType(String type)
 	{
-		return type;
+		this.type = type;
 	}
 	
 	public String getType()
 	{
-		return type;
+		return this.type;
 	}
 	
 	
