@@ -10,20 +10,29 @@ public class Cup {
 	
 	int lastRoll = dieOne + dieTwo;
 	
-	private int getLastRoll()
+	public int getLastRoll()
 	{
 		
 	}
 
-	private int resetDoubleThrows
+	public void resetDoubleThrows
 	{
 		
 	}
 	
-	private int getDoubleThrows()
+	public int getDoubleThrows()
 	{
 		
 	}
 	
+	public int getDieOne
+	{
+		
+	}
+	
+	public int getDieTwo
+	{
+		
+	}
 	
 }
