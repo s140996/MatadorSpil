@@ -2,6 +2,8 @@ import java.util.*;
 
 public class ChanceCardList {
 
+	private int index;
+	
 	private ArrayList<ChanceCard> list = new ArrayList<ChanceCard>();
 	private ChanceCard c1 = new ChanceCard("Du modtager 1000 kr i aktieudbytte.", 1000, 0);
 	private ChanceCard c2 = new ChanceCard("Ryk frem til start.", 0, 0);
@@ -27,7 +29,7 @@ public class ChanceCardList {
 	private ChanceCard c17 = new ChanceCard("Tag med LB færgen", 0, 0);
 	private ChanceCard c18 = new ChanceCard("Benådes for fængsel", 0, 0);
 	private ChanceCard c19 = new ChanceCard("Lønforhøjelse.", 1000, 0);
-	private ChanceCard c20 = new ChanceCard("Ryk frem til Frederiksberh Allé.", 0, 12;
+	private ChanceCard c20 = new ChanceCard("Ryk frem til Frederiksberh Allé.", 0, 12);
 	private ChanceCard c21 = new ChanceCard("Vundet i klasselotteriet.", 500, 0);
 	private ChanceCard c22 = new ChanceCard("Tag ind til Rådhuspladsen", 0, 40);
 	private ChanceCard c23 = new ChanceCard("Ryk tre felter tilbage.", 0, -3);
@@ -45,6 +47,8 @@ public class ChanceCardList {
 	
 	public ChanceCardList()
 	{
+		index = 0;
+		
 		list.add(0, c1);
 		list.add(1, c2);
 		list.add(2, c3);
@@ -78,4 +82,24 @@ public class ChanceCardList {
 		list.add(30, c31);
 		list.add(31, c32);
 	}
+	
+	 public void randomizer() {
+         Collections.shuffle(list);
+ }
+	 
+	 public ChanceCard draw()
+	 {
+		ChanceCard c;
+		c = list.get(index);
+		if(index == list.size())
+		{
+			index = 0;
+		}
+		else
+		{
+		index++;
+		}
+		return c;
+	 }
+	 
 }
