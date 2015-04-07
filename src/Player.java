@@ -4,49 +4,50 @@ public class Player {
 	private int worth;
 	private int position;
 	
-	private Account acc = new Account(30000);
+	public Account acc = new Account(30000);
 	
-	private void setPosition()
+	public Player(String name, int worth, int position)
 	{
-		
+		this.name = name;
+		this.worth = worth;
+		this.position = position;
 	}
 	
-	private void getPosition()
+	public void setPosition(int newPosition)
 	{
-		
+		this.position = newPosition;
 	}
 	
-	private void changePosition(int diceRoll)
+	public int getPosition()
 	{
-		
+		return this.position;
 	}
 	
-	private int setName()
+	public void changePosition(int diceRoll)
 	{
+		this.position = this.position + diceRoll;
 		
+		if (this.position > 40)
+		{
+			this.position = this.position - 40;
+		}
 	}
 	
-	private int getAcc()
+	public void setName(String name)
 	{
-		
+		this.name = name;
 	}
 	
-	private int setAcc()
+	public int getWorth()
 	{
-		
+		return this.worth;
 	}
 	
-	private int getWorth()
+	public void setWorth(int worth)
 	{
-		
+		this.worth = worth;
 	}
 	
-	private int setWorth()
-	{
-		
-	}
-	
-	
-	}
+}
 
 
