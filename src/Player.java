@@ -4,15 +4,17 @@ public class Player {
 	private int worth;
 	private int position;
 	private int prisonCard;
+	private boolean convict;
 	
 	public Account acc = new Account(30000);
 	
-	public Player(String name, int worth, int position, int prisonCard)
+	public Player(String name, int worth, int position, int prisonCard, boolean convict)
 	{
 		this.name = name;
 		this.worth = worth;
 		this.position = position;
 		this.prisonCard = prisonCard;
+		this.convict = false;
 	}
 	
 	public void setPosition(int newPosition)
