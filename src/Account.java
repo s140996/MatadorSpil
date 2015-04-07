@@ -8,9 +8,9 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public void setBalance(int newCash)
+	public void setBalance(int Cash)
 	{
-		this.balance = this.balance + newCash;
+		this.balance = Cash;
 	}
 	
 	public int getBalance()
@@ -23,8 +23,5 @@ public class Account {
 		this.balance = this.balance + newCash;
 	}
 
-	public int withdraw()
-	{
-		
-	}
+	
 }
