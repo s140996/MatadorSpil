@@ -1,8 +1,9 @@
+import java.util.*;
+
 
 public class GChance extends GField {
 
-	int penis;
-
+	
 	@Override
 	public void landOnField() {
 		// TODO Auto-generated method stub
