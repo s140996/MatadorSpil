@@ -1,10 +1,10 @@
 
 public class Cup {
 
-	Dice dice = new Dice();
+	Die dice = new Die();
 	
-	int dieOne = dice.rollDieOne();
-	int dieTwo = dice.rollDieTwo();
+	int dieOne = dice.rollDie();
+	int dieTwo = dice.rollDie();
 	
 	int lastRoll = dieOne + dieTwo;
 	
