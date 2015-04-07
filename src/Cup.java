@@ -26,12 +26,12 @@ public class Cup {
 		return this.lastRoll;
 	}
 
-	public void resetDoubleThrows()
+	public void resetDoubleRoll()
 	{
 		this.doubleRoll = 0;
 	}
 	
-	public int getDoubleThrows()
+	public int getDoubleRoll()
 	{
 		return this.doubleRoll;
 	}

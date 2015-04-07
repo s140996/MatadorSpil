@@ -10,13 +10,13 @@ public class GFleet extends GOwnable {
 	}
 
 	@Override
-	public void landOnField() {
+	public void landOnField(Player player, GUIController GGUI) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void removeOwner() {
+	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
 		// TODO Auto-generated method stub
 		
 	}
