@@ -18,9 +18,9 @@ public class Account {
 		return balance;
 	}
 	
-	public int deposit()
+	public void deposit(int newCash)
 	{
-		
+		this.balance = this.balance + newCash;
 	}
 
 	public int withdraw()
