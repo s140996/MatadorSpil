@@ -8,7 +8,7 @@ public class GTax extends GField {
 		return basetax;
 	}
 	
-	public int getpercentageTax(int playerWorth);
+	public int getPercentageTax(int playerWorth);
 	{
 		
 	}
