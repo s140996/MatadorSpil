@@ -4,6 +4,9 @@ public abstract class GField {
 	private int ID;
 	private String type;
 	
+	public abstract void landOnField();
+	public abstract void removeOwner();
+	
 	public String setName()
 	{
 		return Name;
@@ -36,15 +39,7 @@ public abstract class GField {
 		return type;
 	}
 	
-	public abstract void landOnField()
-	{
-		
-	}
 	
-	public abstract void removeOwner()
-	{
-		
-	}
 	
 	
 
