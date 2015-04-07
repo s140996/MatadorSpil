@@ -2,19 +2,19 @@
 public class ChanceCard {
 
 	private String text;
-	private int money;
+	private int cash;
 	private int position;
 	
-	public ChanceCard (String text, int money, int position)
+	public ChanceCard (String text, int cash, int position)
 	{
 		this.text = text;
-		this.money = money;
+		this.cash = cash;
 		this.position = position;
 	}
 	
-	public int getMoney()
+	public int getCash()
 	{
-		return this.money;
+		return this.cash;
 	}
 	
 	public int getPosition()
