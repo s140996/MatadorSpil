@@ -20,5 +20,33 @@ public class Player {
 	{
 		
 	}
+	
+	private int setName()
+	{
+		
+	}
+	
+	private int getAcc()
+	{
+		
+	}
+	
+	private int setAcc()
+	{
+		
+	}
+	
+	private int getWorth()
+	{
+		
+	}
+	
+	private int setWorth()
+	{
+		
+	}
+	
+	
+	}
 
-}
+

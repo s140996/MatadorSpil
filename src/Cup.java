@@ -1,11 +1,29 @@
 
 public class Cup {
 
-	Die dice = new Die();
+	Die die = new Die();
 	
-	int dieOne = dice.rollDie();
-	int dieTwo = dice.rollDie();
+	int doubleThrows;
+	
+	int dieOne = die.rollDie();
+	int dieTwo = die.rollDie();
 	
 	int lastRoll = dieOne + dieTwo;
+	
+	private int getLastRoll()
+	{
+		
+	}
+
+	private int resetDoubleThrows
+	{
+		
+	}
+	
+	private int getDoubleThrows()
+	{
+		
+	}
+	
 	
 }
