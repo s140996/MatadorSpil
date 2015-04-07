@@ -4,7 +4,7 @@ public class Cup {
 	private int dieOne;
 	private int dieTwo;
 	private int lastRoll;
-	private int doubleThrows;
+	private int doubleRoll;
 	
 	Die die = new Die();
 	
@@ -17,7 +17,7 @@ public class Cup {
 		
 		if (this.dieOne == this.dieTwo)
 		{
-			this.doubleThrows++;
+			this.doubleRoll++;
 		}
 	}
 	
@@ -28,12 +28,12 @@ public class Cup {
 
 	public void resetDoubleThrows()
 	{
-		this.doubleThrows = 0;
+		this.doubleRoll = 0;
 	}
 	
 	public int getDoubleThrows()
 	{
-		return this.doubleThrows;
+		return this.doubleRoll;
 	}
 	
 	public int getDieOne()
