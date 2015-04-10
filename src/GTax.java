@@ -2,6 +2,7 @@ public class GTax extends GField {
 
 	private int basetax;
 	private double percentageTax;
+//	private String owner;
 	
 	public int getBasetax()
 	{
@@ -22,7 +23,12 @@ public class GTax extends GField {
 	@Override
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
 		// TODO Auto-generated method stub
-		
+	//	if (owner != null)
+	//	{
+			
+	//		owner = null;
+			
+	//	}
 	}
 	
 	
