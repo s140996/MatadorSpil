@@ -96,6 +96,13 @@ public class GUIController {
 		GUI.showMessage(msg);
 	}
 	
+			// *** Create Bool-Button
+	public void boolButton(String msg, String trueButton, String falseButton)
+	{
+		GUI.getUserLeftButtonPressed(msg, trueButton, falseButton);
+	}
+	
+			// *** Create GameBoard ***
 	public void createGameboard(GameBoard gb)
 	{
 		GField[] list = gb.getFieldList();
