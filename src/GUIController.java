@@ -8,6 +8,7 @@ public class GUIController {
 
 	private Color[] color = {Color.RED, Color.blue, Color.green, Color.yellow, Color.black, Color.white};
 	private int i = 0;
+	private GUI gui;
 	 
 	 
 			// *** Add Player ***
