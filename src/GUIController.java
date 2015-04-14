@@ -8,7 +8,6 @@ public class GUIController {
 
 	private Color[] color = {Color.RED, Color.blue, Color.green, Color.yellow, Color.black, Color.white};
 	private int i = 0;
-	private GUI gui;
 	 
 	 
 			// *** Add Player ***
@@ -103,7 +102,7 @@ public class GUIController {
 		
 		Field[] fields = new Field[list.length];
 
-		for (int i = 1; i < list.length; i++) {
+		for (int i = 0; i < list.length; i++) {
 			GField field = gb.getField(i);
 			String Type = field.getType();
 
