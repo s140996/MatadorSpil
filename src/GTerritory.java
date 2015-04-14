@@ -2,9 +2,28 @@
 public class GTerritory extends GOwnable {
 
 	int rent;
-	int house;
-	int hotel;
+	int buildPrice;
+	int houseRent;
+	int houseRent2;
+	int houseRent3;
+	int houseRent4;
+	int hotelRent;
+	int pawn;
 	
+	public GTerritory (int id, String name, int price, int rent, int buildPrice, int houseRent, int houseRent2, int houseRent3, int houseRent4, int hotelRent, int pawn)
+	{
+		super.setID(id);
+		super.setName(name);
+		super.setPrice(price);
+		this.rent = rent;
+		this.buildPrice = buildPrice;
+		this.houseRent = houseRent;
+		this.houseRent2 = houseRent2;
+		this.houseRent3 = houseRent3;
+		this.houseRent4 = houseRent4;
+		this.hotelRent = hotelRent;
+		this.pawn = pawn;
+	}
 	
 	@Override
 	public int getRent() {
