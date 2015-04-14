@@ -12,7 +12,7 @@ public class InPrison {
 		else if (player.acc.getBalance() > 1000)
 		{
 			boolean reply = gui.boolButton("Betal eller Kast terninger?", "Betal", "Kast");
-			if( reply == true){
+			if(reply == true){
 				player.acc.setBalance(player.acc.getBalance()-1000);
 				player.setConvict(false);
 			}

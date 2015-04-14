@@ -102,6 +102,16 @@ public class GUIController {
 		boolean reply = GUI.getUserLeftButtonPressed(msg, trueButton, falseButton);
 		return reply;
 	}
+	
+	// *** Player loose ***
+	public void playerLost(Player player, GameBoard gb)
+	{
+			GUI.removeCar(player.getPosition(), player.toString());
+			
+			/*for (i = 0; i < 40; i++) {
+				if (gb.getField(i).);
+			}*/
+	}
 
 	// *** Create GameBoard ***
 	public void createGameboard(GameBoard gb)
