@@ -58,13 +58,20 @@ public class Player {
 		return prisonCard;
 	}
 	
-	public void setPrisonCard()
+	public void setPrisonCard(int prisonCard)
 	{
-		
+		this.prisonCard = prisonCard;
 	}
 	
+	public void setConvict(boolean convict)
+	{
+		this.convict = convict;
+	}
 	
-
+	public boolean getConvict()
+	{
+		return convict;
+	}
 
 }
 
