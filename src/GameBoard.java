@@ -3,7 +3,7 @@
 
 	public class GameBoard {
 
-		private GField[] list = new GField[40];
+		private GField[] list = new GField[41];
 
 		public GameBoard()
 		{

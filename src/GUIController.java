@@ -102,7 +102,7 @@ public class GUIController {
 		
 		Field[] fields = new Field[list.length];
 
-		for (int i = 0; i < list.length; i++) {
+		for (int i = 1; i < list.length; i++) {
 			GField field = gb.getField(i);
 			String Type = field.getType();
 
@@ -112,8 +112,8 @@ public class GUIController {
 				GStart start = (GStart) field;
 				fields[i] = new Start.Builder()
 				.setTitle(start.getName())
-				.setDescription("")
-				.setSubText("")
+				.setDescription("lol")
+				.setSubText("koo")
 				.setBgColor(field.getColor())
 				.build();
 				break;
@@ -122,8 +122,8 @@ public class GUIController {
 				GTerritory territory = (GTerritory) field;
 				fields[i] = new Street.Builder()
 				.setTitle(territory.getName())
-				.setDescription(Txt.Rent + territory.getRent())
-				.setSubText(Txt.Price + territory.getPrice())
+				.setDescription("John")
+				.setSubText("Poul")
 				.setBgColor(field.getColor())
 				.build();
 				break;
@@ -137,27 +137,18 @@ public class GUIController {
 			case "Fleet":
 				GFleet fleet = (GFleet) field;
 				fields[i] = new Shipping.Builder()
-				.setTitle(refuge.getName())
-				.setDescription(Txt.Bonus + refuge.getBonus())
-				.setSubText("")
 				.build();
 				break;
 
 			case "Tax":
 				GTax tax = (GTax) field;
 				fields[i] = new Tax.Builder()
-				.setTitle(tax.getName())
-				.setDescription(Txt.Rent + Txt.LaborCamp)
-				.setSubText(Txt.Price + tax.getPrice())
 				.build();
 				break;
 
 			case "Brewery":
 				GBrewery brewery = (GBrewery) field;
 				fields[i] = new Brewery.Builder()
-				.setTitle(tax.getName())
-				.setDescription(Txt.Rent + Txt.LaborCamp)
-				.setSubText(Txt.Price + tax.getPrice())
 				.build();
 				break;
 				

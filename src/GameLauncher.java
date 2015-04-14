@@ -8,26 +8,11 @@ public class GameLauncher {
 
 	public static void main(String[] args) {
 		
-	/*	 Car car = new Car.Builder()
-         .typeRacecar()
-         .primaryColor(Color.BLUE)
-         .secondaryColor(Color.RED)
-         .patternDiagonalDualColor()
-         .build();
-		
-		GUI.addPlayer("Peter", 1000);
-		GUI.addPlayer("HEJ", 1000);
-		GUI.addPlayer("ter", 1000);
-		GUI.addPlayer("eter", 1000);
-		GUI.addPlayer("Pete", 1000);
-		GUI.addPlayer("diller", 1000, car);
-		
-	*/
-		
-		
-		
-		GUI.setDice(5, 4);
-
+	GUIController GUIJ = new GUIController();
+	GameBoard gb = new GameBoard();
+	
+	GUIJ.createGameboard(gb);
+	
 	}
 
 }
