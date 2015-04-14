@@ -8,6 +8,8 @@ public class GameLauncher {
 	
 	GUIJ.createGameboard(gb);
 	
+	//GUIJ.setDice(1, 2);
+	
 	}
 
 }

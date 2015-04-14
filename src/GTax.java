@@ -18,12 +18,11 @@ public class GTax extends GField {
 		return baseTax;
 	}
 	
-	public int getPercentageTax(int playerWorth) {
+	//public int getPercentageTax(int playerWorth) {
 		
-	}
-	{
+	
 		
-	}
+	
 
 	@Override
 	public void landOnField(Player player, GUIController GGUI) {

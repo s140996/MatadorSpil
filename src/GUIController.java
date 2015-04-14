@@ -109,64 +109,59 @@ public class GUIController {
 			switch (Type) {
 
 			case "Start":
-				GStart start = (GStart) field;
-				fields[i] = new Start.Builder()
-				.setTitle(start.getName())
-				.setDescription("lol")
-				.setSubText("koo")
-				.setBgColor(field.getColor())
-				.build();
+				//GStart start = (GStart) field;
+				fields[i] = new Street.Builder().build();
 				break;
 
 			case "Territory":
-				GTerritory territory = (GTerritory) field;
+				//GTerritory territory = (GTerritory) field;
 				fields[i] = new Street.Builder()
-				.setTitle(territory.getName())
-				.setDescription("John")
-				.setSubText("Poul")
-				.setBgColor(field.getColor())
+				//.setTitle(territory.getName())
+				//.setDescription("John")
+				//.setSubText("Poul")
+				//.setBgColor(field.getColor())
 				.build();
 				break;
 
 			case "Chance":
-				GChance chance = (GChance) field;
-				fields[i] = new Chance.Builder()
+				//GChance chance = (GChance) field;
+				fields[i] = new Street.Builder()
 				.build();
 				break;
 
 			case "Fleet":
-				GFleet fleet = (GFleet) field;
-				fields[i] = new Shipping.Builder()
+				//GFleet fleet = (GFleet) field;
+				fields[i] = new Street.Builder()
 				.build();
 				break;
 
 			case "Tax":
-				GTax tax = (GTax) field;
-				fields[i] = new Tax.Builder()
+				//GTax tax = (GTax) field;
+				fields[i] = new Street.Builder()
 				.build();
 				break;
 
 			case "Brewery":
-				GBrewery brewery = (GBrewery) field;
-				fields[i] = new Brewery.Builder()
+				//GBrewery brewery = (GBrewery) field;
+				fields[i] = new Street.Builder()
 				.build();
 				break;
 				
 			case "Prison":
-				GPrison prison = (GPrison) field;
-				fields[i] = new Jail.Builder()
+				//GPrison prison = (GPrison) field;
+				fields[i] = new Street.Builder()
 				.build();
 				break;
 
 			case "Parking":
-				GParking parking = (GParking) field;
-				fields[i] = new Empty.Builder()
+				//GParking parking = (GParking) field;
+				fields[i] = new Street.Builder()
 				.build();
 				break;
 				
 			case "GoPrison":
-				GGoPrison goPrison = (GGoPrison) field;
-				fields[i] = new Empty.Builder()
+				//GGoPrison goPrison = (GGoPrison) field;
+				fields[i] = new Street.Builder()
 				.build();
 				break;
 				
