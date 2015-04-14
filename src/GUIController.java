@@ -152,26 +152,33 @@ public class GUIController {
 				.build();
 				break;
 
-			case "Tax":
-				FieldTax tax = (FieldTax) field;
-				if (tax.getTaxRate() == 0) {
-					fields[i] = new Street.Builder()
-					.setTitle(tax.getName())
-					.setDescription(Txt.Pay + tax.getTaxAmount())
-					.setSubText("")
-					.setBgColor(new Color(255,255,0))
-					.build();
-				}
-				else {
-					fields[i] = new Street.Builder()
-					.setTitle(tax.getName())
-					.setDescription(Txt.Pay + tax.getTaxAmount() + Txt.Pay2 + tax.getTaxRatePro() + Txt.Pay3)
-					.setSubText("")
-					.setBgColor(new Color(255,255,0))
-					.build();
-				}
+			case "Brewery":
+				GBrewery brewery = (GBrewery) field;
+				fields[i] = new Brewery.Builder()
+				.setTitle(tax.getName())
+				.setDescription(Txt.Rent + Txt.LaborCamp)
+				.setSubText(Txt.Price + tax.getPrice())
+				.build();
+				break;
+				
+			case "Prison":
+				GPrison prison = (GPrison) field;
+				fields[i] = new Jail.Builder()
+				.build();
 				break;
 
+			case "Parking":
+				GParking parking = (GParking) field;
+				fields[i] = new Empty.Builder()
+				.build();
+				break;
+				
+			case "GoPrison":
+				GGoPrison goPrison = (GGoPrison) field;
+				fields[i] = new Empty.Builder()
+				.build();
+				break;
+				
 			}
 		}
 		

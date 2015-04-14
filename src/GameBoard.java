@@ -1,9 +1,5 @@
 
 	import java.awt.Color;
-	import java.util.*;
-
-	import desktop_fields.*;
-	import desktop_resources.GUI;
 
 	public class GameBoard {
 
@@ -31,7 +27,7 @@
 			list[18] = new GChance(18, "Prøv lykken");
 			list[19] = new GTerritory(19, "Hellerupvej", 3600, 300, 2000, 1400, 4000, 11000, 15000, 19000, new Color(129, 129, 129));
 			list[20] = new GTerritory(20, "Strandvej", 4000, 350, 2000, 1600, 4400, 12000, 16000, 20000, new Color(129, 129, 129));
-			list[21] = new Fleet(4000, "Privateer Armade", 21);
+			list[21] = new GParking(21, "Parkering");
 			list[22] = new GTerritory(22, "Trianglen", 4400, 350, 3000, 1800, 5000, 14000, 17500, 21000, new Color(255, 0, 0));
 			list[23] = new GChance(23, "Prøv lykken");
 			list[24] = new GTerritory(24, "Østerbrogade", 4400, 350, 3000, 1800, 5000, 14000, 17500, 21000, new Color(255, 0, 0));
@@ -41,7 +37,7 @@
 			list[28] = new GTerritory(28, "Kgs. Nytorv", 5200, 450, 3000, 2200, 6600, 16000, 19500, 23000, new Color(255, 255, 255));
 			list[29] = new GBrewery(29, "Coca-Cola", 3000, 200);
 			list[30] = new GTerritory(30, "Østergade", 5600, 500, 3000, 2400, 7200, 17000, 20500, 24000, new Color(255, 255, 255));
-			list[31] = new GTerritory(31, );
+			list[31] = new GGoPrison(31, "Gå til fængslet");
 			list[32] = new GTerritory(32, "Amagertorv", 6000, 550, 4000, 2600, 7800, 18000, 22000, 25000, new Color(255, 255, 0));
 			list[33] = new GTerritory(33, "Vimmelskaftet", 6000, 550, 4000, 2600, 7800, 18000, 22000, 25000, new Color(255, 255, 0));
 			list[34] = new GChance(34, "Prøv lykken");
