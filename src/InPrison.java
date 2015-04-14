@@ -1,7 +1,7 @@
 
 public class InPrison {
 
-	
+
 	public void inPrison(Player player, Cup cup)
 	{
 		if (player.getPrisonCard() > 0)
@@ -13,29 +13,29 @@ public class InPrison {
 		{
 			prisonChoiceButtons
 			if(prisonChoiceButtons = true){
-			player.acc.setBalance(player.acc.getBalance()-1000);
-			player.setConvict(false);
+				player.acc.setBalance(player.acc.getBalance()-1000);
+				player.setConvict(false);
 			}
 			else{
 				int i = 0;
 				while(i < 3 && player.getConvict() == true){
 					cup.roll();
-					if(cup.getDieOne() = cup.getDieTwo){
+					if(cup.getDoubleRoll() > 0){
 						player.setConvict(false);
 					}
 					i++;
 				}
 			}
 		}
-		
-		
-		
-		
-		
+
+
+
+
+
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
