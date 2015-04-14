@@ -1,12 +1,21 @@
 public class GTax extends GField {
 
-	private int basetax;
+	private int baseTax;
 	private double percentageTax;
 //	private String owner;
 	
+	public GTax (int id, String name, int baseTax, double percentageTax)
+	{
+		super.setID(id);
+		super.setName(name);
+		super.setType("Tax");
+		this.baseTax = baseTax;
+		this.percentageTax = percentageTax;
+	}
+	
 	public int getBasetax()
 	{
-		return basetax;
+		return baseTax;
 	}
 	
 	public int getPercentageTax(int playerWorth) {

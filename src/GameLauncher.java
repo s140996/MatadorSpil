@@ -25,7 +25,7 @@ public class GameLauncher {
 	*/
 		
 		
-		GUIController.addPlayer("Hans");
+		
 		GUI.setDice(5, 4);
 
 	}

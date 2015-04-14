@@ -2,6 +2,15 @@
 public class GFleet extends GOwnable {
 
 	private int rent;
+	
+	public GFleet (int id, String name, int price, int rent)
+	{
+		super.setID(id);
+		super.setName(name);
+		super.setType("Fleet");
+		super.setPrice(price);
+		this.rent = rent;
+	}
 
 	@Override
 	public int getRent() {
