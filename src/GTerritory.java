@@ -48,6 +48,9 @@ public class GTerritory extends GOwnable {
 		
 	}
 	
-	
+	public int getBuildPrice()
+	{
+		return this.buildPrice;
+	}
 	
 }

@@ -19,7 +19,7 @@
 			list[9] = new GTerritory(10, "Allégade", 2400, 150, 1000, 800, 2000, 6000, 9000, 12000, new Color(246, 94, 5));
 			list[10] = new GPrison(11, "Fængsel");
 			list[11] = new GTerritory(12, "Frederiksberg Allé", 2800, 200, 2000, 1000, 3000, 9000, 12500, 15000, new Color(206, 246, 5));
-			list[12] = new GBrewery(13, "Carlsberg", 3000, 100);
+			list[12] = new GBrewery(13, "Tuborg", 3000, 100);
 			list[13] = new GTerritory(14, "Bülowsvej", 2800, 200, 2000, 1000, 3000, 9000, 12500, 15000, new Color(206, 246, 5));
 			list[14] = new GTerritory(15, "Gammel Kongevej", 3200, 250, 2000, 1250, 3750, 10000, 14000, 18000, new Color(206, 246, 5));
 			list[15] = new GFleet(16, "Danmark", 4000, 500);
@@ -35,7 +35,7 @@
 			list[25] = new GFleet(26, "Mols-Linien A/S", 4000, 500);
 			list[26] = new GTerritory(27, "Bredgade", 5200, 450, 3000, 2200, 6600, 16000, 19500, 23000, new Color(255, 255, 255));
 			list[27] = new GTerritory(28, "Kgs. Nytorv", 5200, 450, 3000, 2200, 6600, 16000, 19500, 23000, new Color(255, 255, 255));
-			list[28] = new GBrewery(29, "Coca-Cola", 3000, 200);
+			list[28] = new GBrewery(29, "Carlsberg", 3000, 100);
 			list[29] = new GTerritory(30, "Østergade", 5600, 500, 3000, 2400, 7200, 17000, 20500, 24000, new Color(255, 255, 255));
 			list[30] = new GGoPrison(31, "Gå til fængslet");
 			list[31] = new GTerritory(32, "Amagertorv", 6000, 550, 4000, 2600, 7800, 18000, 22000, 25000, new Color(255, 255, 0));
@@ -45,9 +45,8 @@
 			list[35] = new GFleet(36, "Skandinavisk Linietrafik A/S", 4000, 500);
 			list[36] = new GChance(37, "Prøv lykken");
 			list[37] = new GTerritory(38, "Frederiks- bergsgade", 7000, 700, 4000, 3500, 10000, 22000, 26000, 30000, new Color(168, 53, 137));
-			list[38] = new GTax(39,"Ekstraordinær statsskat", 2000, 0);
-			list[39] = new GTerritory(40, "Rådhus- pladsen", 8000, 1000, 4000, 4000, 12000, 28000, 34000, 40000, new Color(168, 53, 137));
-						
+			list[38] = new GTax(39,"Ekstra- ordinær statsskat", 2000, 0);
+			list[39] = new GTerritory(40, "Rådhus- pladsen", 8000, 1000, 4000, 4000, 12000, 28000, 34000, 40000, new Color(168, 53, 137));		
 		}
 
 		public GField getField(int id){

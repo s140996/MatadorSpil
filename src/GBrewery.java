@@ -27,7 +27,7 @@ public class GBrewery extends GOwnable {
 	@Override
 	public int getRent() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.rent;
 	}
 	
 }

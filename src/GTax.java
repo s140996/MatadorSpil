@@ -18,6 +18,11 @@ public class GTax extends GField {
 		return baseTax;
 	}
 	
+	public double getPercentageTax()
+	{
+		return this.percentageTax;
+	}
+	
 	//public int getPercentageTax(int playerWorth) {
 		
 	

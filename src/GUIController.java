@@ -8,105 +8,105 @@ public class GUIController {
 
 	private Color[] color = {Color.RED, Color.blue, Color.green, Color.yellow, Color.black, Color.white};
 	private int i = 0;
-	 
-	 
-			// *** Add Player ***
+
+
+	// *** Add Player ***
 	public void addPlayer(String name)
 	{
 		Car car = new Car.Builder()
-        .primaryColor(color[i])
-        .typeRacecar()
-        .build();
-        i++;
-		
+		.primaryColor(color[i])
+		.typeRacecar()
+		.build();
+		i++;
+
 		GUI.addPlayer(name, 30000, car);
 		GUI.setCar(1, name);
 	}
-	
-			// *** Move Car ***
+
+	// *** Move Car ***
 	public void moveCar(int position, String name)
 	{
 		GUI.removeAllCars(name);
 		GUI.setCar(position, name);
 	}
-	
-			// *** Remove Owner ***
+
+	// *** Remove Owner ***
 	public void removeOwner(int fieldNumber)
 	{
 		GUI.removeOwner(fieldNumber);
 	}
-	
-			// *** Set Owner ***
+
+	// *** Set Owner ***
 	public void setOwner(int fieldNumber, String name)
 	{
 		GUI.setOwner(fieldNumber, name);
 	}
-	
-			// *** Set dice ***
+
+	// *** Set dice ***
 	public void setDice(int faceValue1, int faceValue2)
 	{
 		GUI.setDice(faceValue1, faceValue2);
 	}
-	
-			// *** Set Balance ***
+
+	// *** Set Balance ***
 	public void setGUIBalance(int newBalance, String name)
 	{
 		GUI.setBalance(name, newBalance);
 	}
-	
-			// *** Set Hotel ***
+
+	// *** Set Hotel ***
 	public void setHotel(int fieldNumber, boolean hasHotel)
 	{
 		GUI.setHotel(fieldNumber, hasHotel);
 	}
-	
-			// *** Set Houses ***
+
+	// *** Set Houses ***
 	public void setHouses(int fieldNumber, int houseCount)
 	{
 		GUI.setHouses(fieldNumber, houseCount);
 	}
-	
-			// *** Close GUI ***
+
+	// *** Close GUI ***
 	public void close()
 	{
 		GUI.close();
 	}
-	
-			// *** Show Chance Card ***
+
+	// *** Show Chance Card ***
 	public void displayChanceCard(String msg)
 	{
 		GUI.displayChanceCard(msg);
 	}
-	
-			// *** User button pressed ***
+
+	// *** User button pressed ***
 	public void getUserButtonPressed(String msg, String buttons)
 	{
 		GUI.getUserButtonPressed(msg, buttons);
 	}
-	
-			// *** User string ***
+
+	// *** User string ***
 	public void getUserString(String msg)
 	{
 		GUI.getUserString(msg);
 	}
-	
-			// *** Show message ***
+
+	// *** Show message ***
 	public void showMessage(String msg)
 	{
 		GUI.showMessage(msg);
 	}
-	
-			// *** Create Bool-Button
+
+	// *** Create Bool-Button
 	public void boolButton(String msg, String trueButton, String falseButton)
 	{
 		GUI.getUserLeftButtonPressed(msg, trueButton, falseButton);
 	}
-	
-			// *** Create GameBoard ***
+
+	// *** Create GameBoard ***
 	public void createGameboard(GameBoard gb)
 	{
 		GField[] list = gb.getFieldList();
-		
+
 		Field[] fields = new Field[list.length];
 
 		for (int i = 0; i < list.length; i++) {
@@ -129,7 +129,7 @@ public class GUIController {
 				GTerritory territory = (GTerritory) field;
 				fields[i] = new Street.Builder()
 				.setTitle(territory.getName())
-				.setDescription("John hitler \n \n lol")
+				.setDescription("Hus/hotel-pris: " + territory.getBuildPrice())
 				.setSubText("Pris: " + territory.getPrice())
 				.setBgColor(territory.getColor())
 				.build();
@@ -152,40 +152,60 @@ public class GUIController {
 				break;
 
 			case "Tax":
-				//GTax tax = (GTax) field;
-				fields[i] = new Street.Builder()
-				.build();
+				GTax tax = (GTax) field;
+
+				if (tax.getPercentageTax() != 0) 
+				{
+					fields[i] = new Tax.Builder()
+					.setTitle("Betal: " + tax.getBasetax())
+					.setDescription(tax.getName())
+					.setSubText("Du kan vælge at betale " + tax.getBasetax() + " eller " + (int) tax.getPercentageTax() + "% af, hvad du har af værdier!")
+					.build();
+				}
+				else 
+				{
+					fields[i] = new Tax.Builder()
+					.setTitle("Betal: " + tax.getBasetax())
+					.setDescription(tax.getName())
+					.setSubText("Du skal betale en skat på " + tax.getBasetax() + "!")
+					.build();
+				}
 				break;
 
 			case "Brewery":
-				//GBrewery brewery = (GBrewery) field;
-				fields[i] = new Street.Builder()
+				GBrewery brewery = (GBrewery) field;
+				fields[i] = new Brewery.Builder()
+				.setTitle(brewery.getName())
+				.setDescription("Leje: Ejes én virksomhed, så betales " + brewery.getRent() + " gange øjnene, ellers hvis det er den samme ejer ved begge virksomheder, så betales " + 2 * brewery.getRent() + " gange øjnene.")
+				.setSubText("Pris: " + brewery.getPrice())
 				.build();
 				break;
-				
+
 			case "Prison":
-				//GPrison prison = (GPrison) field;
-				fields[i] = new Street.Builder()
+				GPrison prison = (GPrison) field;
+				fields[i] = new Jail.Builder()
+				.setSubText(prison.getName())
+				.setDescription("På besøg i fængslet.")
 				.build();
 				break;
 
 			case "Parking":
 				//GParking parking = (GParking) field;
-				fields[i] = new Street.Builder()
+				fields[i] = new Empty.Builder()
 				.build();
 				break;
-				
+
 			case "GoPrison":
 				//GGoPrison goPrison = (GGoPrison) field;
 				fields[i] = new Street.Builder()
 				.build();
 				break;
-				
+
 			}
 		}
-		
+
 		GUI.create(fields);
 	}
-	
-	
+
+
 }
