@@ -8,6 +8,7 @@ public class GStart extends GField {
 		super.setID(id);
 		super.setType("Start");
 		super.setColor(Color.RED);
+		super.setName("Start");
 	}
 	
 	@Override

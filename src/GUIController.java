@@ -109,29 +109,38 @@ public class GUIController {
 			switch (Type) {
 
 			case "Start":
-				//GStart start = (GStart) field;
-				fields[i] = new Street.Builder().build();
+				GStart start = (GStart) field;
+				fields[i] = new Start.Builder()
+				.setBgColor(start.getColor())
+				.setTitle(start.getName())
+				.setDescription("Modtag 4000, når du passerer start!")
+				.setSubText("")
+				.build();
 				break;
 
 			case "Territory":
-				//GTerritory territory = (GTerritory) field;
+				GTerritory territory = (GTerritory) field;
 				fields[i] = new Street.Builder()
-				//.setTitle(territory.getName())
-				//.setDescription("John")
-				//.setSubText("Poul")
-				//.setBgColor(field.getColor())
+				.setTitle(territory.getName())
+				.setDescription("John hitler \n \n lol")
+				.setSubText("Pris: " + territory.getPrice())
+				.setBgColor(territory.getColor())
 				.build();
 				break;
 
 			case "Chance":
-				//GChance chance = (GChance) field;
-				fields[i] = new Street.Builder()
+				GChance chance = (GChance) field;
+				fields[i] = new Chance.Builder()
+				.setBgColor(chance.getColor())
 				.build();
 				break;
 
 			case "Fleet":
-				//GFleet fleet = (GFleet) field;
-				fields[i] = new Street.Builder()
+				GFleet fleet = (GFleet) field;
+				fields[i] = new Shipping.Builder()
+				.setTitle("")
+				.setSubText("Pris: " + fleet.getPrice())
+				.setDescription(fleet.getName())
 				.build();
 				break;
 

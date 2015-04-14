@@ -8,9 +8,9 @@
 		public GameBoard()
 		{
 			list[0] = new GStart(1);
-			list[1] = new GTerritory(2, "Rødovrevej", 1200, 50, 1000, 250, 750, 2250, 4000, 6000, new Color(17, 17, 94));
+			list[1] = new GTerritory(2, "Rødovrevej", 1200, 50, 1000, 250, 750, 2250, 4000, 6000, new Color(77, 77, 242));
 			list[2] = new GChance(3, "Prøv lykken");
-			list[3] = new GTerritory(4, "Hvidovrevej", 1200, 50, 1000, 250, 750, 2250, 4000, 6000, new Color(17, 17, 94));
+			list[3] = new GTerritory(4, "Hvidovrevej", 1200, 50, 1000, 250, 750, 2250, 4000, 6000, new Color(77, 77, 242));
 			list[4] = new GTax(5, "Indkomstskat", 4000, 10); 
 			list[5] = new GFleet(6, "LB Færgerne", 4000, 500);
 			list[6] = new GTerritory(7, "Roskildevej", 2000, 100, 1000, 600, 1800, 5400, 8000, 11000, new Color(246, 94, 5));
@@ -44,9 +44,9 @@
 			list[34] = new GTerritory(35, "Nygade", 6400, 600, 4000, 3000, 9000, 20000, 24000, 28000, new Color(255, 255, 0));
 			list[35] = new GFleet(36, "Skandinavisk Linietrafik A/S", 4000, 500);
 			list[36] = new GChance(37, "Prøv lykken");
-			list[37] = new GTerritory(38, "Frederiksberggade", 7000, 700, 4000, 3500, 10000, 22000, 26000, 30000, new Color(168, 53, 137));
+			list[37] = new GTerritory(38, "Frederiks- bergsgade", 7000, 700, 4000, 3500, 10000, 22000, 26000, 30000, new Color(168, 53, 137));
 			list[38] = new GTax(39,"Ekstraordinær statsskat", 2000, 0);
-			list[39] = new GTerritory(40, "Rådhuspladsen", 8000, 1000, 4000, 4000, 12000, 28000, 34000, 40000, new Color(168, 53, 137));
+			list[39] = new GTerritory(40, "Rådhus- pladsen", 8000, 1000, 4000, 4000, 12000, 28000, 34000, 40000, new Color(168, 53, 137));
 						
 		}
 
