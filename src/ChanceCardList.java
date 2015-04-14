@@ -91,7 +91,7 @@ public class ChanceCardList {
 	 {
 		ChanceCard c;
 		c = list.get(index);
-		if(index == list.size())
+		if(index == 31)
 		{
 			index = 0;
 		}
@@ -102,4 +102,15 @@ public class ChanceCardList {
 		return c;
 	 }
 	 
+	 public static void main(String[] args) {
+		
+		 ChanceCardList cd = new ChanceCardList();
+		 
+		 cd.randomizer();
+		 
+		 
+		 for(int i=0; i<34; i++){
+		 System.out.println(cd.draw().toString());
+		 }
+	}
 }
