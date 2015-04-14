@@ -2,20 +2,19 @@
 
 public class GameLauncher {
 
-	private GUIController GUIJ = new GUIController();
+	private GUIController gui = new GUIController();
 	private GameBoard gb = new GameBoard();
 	
-	public static void main(String[] args) {
-		
-	new GameLauncher().spil();
-	
+	public static void main(String[] args) 
+	{
+		new GameLauncher().spil();
 	}
 	
 	public void spil()
 	{
-		GUIJ.createGameboard(gb);
+		gui.createGameboard(gb);
 		
-		GUIJ.setDice(1, 2);
+		gui.setDice(1, 2);
 	}
 
 	

@@ -216,6 +216,23 @@ public class GUIController {
 
 		GUI.create(fields);
 	}
+	
+	// *** Vælg antal spillere ***
+	public int amountOfPlayers()
+	{
+		int pick = 0;
+		String ans = GUI.getUserButtonPressed("Vælg antal spillere:", "2", "3", "4", "5", "6");
+		
+		switch (ans) {
+		case "2": pick = 2; break;
+		case "3": pick = 3; break;
+		case "4": pick = 4; break;
+		case "5": pick = 5; break;
+		case "6": pick = 6; break;
+		}
+		
+		return pick;
+	}
 
 
 }
