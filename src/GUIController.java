@@ -95,6 +95,9 @@ public class GUIController {
 		GUI.getUserString(msg);
 	}
 	
-	
+	public void showMessage(String msg)
+	{
+		GUI.showMessage(msg);
+	}
 	
 }
