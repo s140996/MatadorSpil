@@ -28,14 +28,12 @@ public class GUIController {
 		GUI.create(fields[]);
 	}
 	
-			// *** Remove Car ***
+			// *** Move Car ***
 	public void moveCar(int position, String name)
 	{
 		GUI.removeAllCars(name);
 		GUI.setCar(position, name);
 	}
-	
-	
 	
 			// *** Remove Owner ***
 	public void removeOwner(int fieldNumber)
@@ -79,22 +77,25 @@ public class GUIController {
 		GUI.close();
 	}
 	
-		// *** Show Chance Card ***
+			// *** Show Chance Card ***
 	public void displayChanceCard(String msg)
 	{
 		GUI.displayChanceCard(msg);
 	}
 	
+			// *** User button pressed ***
 	public void getUserButtonPressed(String msg, String buttons)
 	{
 		GUI.getUserButtonPressed(msg, buttons);
 	}
 	
+			// *** User string ***
 	public void getUserString(String msg)
 	{
 		GUI.getUserString(msg);
 	}
 	
+			// *** Show message ***
 	public void showMessage(String msg)
 	{
 		GUI.showMessage(msg);
