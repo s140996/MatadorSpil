@@ -11,8 +11,8 @@ public class InPrison {
 		}
 		else if (player.acc.getBalance() > 1000)
 		{
-			prisonChoiceButtons
-			if(prisonChoiceButtons = true){
+			prisonChoiceButton
+			if(prisonChoiceButton = true){
 				player.acc.setBalance(player.acc.getBalance()-1000);
 				player.setConvict(false);
 			}
