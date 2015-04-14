@@ -237,8 +237,8 @@ public class GUIController {
 	// *** Skriv spiller navn ***
 	public String newPlayer(int playerNo)
 	{
-		String Ans = GUI.getUserString("Skriv navnet på spiller " + playerNo + ":");
-		return Ans;
+		String ans = GUI.getUserString("Skriv navnet på spiller " + playerNo + ":");
+		return ans;
 	}
 
 }
