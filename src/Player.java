@@ -45,6 +45,11 @@ public class Player {
 		this.name = name;
 	}
 	
+	public String toString()
+	{
+		return this.name;
+	}
+	
 	public int getWorth()
 	{
 		return this.worth;
