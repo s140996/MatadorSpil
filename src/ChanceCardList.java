@@ -15,34 +15,33 @@ public class ChanceCardList {
 	private ChanceCard c8 = new ChanceCard("Præmieobligationer.", 1000, 0);
 	private ChanceCard c9 = new ChanceCard("Præmieobligationer.", 1000, 0);
 	// Skal have funktion med, så det er alle der betaler til fødselaren
-	private ChanceCard c10 = new ChanceCard("Din fødselsdag. Modtag 200 fra hver medspiller", 200, 0);
+	private ChanceCard c10 = new ChanceCard("Din fødselsdag. Modtag 200 fra hver medspiller", 200);
 	private ChanceCard c11 = new ChanceCard("Nyttehaven af avl.", 200, 0);
 	private ChanceCard c12 = new ChanceCard("Bilforsikring.", -1000, 0);
-	// Ejendomsskat: 800 pr. hus og 2300 pr. hotel
-	private ChanceCard c13 = new ChanceCard("Ejendomsskatten er steget.", 0, 0);
+	// Ejendomsskat: 800 pr. hus og 2300 pr. hotel (Y)
+	private ChanceCard c13 = new ChanceCard(800, 2300, "Ejendomsskatten er steget.", true);
 	private ChanceCard c14 = new ChanceCard("Ryk frem til Grønningen", 0, 25);
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
 	private ChanceCard c15 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.", 0, 0);
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
 	private ChanceCard c16 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.", 0, 0);
-	// Mangler at finde ud af hvilken LB færgen er
-	private ChanceCard c17 = new ChanceCard("Tag med LB færgen", 0, 0);
+	private ChanceCard c17 = new ChanceCard("Tag med LB færgen", 0, 6);
 	private ChanceCard c18 = new ChanceCard("Benådes for fængsel", 0, 0);
 	private ChanceCard c19 = new ChanceCard("Lønforhøjelse.", 1000, 0);
 	private ChanceCard c20 = new ChanceCard("Ryk frem til Frederiksberh Allé.", 0, 12);
 	private ChanceCard c21 = new ChanceCard("Vundet i klasselotteriet.", 500, 0);
 	private ChanceCard c22 = new ChanceCard("Tag ind til Rådhuspladsen", 0, 40);
 	private ChanceCard c23 = new ChanceCard("Ryk tre felter tilbage.", 0, -3);
-	// 500 pr. hus og 2000 pr. hotel
-	private ChanceCard c24 = new ChanceCard("Oliepriserne er steget.", 0, 0);
+	// 500 pr. hus og 2000 pr. hotel (Y)
+	private ChanceCard c24 = new ChanceCard(500, 2000, "Oliepriserne er steget.", false);
 	private ChanceCard c25 = new ChanceCard("Reparation af vogn.", -3000, 0);		
 	private ChanceCard c26 = new ChanceCard("Reparation af vogn.", -3000, 0);		
 	// +40000, hvis formue ikke overstiger 15000 kr
-	private ChanceCard c27 = new ChanceCard("Matadorlegatet.", 0, 0);
+	private ChanceCard c27 = new ChanceCard("Matadorlegatet.", 40000, false);
 	private ChanceCard c28 = new ChanceCard("Eftergivet skat.", 3000, 0);
 	private ChanceCard c29 = new ChanceCard("Aktieudbytte.", 1000, 0);
 	private ChanceCard c30 = new ChanceCard("Aktieudbytte.", 1000, 0);
-	private ChanceCard c31 = new ChanceCard("Kørt frem for Fuld stop.", -1000, 0);
+	private ChanceCard c31 = new ChanceCard("Kørt frem for Fuld stop. Betal 1000 kr.", -1000, 0);
 	private ChanceCard c32 = new ChanceCard("Parkeringsbøde.", -200, 0);
 	
 	public ChanceCardList()
@@ -108,9 +107,12 @@ public class ChanceCardList {
 		 
 		 cd.randomizer();
 		 
+		 System.out.println(cd.draw().getPosition());
 		 
-		 for(int i=0; i<34; i++){
-		 System.out.println(cd.draw().toString());
-		 }
+		 
+//		 
+//		 for(int i=0; i<34; i++){
+//		 System.out.println(cd.draw().toString());
+//		 }
 	}
 }
