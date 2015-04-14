@@ -9,7 +9,7 @@ public class GChance extends GField {
 		super.setID(id);
 		super.setName(name);
 		super.setType("Chance");
-		super.setColor(new Color(250, 250, 250));
+		super.setColor(new Color(252, 227, 185));
 	}
 
 

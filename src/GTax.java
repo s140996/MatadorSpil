@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 public class GTax extends GField {
 
 	private int baseTax;
@@ -9,6 +11,7 @@ public class GTax extends GField {
 		super.setID(id);
 		super.setName(name);
 		super.setType("Tax");
+		super.setColor(new Color(255, 179, 0));
 		this.baseTax = baseTax;
 		this.percentageTax = percentageTax;
 	}

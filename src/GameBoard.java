@@ -37,7 +37,7 @@
 			list[27] = new GTerritory(28, "Kgs. Nytorv", 5200, 450, 3000, 2200, 6600, 16000, 19500, 23000, new Color(255, 255, 255));
 			list[28] = new GBrewery(29, "Carlsberg", 3000, 100);
 			list[29] = new GTerritory(30, "Østergade", 5600, 500, 3000, 2400, 7200, 17000, 20500, 24000, new Color(255, 255, 255));
-			list[30] = new GGoPrison(31, "Gå til fængslet");
+			list[30] = new GGoPrison(31, "Gå i fængsel");
 			list[31] = new GTerritory(32, "Amagertorv", 6000, 550, 4000, 2600, 7800, 18000, 22000, 25000, new Color(255, 255, 0));
 			list[32] = new GTerritory(33, "Vimmelskaftet", 6000, 550, 4000, 2600, 7800, 18000, 22000, 25000, new Color(255, 255, 0));
 			list[33] = new GChance(34, "Prøv lykken");

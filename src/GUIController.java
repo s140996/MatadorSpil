@@ -121,8 +121,9 @@ public class GUIController {
 				fields[i] = new Start.Builder()
 				.setBgColor(start.getColor())
 				.setTitle(start.getName())
+				.setFgColor(Color.white)
 				.setDescription("Modtag 4000, når du passerer start!")
-				.setSubText("")
+				.setSubText("Modtag: 4000")
 				.build();
 				break;
 
@@ -149,6 +150,7 @@ public class GUIController {
 				.setTitle("")
 				.setSubText("Pris: " + fleet.getPrice())
 				.setDescription(fleet.getName())
+				.setBgColor(fleet.getColor())
 				.build();
 				break;
 
@@ -161,6 +163,7 @@ public class GUIController {
 					.setTitle("Betal: " + tax.getBasetax())
 					.setDescription(tax.getName())
 					.setSubText("Du kan vælge at betale " + tax.getBasetax() + " eller " + (int) tax.getPercentageTax() + "% af, hvad du har af værdier!")
+					.setBgColor(tax.getColor())
 					.build();
 				}
 				else 
@@ -169,6 +172,7 @@ public class GUIController {
 					.setTitle("Betal: " + tax.getBasetax())
 					.setDescription(tax.getName())
 					.setSubText("Du skal betale en skat på " + tax.getBasetax() + "!")
+					.setBgColor(tax.getColor())
 					.build();
 				}
 				break;
@@ -191,14 +195,19 @@ public class GUIController {
 				break;
 
 			case "Parking":
-				//GParking parking = (GParking) field;
-				fields[i] = new Empty.Builder()
+				GParking parking = (GParking) field;
+				fields[i] = new Refuge.Builder()
+				.setTitle("")
+				.setSubText(parking.getName())
+				.setDescription("Flot parkering! Helt inde for stregerne :)")
 				.build();
 				break;
 
 			case "GoPrison":
-				//GGoPrison goPrison = (GGoPrison) field;
-				fields[i] = new Street.Builder()
+				GGoPrison goPrison = (GGoPrison) field;
+				fields[i] = new Jail.Builder()
+				.setSubText(goPrison.getName())
+				.setDescription("Én, to, mange, du er taget til fange!")
 				.build();
 				break;
 

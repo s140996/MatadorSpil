@@ -1,3 +1,4 @@
+import java.awt.Color;
 
 public class GFleet extends GOwnable {
 
@@ -10,6 +11,7 @@ public class GFleet extends GOwnable {
 		super.setType("Fleet");
 		super.setPrice(price);
 		this.rent = rent;
+		super.setColor(new Color(185, 236, 252));
 	}
 
 	@Override
