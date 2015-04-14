@@ -9,7 +9,9 @@ public class GTax extends GField {
 		return basetax;
 	}
 	
-	public int getPercentageTax(int playerWorth);
+	public int getPercentageTax(int playerWorth) {
+		
+	}
 	{
 		
 	}
@@ -23,6 +25,7 @@ public class GTax extends GField {
 	@Override
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
 		// TODO Auto-generated method stub
+		
 	//	if (owner != null)
 	//	{
 			

@@ -29,16 +29,13 @@ public class GUIController {
 	}
 	
 			// *** Remove Car ***
-	public void removeCar(int position, String name)
+	public void moveCar(int position, String name)
 	{
-		GUI.removeCar(position, name);
-	}
-	
-			// *** Set Car ***
-	public void setCar(int position, String name)
-	{
+		GUI.removeAllCars(name);
 		GUI.setCar(position, name);
 	}
+	
+	
 	
 			// *** Remove Owner ***
 	public void removeOwner(int fieldNumber)
@@ -82,8 +79,11 @@ public class GUIController {
 		GUI.close();
 	}
 	
-			
-	
+		// *** Show Chance Card ***
+	public void displayChanceCard(java.lang.String msg, java.lang.String buttons)
+	{
+		GUI.displayChanceCard();
+	}
 	
 	
 	
