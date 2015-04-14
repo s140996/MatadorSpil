@@ -1,3 +1,5 @@
+import desktop_resources.GUI;
+
 
 public class GameLauncher {
 
@@ -8,7 +10,8 @@ public class GameLauncher {
 	
 	GUIJ.createGameboard(gb);
 	
-	//GUIJ.setDice(1, 2);
+	GUIJ.setDice(1, 2);
+
 	
 	}
 
