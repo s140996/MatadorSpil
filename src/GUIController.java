@@ -234,5 +234,11 @@ public class GUIController {
 		return pick;
 	}
 
+	// *** Skriv spiller navn ***
+	public String newPlayer(int playerNo)
+	{
+		String Ans = GUI.getUserString("Skriv navnet på spiller " + playerNo + ":");
+		return Ans;
+	}
 
 }
