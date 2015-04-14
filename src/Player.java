@@ -90,7 +90,11 @@ public class Player {
 		return alive;
 	}
 	
-	public void playerLost(booelan )
+	public void playerLost(boolean alive)
+	{
+		this.alive = false;
+		
+	}
 }
 
 
