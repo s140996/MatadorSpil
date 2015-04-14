@@ -80,13 +80,20 @@ public class GUIController {
 	}
 	
 		// *** Show Chance Card ***
-	public void displayChanceCard(java.lang.String msg, java.lang.String buttons)
+	public void displayChanceCard(String msg)
 	{
-		GUI.displayChanceCard();
+		GUI.displayChanceCard(msg);
 	}
 	
+	public void getUserButtonPressed(String msg, String buttons)
+	{
+		GUI.getUserButtonPressed(msg, buttons);
+	}
 	
-	
+	public void getUserString(String msg)
+	{
+		GUI.getUserString(msg);
+	}
 	
 	
 	
