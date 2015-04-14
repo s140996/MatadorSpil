@@ -12,7 +12,7 @@ public class GTerritory extends GOwnable {
 	int hotelRent;
 	int pawn;
 	int buildpawn;
-	Color color;
+	
 	
 	public GTerritory (int id, String name, int price, int rent, int buildPrice, int houseRent, int houseRent2, int houseRent3, int houseRent4, int hotelRent, Color color)
 	{
@@ -20,6 +20,7 @@ public class GTerritory extends GOwnable {
 		super.setName(name);
 		super.setType("Territory");
 		super.setPrice(price);
+		super.setColor(color);
 		this.rent = rent;
 		this.buildPrice = buildPrice;
 		this.houseRent = houseRent;
@@ -29,8 +30,6 @@ public class GTerritory extends GOwnable {
 		this.hotelRent = hotelRent;
 		this.pawn = price / 2;
 		this.buildpawn = buildPrice / 2;
-		
-		this.color = color;
 	}
 	
 	@Override
@@ -48,5 +47,7 @@ public class GTerritory extends GOwnable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 }

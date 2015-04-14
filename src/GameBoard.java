@@ -54,54 +54,42 @@
 						
 		}
 
-		public void randomizer() {
-			Collections.shuffle(Arrays.asList(list));
-		}
-
-		public GameFields getField(int id){
-			GameFields field = list[id];
+		public GField getField(int id){
+			GField field = list[id];
 			return field;
 		}
-
-		public int getStartNumber() {
-			String Type = "";
-			int i = 0;
-
-			while (Type != "Start") {
-				GameFields field = getField(i);
-				Type = field.getType();
-				i++;
-			}
-
-			return i;
+		
+		public GField[] getField()
+		{
+			return list;
 		}
-
+		
 		public void create() {
 			Field[] fields = new Field[list.length];
 
 			for (int i = 0; i < list.length; i++) {
-				GameFields field = getField(i);
+				GField field = getField(i);
 				String Type = field.getType();
 
 				switch (Type) {
 
 				case "Start":
-					Startfield start = (Startfield) field;
+					GStart start = (GStart) field;
 					fields[i] = new Start.Builder()
 					.setTitle(start.getName())
 					.setDescription("")
 					.setSubText("")
-					.setBgColor(Color.WHITE)
+					.setBgColor(field.getColor())
 					.build();
 					break;
 
 				case "Territory":
-					Territory territory = (Territory) field;
+					GTerritory territory = (GTerritory) field;
 					fields[i] = new Street.Builder()
 					.setTitle(territory.getName())
 					.setDescription(Txt.Rent + territory.getRent())
 					.setSubText(Txt.Price + territory.getPrice())
-					.setBgColor(new Color(147,159,80))
+					.setBgColor(field.getColor())
 					.build();
 					break;
 
@@ -157,7 +145,7 @@
 
 				}
 			}
-
+			
 			GUI.create(fields);
 		}
 

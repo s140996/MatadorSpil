@@ -1,8 +1,11 @@
+import java.awt.Color;
+
 public abstract class GField {
 	
 	private String name;
 	private int id;
 	private String type;
+	private Color color;
 	
 	public abstract void landOnField(Player player, GUIController GGUI);
 	public abstract void removeOwner(Player player, int fieldnumber, GUIController GGUI);
@@ -37,7 +40,15 @@ public abstract class GField {
 		return this.type;
 	}
 	
+	public void setColor(Color color)
+	{
+		this.color = color;
+	}
 	
+	public Color getColor()
+	{
+		return this.color;
+	}
 	
 	
 
