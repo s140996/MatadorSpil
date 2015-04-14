@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 
 public class GTerritory extends GOwnable {
 
@@ -9,11 +11,14 @@ public class GTerritory extends GOwnable {
 	int houseRent4;
 	int hotelRent;
 	int pawn;
+	int buildpawn;
+	Color color;
 	
-	public GTerritory (int id, String name, int price, int rent, int buildPrice, int houseRent, int houseRent2, int houseRent3, int houseRent4, int hotelRent, int pawn)
+	public GTerritory (int id, String name, int price, int rent, int buildPrice, int houseRent, int houseRent2, int houseRent3, int houseRent4, int hotelRent, Color color)
 	{
 		super.setID(id);
 		super.setName(name);
+		super.setType("Territory");
 		super.setPrice(price);
 		this.rent = rent;
 		this.buildPrice = buildPrice;
@@ -22,7 +27,10 @@ public class GTerritory extends GOwnable {
 		this.houseRent3 = houseRent3;
 		this.houseRent4 = houseRent4;
 		this.hotelRent = hotelRent;
-		this.pawn = pawn;
+		this.pawn = price / 2;
+		this.buildpawn = buildPrice / 2;
+		
+		this.color = color;
 	}
 	
 	@Override
