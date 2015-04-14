@@ -97,9 +97,10 @@ public class GUIController {
 	}
 
 	// *** Create Bool-Button
-	public void boolButton(String msg, String trueButton, String falseButton)
+	public boolean boolButton(String msg, String trueButton, String falseButton)
 	{
-		GUI.getUserLeftButtonPressed(msg, trueButton, falseButton);
+		boolean reply = GUI.getUserLeftButtonPressed(msg, trueButton, falseButton);
+		return reply;
 	}
 
 	// *** Create GameBoard ***

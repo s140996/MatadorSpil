@@ -2,7 +2,7 @@
 public class InPrison {
 
 
-	public void inPrison(Player player, Cup cup)
+	public void inPrison(Player player, Cup cup, GUIController gui)
 	{
 		if (player.getPrisonCard() > 0)
 		{
@@ -11,8 +11,8 @@ public class InPrison {
 		}
 		else if (player.acc.getBalance() > 1000)
 		{
-			prisonChoiceButton
-			if(prisonChoiceButton = true){
+			boolean reply = gui.boolButton("Betal eller Kast terninger?", "Betal", "Kast");
+			if( reply == true){
 				player.acc.setBalance(player.acc.getBalance()-1000);
 				player.setConvict(false);
 			}
