@@ -12,6 +12,7 @@ public class GTerritory extends GOwnable {
 	int pawn;
 	int buildpawn;
 	int houseCount;
+	boolean hasHotel;
 
 	public GTerritory(int id, String name, int price, int rent, int buildPrice,
 			int houseRent, int houseRent2, int houseRent3, int houseRent4,
@@ -111,8 +112,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har tre huse på den. Vil du købe et hotel på grunden?",
-							"Køb et hotel", "Nej tak");
+							"Du ejer grunden og du har tre huse på den. Vil du købe et hus mere på grunden?",
+							"Køb et hus mere", "Nej tak");
 			if (reply == true) {
 
 				player.acc.setBalance(player.acc.getBalance() - houseRent4);
@@ -120,6 +121,20 @@ public class GTerritory extends GOwnable {
 
 			}
 
+		}
+
+		else if (houseCount == 4) {
+
+			boolean reply = GGUI
+					.boolButton(
+							"Du ejer grunden og du har fire huse på den. Vil du købe et hotel på grunden?",
+							"Køb et hotel", "Nej tak");
+			if (reply == true) {
+
+				player.acc.setBalance(player.acc.getBalance() - hotelRent);
+				GGUI.setHouses(id, houseCount = 3);
+				GGUI.setHotel(id, hasHotel = true);
+			}
 		}
 	}
 
