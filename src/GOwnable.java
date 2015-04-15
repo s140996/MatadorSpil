@@ -2,7 +2,7 @@
 public abstract class GOwnable extends GField {
 
 	private int price;
-	private Player owner;
+	public Player owner;
 	
 	public abstract int getRent(); 
 

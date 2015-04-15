@@ -3,7 +3,7 @@ import java.awt.Color;
 public abstract class GField {
 	
 	private String name;
-	private int id;
+	public int id;
 	private String type;
 	private Color color;
 	
