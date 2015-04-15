@@ -56,75 +56,71 @@ public class GTerritory extends GOwnable {
 				}
 
 			}
-
-			else if (owner == player)
-
-			{
-
-				if (player.acc.getBalance() > houseRent) {
-
-					boolean reply = GGUI.boolButton(
-							"Du ejer grunden. Vil du købe et hus på den?",
-							"Køb huset", "Nej tak");
-					if (reply == true) {
-
-						player.acc.setBalance(player.acc.getBalance()
-								- houseRent);
-						GGUI.setHouses(id, houseCount = 1);
-
-					}
-
-				}
-
-				else if (houseCount == 1) {
-
-					boolean reply = GGUI
-							.boolButton(
-									"Du ejer grunden og du har et hus på den. Vil du købe et hus mere på grunden?",
-									"Køb et hus mere", "Nej tak");
-					if (reply == true) {
-
-						player.acc.setBalance(player.acc.getBalance()
-								- houseRent2);
-						GGUI.setHouses(id, houseCount = 2);
-
-					}
-
-				}
-
-				else if (houseCount == 2) {
-
-					boolean reply = GGUI
-							.boolButton(
-									"Du ejer grunden og du har to huse på den. Vil du købe et hus mere på grunden?",
-									"Køb et hus mere", "Nej tak");
-					if (reply == true) {
-
-						player.acc.setBalance(player.acc.getBalance()
-								- houseRent3);
-						GGUI.setHouses(id, houseCount = 3);
-					}
-
-				}
-
-				else if (houseCount == 3) {
-
-					boolean reply = GGUI
-							.boolButton(
-									"Du ejer grunden og du har tre huse på den. Vil du købe et hotel på grunden?",
-									"Køb et hotel", "Nej tak");
-					if (reply == true) {
-
-						player.acc.setBalance(player.acc.getBalance()
-								- houseRent4);
-						GGUI.setHouses(id, houseCount = 4);
-
-					}
-
-				}
-			}
 		}
 
+		else if (owner == player)
+
+		{
+
+			if (player.acc.getBalance() > houseRent) {
+
+				boolean reply = GGUI.boolButton(
+						"Du ejer grunden. Vil du købe et hus på den?",
+						"Køb huset", "Nej tak");
+				if (reply == true) {
+
+					player.acc.setBalance(player.acc.getBalance() - houseRent);
+					GGUI.setHouses(id, houseCount = 1);
+
+				}
+
+			}
+
+		}
+
+		else if (houseCount == 1) {
+
+			boolean reply = GGUI
+					.boolButton(
+							"Du ejer grunden og du har et hus på den. Vil du købe et hus mere på grunden?",
+							"Køb et hus mere", "Nej tak");
+			if (reply == true) {
+
+				player.acc.setBalance(player.acc.getBalance() - houseRent2);
+				GGUI.setHouses(id, houseCount = 2);
+
+			}
+
+		}
+
+		else if (houseCount == 2) {
+
+			boolean reply = GGUI
+					.boolButton(
+							"Du ejer grunden og du har to huse på den. Vil du købe et hus mere på grunden?",
+							"Køb et hus mere", "Nej tak");
+			if (reply == true) {
+
+				player.acc.setBalance(player.acc.getBalance() - houseRent3);
+				GGUI.setHouses(id, houseCount = 3);
+			}
+
+		}
+
+		else if (houseCount == 3) {
+
+			boolean reply = GGUI
+					.boolButton(
+							"Du ejer grunden og du har tre huse på den. Vil du købe et hotel på grunden?",
+							"Køb et hotel", "Nej tak");
+			if (reply == true) {
+
+				player.acc.setBalance(player.acc.getBalance() - houseRent4);
+				GGUI.setHouses(id, houseCount = 4);
+
+			}
+
+		}
 	}
 
 	@Override
