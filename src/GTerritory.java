@@ -65,7 +65,7 @@ public class GTerritory extends GOwnable {
 
 		{
 			
-		 if (getSimilarCount(gb))
+		 if (getSimilarCount(gb) == true)
 			{
 
 			if (player.acc.getBalance() > this.buildPrice) {
@@ -240,10 +240,10 @@ public class GTerritory extends GOwnable {
 		for(int i = 0; i > 40; i++)
 			{
 			GField field = gb.getField(i);
-			if(field.getType() == "Territory")
+			if (field.getType() == "Territory")
 			{
 				GTerritory territory = (GTerritory) field;
-				if(territory.getColor().equals(super.getColor()) && territory.getOwner() != null && territory.getOwner().equals(super.getOwner()))
+				if (territory.getColor().equals(super.getColor()) && territory.getOwner() != null && territory.getOwner().equals(super.getOwner()))
 				{
 					count++;
 				}
