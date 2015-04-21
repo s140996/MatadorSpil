@@ -4,6 +4,7 @@ public class InPrison {
 
 	public void inPrison(Player player, Cup cup, GUIController gui)
 	{
+		gui.turn(player);
 		if (player.getPrisonCard() > 0)
 		{
 			gui.showMessage("Du har brugt din benådning fra fænslet, du er nu fri igen!");
