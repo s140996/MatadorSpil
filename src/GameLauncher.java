@@ -15,10 +15,12 @@ public class GameLauncher {
 	
 	public void spil()
 	{
+		gui.createGameboard(gb);
+		cc.randomizer();
+		
 		newGame();
 		
 		boolean gameOn = true;
-		
 		while (gameOn == true)
 		{
 		turn();
@@ -27,8 +29,6 @@ public class GameLauncher {
 	
 	public void newGame()
 	{	
-		gui.createGameboard(gb);
-	
 		amountOfPlayers = gui.amountOfPlayers();
 		playerlist = new Player[amountOfPlayers + 1];
 		
