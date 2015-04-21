@@ -65,10 +65,10 @@ public class GTerritory extends GOwnable {
 
 		{
 			
-		 if (player != null) //pladsfylder
+		 if (getSimilarCount(gb)) //pladsfylder
 			{
 
-			if (player.acc.getBalance() > houseRent) {
+			if (player.acc.getBalance() > this.buildPrice) {
 
 				boolean reply = GGUI.boolButton(
 						"Du ejer grunden. Vil du kÃ¸be et hus pÃ¥ den?",
@@ -157,7 +157,7 @@ public class GTerritory extends GOwnable {
 		{
 			if (houseCount == 0)
 			{	
-					GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og skal derfor betale" + rent);
+					GGUI.showMessage("Du er landet pï¿½ et felt der er ejet af en anden spiller og skal derfor betale" + rent);
 					player.acc.setBalance(player.acc.getBalance() - rent);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					super.getOwner().acc.deposit(rent);
@@ -168,7 +168,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 1)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har et hus på grunden, du skal derfor betale " + rent + " i husleje");
+				GGUI.showMessage("Du er landet pï¿½ et felt der er ejet af en anden spiller og vedkommende har et hus pï¿½ grunden, du skal derfor betale " + rent + " i husleje");
 				player.acc.deposit(-houseRent);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent);
@@ -179,7 +179,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 2)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har to huse på grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pï¿½ et felt der er ejet af en anden spiller og vedkommende har to huse pï¿½ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent2);
@@ -189,7 +189,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 3)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har tre huse på grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pï¿½ et felt der er ejet af en anden spiller og vedkommende har tre huse pï¿½ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent3);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent3);
@@ -199,7 +199,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 4)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har fire huse på grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pï¿½ et felt der er ejet af en anden spiller og vedkommende har fire huse pï¿½ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent3);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent3);
@@ -209,7 +209,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 5)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har et hotel på grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pï¿½ et felt der er ejet af en anden spiller og vedkommende har et hotel pï¿½ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-hotelRent);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(hotelRent);
@@ -233,4 +233,39 @@ public class GTerritory extends GOwnable {
 		return this.buildPrice;
 	}
 
+	public boolean getSimilarCount(GameBoard gb)
+	{
+		int count = 0;
+		
+		for(int i = 0; i > 40; i++)
+			{
+			GField field = gb.getField(i);
+			if(field.getType() == "Territory")
+			{
+				GTerritory territory = (GTerritory) field;
+				if(territory.getColor().equals(super.getColor()) && territory.getOwner() != null && territory.getOwner().equals(super.getOwner()))
+				{
+					count++;
+				}
+			}
+		}
+		
+		if (count == 3)
+		{
+			if (super.getColor() == new Color(246, 94, 5) || super.getColor() == new Color(206, 246, 5) || super.getColor() == new Color(129, 129, 129) || super.getColor() == new Color(255, 0, 0) || super.getColor() == new Color(255, 255, 255) || super.getColor() == new Color(255, 255, 0))
+			{
+				return true;
+			}
+		}
+		else if (count == 2)
+		{
+			if (super.getColor() == new Color(77, 77, 242) || super.getColor() == new Color(168, 53, 137))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 }
