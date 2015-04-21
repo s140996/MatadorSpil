@@ -6,6 +6,8 @@ public class Player {
 	private int prisonCard;
 	private int fleetsOwned;
 	private int brewerysOwned;
+	private int houseCount;
+	private int hotelCount;
 	private boolean convict;
 	private boolean alive;
 	
@@ -93,6 +95,26 @@ public class Player {
 	public int getBrewerysOwned()
 	{
 		return brewerysOwned;
+	}
+	
+	public void setHouseCount(int houseCount)
+	{
+		this.houseCount = houseCount;
+	}
+	
+	public int getHouseCount()
+	{
+		return houseCount;
+	}
+	
+	public void setHotelCount(int hotelCount)
+	{
+		this.hotelCount = hotelCount;
+	}
+	
+	public int getHotelCount()
+	{
+		return hotelCount;
 	}
 	
 	public void setConvict(boolean convict)
