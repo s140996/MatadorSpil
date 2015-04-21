@@ -13,7 +13,7 @@ public class ChanceCardList {
 	private ChanceCard c6 = new ChanceCard("CHANCEKORT: Du har modtaget din tandlægeregning. Betal 2000 kr.", -2000, 0);
 	private ChanceCard c7 = new ChanceCard("CHANCEKORT: Du har haft 12 rigtige i tips 13. Modtag 1000 kr.", 1000, 0);
 	private ChanceCard c8 = new ChanceCard("CHANCEKORT: Din restskat er gået ind. Modtag 1000 kr.", 1000, 0);
-	private ChanceCard c9 = new ChanceCard("CHANCEKORT: Du har solgt din gamle velo. Modtag 1000 kr.", 1000, 0);
+	private ChanceCard c9 = new ChanceCard("CHANCEKORT: Du har solgt din gamle Velo Solex 3800S. Modtag 1000 kr.", 1000, 0);
 	// Skal have funktion med, så det er alle der betaler til fødselaren
 	private ChanceCard c10 = new ChanceCard("CHANCEKORT: Du er blevet konfirmeret, og har fået 1000 kr af din bedstemor.", 1000);
 	private ChanceCard c11 = new ChanceCard("CHANCEKORT: Du har fundet en pung på gaden. Stjæl de 200 kr der ligger i den.", 200, 0);

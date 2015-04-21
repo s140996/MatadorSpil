@@ -8,7 +8,7 @@ public class Die {
 
 		int die = rand.nextInt(6) + 1;		//+1 --> else it would be 0 - 5	
 		
-		return die;
+		return 1;
 	}
 	
 

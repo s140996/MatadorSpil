@@ -25,7 +25,7 @@ public class GChance extends GField {
 		case 1: 
 			player.acc.deposit(c.getCash());
 			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-
+			// Gå til start
 			if(c.getPosition() == 1)
 			{
 				player.setPosition(1);
@@ -33,12 +33,25 @@ public class GChance extends GField {
 				player.acc.deposit(4000);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			}
+			//Ryk tre frem/tilbage
 			if(c.getPosition() == 3 || c.getPosition() == -3)
 			{
-				player.changePosition(player.getPosition() + c.getPosition(), GGUI);
+				if(player.getPosition() < 4 && c.getPosition() == -3)
+				{
+					player.setPosition(40);
+					GGUI.moveCar(40, player.toString());
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
+				}
+				else
+				{
+				player.changePosition(c.getPosition(), GGUI);
 				GGUI.moveCar(player.getPosition(), player.toString());
 				gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
+				}
+				
+				
 			}
+			//Ryk frem til bestemt felt
 			if(c.getPosition() > 3 && c.getPosition() != 11)
 			{
 				if(c.getPosition() < player.getPosition())
@@ -51,10 +64,12 @@ public class GChance extends GField {
 				gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
 
 			}
+			//Ryk i fængsel
 			if(c.getPosition() == 11)
 			{
-				gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
+				gb.getField(31 - 1).landOnField(player, GGUI, cc, cup, gb);
 			}
+			//Benådes for fængsel
 			if(c.toString() == "Du benådes for fængsel")
 			{
 				if(player.getPrisonCard() == 1)
@@ -70,6 +85,7 @@ public class GChance extends GField {
 
 			break;
 		case 2:
+			//Matadorlegatet
 			if(player.getWorth() <= 15000)
 			{
 				player.acc.deposit(40000);
@@ -85,24 +101,26 @@ public class GChance extends GField {
 			//Mangler at alle andre spillere også skal betale for deres huse og hoteller
 			break;
 		case 4:
+			//Konfirmation
 			player.acc.deposit(1000);
 			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			break;
 		case 5:
+			//Ryk frem til nærmeste redderi
 			if(c.getPosition() > 36 || c.getPosition() < 6)
 			{
 				player.setPosition(6);
 				GGUI.moveCar(6, player.toString());
 				gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
-				
+
 				GField field = gb.getField(6 - 1);
 				GFleet fleet = (GFleet) field;
-				
+
 				if (fleet.getOwner() != player)
 				{
 					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				
+
 				if(c.getPosition() > 36)
 				{
 					player.acc.deposit(4000);
@@ -114,10 +132,10 @@ public class GChance extends GField {
 				player.setPosition(16);
 				GGUI.moveCar(16, player.toString());
 				gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
-				
+
 				GField field = gb.getField(16 - 1);
 				GFleet fleet = (GFleet) field;
-				
+
 				if (fleet.getOwner() != player)
 				{
 					gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
@@ -129,10 +147,10 @@ public class GChance extends GField {
 				player.setPosition(26);
 				GGUI.moveCar(26, player.toString());
 				gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
-				
+
 				GField field = gb.getField(26 - 1);
 				GFleet fleet = (GFleet) field;
-				
+
 				if (fleet.getOwner() != player)
 				{
 					gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
@@ -144,10 +162,10 @@ public class GChance extends GField {
 				player.setPosition(36);
 				GGUI.moveCar(36, player.toString());
 				gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
-				
+
 				GField field = gb.getField(36 - 1);
 				GFleet fleet = (GFleet) field;
-				
+
 				if (fleet.getOwner() != player)
 				{
 					gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
@@ -156,6 +174,7 @@ public class GChance extends GField {
 			}
 			break;
 		case 6:
+			//Oliepriserne er steget
 			int pay2 = player.getHouseCount() * 500 + player.getHotelCount() * 2000;
 			player.acc.deposit(-pay2);
 			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
