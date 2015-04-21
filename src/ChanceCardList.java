@@ -22,9 +22,9 @@ public class ChanceCardList {
 	private ChanceCard c13 = new ChanceCard(800, 2300, "Ejendomsskatten er steget.", true);
 	private ChanceCard c14 = new ChanceCard("Ryk frem til Grønningen", 0, 25);
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
-	private ChanceCard c15 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.", 0, 0);
+	private ChanceCard c15 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.");
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
-	private ChanceCard c16 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.", 0, 0);
+	private ChanceCard c16 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.");
 	private ChanceCard c17 = new ChanceCard("Tag med LB færgen", 0, 6);
 	private ChanceCard c18 = new ChanceCard("Benådes for fængsel", 0, 0);
 	private ChanceCard c19 = new ChanceCard("Lønforhøjelse.", 1000, 0);

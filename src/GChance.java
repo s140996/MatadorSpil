@@ -14,7 +14,7 @@ public class GChance extends GField {
 
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, GameBoard gb) {
 		
 		ChanceCard c = cc.draw();
 		
@@ -74,12 +74,43 @@ public class GChance extends GField {
 			{
 				player.acc.deposit(40000);
 			}
+			
 			break;
 		case 3:
-			
+			// ejendomsskat
 			break;
 		case 4:
-			
+			// fødselsdag
+			break;
+		case 5:
+			if(c.getPosition() > 36 || c.getPosition() < 6)
+			{
+				player.setPosition(6);
+				// skal finde en måde at få lejen
+				GGUI.moveCar(6, player.toString());
+				if(c.getPosition() > 36)
+				{
+					player.acc.deposit(4000);
+				}
+			}
+			else if(c.getPosition() > 6 && c.getPosition() < 16)
+			{
+				player.setPosition(16);
+				// skal finde en måde at få lejen
+				GGUI.moveCar(16, player.toString());
+			}
+			else if(c.getPosition() > 16 && c.getPosition() < 26)
+			{
+				player.setPosition(26);
+				// skal finde en måde at få lejen
+				GGUI.moveCar(26, player.toString());
+			}
+			else if(c.getPosition() > 26 && c.getPosition() < 36)
+			{
+				player.setPosition(36);
+				// skal finde en måde at få lejen
+				GGUI.moveCar(36, player.toString());
+			}
 			break;
 	
 		}

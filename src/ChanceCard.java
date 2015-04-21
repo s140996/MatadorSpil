@@ -46,6 +46,12 @@ public class ChanceCard {
 		
 	}
 	
+	public ChanceCard (String text)
+	{
+		this.text = text;
+		this.type = 5;
+	}
+	
 
 	public int getCash()
 	{
