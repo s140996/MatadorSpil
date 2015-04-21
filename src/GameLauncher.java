@@ -68,7 +68,7 @@ public class GameLauncher {
 				{
 					switch (gui.turn(playerlist[playerNo]))
 					{
-					case "Kast terning":
+					case "Kast terninger":
 						//Kaster terning
 						cup.roll();
 						gui.setDice(cup.getDieOne(), cup.getDieTwo());
