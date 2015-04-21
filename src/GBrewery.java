@@ -13,7 +13,7 @@ public class GBrewery extends GOwnable {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, GameBoard gb) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
 		
 		if(super.isOwned() == false)
 		{
@@ -24,6 +24,7 @@ public class GBrewery extends GOwnable {
 					super.setOwner(player);
 					GGUI.setOwner(super.getID(), player.toString());
 					player.acc.deposit(-super.getPrice());
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				}
 			}
 	
@@ -36,18 +37,21 @@ public class GBrewery extends GOwnable {
 			
 			else
 			{
-						
-					
-					
-				}
+				int multi = super.getOwner().getBrewerysOwned();
 				
+				int pay = multi * getRent() * lastRoll;
 				
+				player.acc.deposit(-pay);
+				super.getOwner().acc.deposit(pay);
+				
+				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+				GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
 			}
-		
-		
+							
 		}
-	
+		
 	}
+	
 		
 
 	@Override
@@ -58,8 +62,6 @@ public class GBrewery extends GOwnable {
 
 	@Override
 	public int getRent() {
-		
-		
 		return this.rent;
 	}
 	
