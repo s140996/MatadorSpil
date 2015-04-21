@@ -14,7 +14,7 @@ public class GChance extends GField {
 
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
 		
 		ChanceCard c = cc.draw();
 		
@@ -78,15 +78,23 @@ public class GChance extends GField {
 			break;
 		case 3:
 			// ejendomsskat
+			int pay = player.getHouseCount() * 500 + player.getHotelCount() * 2300;
+			player.acc.deposit(-pay);
+			//Mangler at alle andre spillere også skal betale for deres huse og hoteller
 			break;
 		case 4:
+			// nubers of players *
+			player.acc.deposit(200 );
+			//De andre spillere skal også betale
 			// fødselsdag
 			break;
 		case 5:
 			if(c.getPosition() > 36 || c.getPosition() < 6)
 			{
 				player.setPosition(6);
-				// skal finde en måde at få lejen
+				
+				gb.getField(6).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(6).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(6, player.toString());
 				if(c.getPosition() > 36)
 				{
@@ -96,23 +104,29 @@ public class GChance extends GField {
 			else if(c.getPosition() > 6 && c.getPosition() < 16)
 			{
 				player.setPosition(16);
-				// skal finde en måde at få lejen
+				gb.getField(16).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(16).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(16, player.toString());
 			}
 			else if(c.getPosition() > 16 && c.getPosition() < 26)
 			{
 				player.setPosition(26);
-				// skal finde en måde at få lejen
+				gb.getField(26).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(26).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(26, player.toString());
 			}
 			else if(c.getPosition() > 26 && c.getPosition() < 36)
 			{
 				player.setPosition(36);
-				// skal finde en måde at få lejen
+				gb.getField(36).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(36).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(36, player.toString());
 			}
 			break;
-	
+		case 6:
+			int pay2 = player.getHouseCount() * 500 + player.getHotelCount() * 2000;
+			player.acc.deposit(-pay2);
+			break;
 		}
 	}
 

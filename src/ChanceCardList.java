@@ -33,7 +33,7 @@ public class ChanceCardList {
 	private ChanceCard c22 = new ChanceCard("Tag ind til Rådhuspladsen", 0, 40);
 	private ChanceCard c23 = new ChanceCard("Ryk tre felter tilbage.", 0, -3);
 	// 500 pr. hus og 2000 pr. hotel (Y)
-	private ChanceCard c24 = new ChanceCard(500, 2000, "Oliepriserne er steget.", false);
+	private ChanceCard c24 = new ChanceCard("Oliepriserne er steget.", true);
 	private ChanceCard c25 = new ChanceCard("Reparation af vogn.", -3000, 0);		
 	private ChanceCard c26 = new ChanceCard("Reparation af vogn.", -3000, 0);		
 	// +40000, hvis formue ikke overstiger 15000 kr
@@ -100,19 +100,4 @@ public class ChanceCardList {
 		}
 		return c;
 	 }
-	 
-	 public static void main(String[] args) {
-		
-		 ChanceCardList cd = new ChanceCardList();
-		 
-		 cd.randomizer();
-		 
-		 System.out.println(cd.draw().getPosition());
-		 
-		 
-//		 
-//		 for(int i=0; i<34; i++){
-//		 System.out.println(cd.draw().toString());
-//		 }
-	}
 }

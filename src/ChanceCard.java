@@ -9,6 +9,7 @@ public class ChanceCard {
 	private boolean all;
 	private boolean rich;
 	private int type;
+	private boolean oil;
 	
 	public ChanceCard (String text, int cash, int position)
 	{
@@ -37,6 +38,7 @@ public class ChanceCard {
 		this.type = 3;
 	}
 	
+	
 	//Fødselsdag
 	public ChanceCard (String text, int cash)
 	{
@@ -52,6 +54,14 @@ public class ChanceCard {
 		this.type = 5;
 	}
 	
+	//Olipriserne er steget
+		public ChanceCard (String text, boolean oil)
+		{
+			this.text = text;
+			this.oil = oil;
+			this.type = 6;
+		}
+		
 
 	public int getCash()
 	{

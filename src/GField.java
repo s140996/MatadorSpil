@@ -7,7 +7,7 @@ public abstract class GField {
 	private String type;
 	private Color color;
 	
-	public abstract void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll);
+	public abstract void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb);
 	public abstract void removeOwner(Player player, int fieldnumber, GUIController GGUI);
 	
 	public void setName(String name)
