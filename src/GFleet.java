@@ -72,7 +72,7 @@ public class GFleet extends GOwnable {
 			{
 				if (super.getOwner().getConvict() == true)
 				{
-
+					GGUI.showMessage("Ejeren sidder i fængslel og kan ikke modtage betaling!");
 				}
 
 				else 
