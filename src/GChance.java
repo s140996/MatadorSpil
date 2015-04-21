@@ -32,6 +32,8 @@ public class GChance extends GField {
 				{
 					player.setPosition(1);
 					GGUI.moveCar(1, player.toString());
+					player.acc.deposit(4000);
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				}
 				if(c.getPosition() == 3 || c.getPosition() == -3)
 				{
@@ -40,19 +42,22 @@ public class GChance extends GField {
 					if(player.getPosition() > 37 && c.getPosition() != -3)
 					{
 						player.acc.deposit(4000);	
+						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					}
 				}
 				if(c.getPosition() > 3 && c.getPosition() != 11)
 				{
+					if(c.getPosition() < player.getPosition())
+					{
+						player.acc.deposit(4000);	
+						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());	
+					}
 					player.setPosition(c.getPosition());
 					GGUI.moveCar(player.getPosition(), player.toString());
+
 				}
 				if(c.getPosition() == 11)
 				{
-					if(c.getPosition() > 11)
-					{
-						player.acc.deposit(-4000);
-					}
 					player.setPosition(c.getPosition());
 					player.setConvict(true);
 					GGUI.moveCar(player.getPosition(), player.toString());
@@ -76,6 +81,7 @@ public class GChance extends GField {
 			if(player.getWorth() <= 15000)
 			{
 				player.acc.deposit(40000);
+				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			}
 
 			break;
@@ -83,11 +89,13 @@ public class GChance extends GField {
 			// ejendomsskat
 			int pay = player.getHouseCount() * 500 + player.getHotelCount() * 2300;
 			player.acc.deposit(-pay);
+			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			//Mangler at alle andre spillere også skal betale for deres huse og hoteller
 			break;
 		case 4:
 			// nubers of players *
 			player.acc.deposit(200 );
+			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			//De andre spillere skal også betale
 			// fødselsdag
 			break;
@@ -102,6 +110,7 @@ public class GChance extends GField {
 				if(c.getPosition() > 36)
 				{
 					player.acc.deposit(4000);
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				}
 			}
 			else if(c.getPosition() > 6 && c.getPosition() < 16)
@@ -132,6 +141,7 @@ public class GChance extends GField {
 		case 6:
 			int pay2 = player.getHouseCount() * 500 + player.getHotelCount() * 2000;
 			player.acc.deposit(-pay2);
+			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			break;
 		}
 	}
