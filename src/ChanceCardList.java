@@ -26,7 +26,8 @@ public class ChanceCardList {
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
 	private ChanceCard c16 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.");
 	private ChanceCard c17 = new ChanceCard("Tag med LB færgen", 0, 6);
-	private ChanceCard c18 = new ChanceCard("Benådes for fængsel", 0, 0);
+	// Benådes for fængsel må ikke rettes, uden også at rette i GChance
+	private ChanceCard c18 = new ChanceCard("Du benådes for fængsel", 0, 0);
 	private ChanceCard c19 = new ChanceCard("Lønforhøjelse.", 1000, 0);
 	private ChanceCard c20 = new ChanceCard("Ryk frem til Frederiksberh Allé.", 0, 12);
 	private ChanceCard c21 = new ChanceCard("Vundet i klasselotteriet.", 500, 0);
