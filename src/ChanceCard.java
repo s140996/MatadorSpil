@@ -62,6 +62,8 @@ public class ChanceCard {
 			this.type = 6;
 		}
 		
+	
+		
 
 	public int getCash()
 	{

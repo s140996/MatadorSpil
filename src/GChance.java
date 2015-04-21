@@ -26,59 +26,48 @@ public class GChance extends GField {
 			player.acc.deposit(c.getCash());
 			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 
-			if(c.getPosition() > 0)
+			if(c.getPosition() == 1)
 			{
-				if(c.getPosition() == 1)
-				{
-					player.setPosition(1);
-					GGUI.moveCar(1, player.toString());
-					player.acc.deposit(4000);
-					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-				}
-				if(c.getPosition() == 3 || c.getPosition() == -3)
-				{
-					player.changePosition(player.getPosition() + c.getPosition(), GGUI);
-					GGUI.moveCar(player.getPosition(), player.toString());
-					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
-					if(player.getPosition() > 37 && c.getPosition() != -3)
-					{
-						player.acc.deposit(4000);	
-						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-					}
-				}
-				if(c.getPosition() > 3 && c.getPosition() != 11)
-				{
-					if(c.getPosition() < player.getPosition())
-					{
-						player.acc.deposit(4000);	
-						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());	
-					}
-					player.setPosition(c.getPosition());
-					GGUI.moveCar(player.getPosition(), player.toString());
-					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
-
-				}
-				if(c.getPosition() == 11)
-				{
-					player.setPosition(c.getPosition());
-					player.setConvict(true);
-					GGUI.moveCar(player.getPosition(), player.toString());
-					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
-
-				}
-				if(c.toString() == "Du benådes for fængsel")
-				{
-					if(player.getPrisonCard() == 1)
-					{
-						player.setPrisonCard(2);
-					}
-					else
-					{
-						player.setPrisonCard(1);	
-					}
-
-				}
+				player.setPosition(1);
+				GGUI.moveCar(1, player.toString());
+				player.acc.deposit(4000);
+				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			}
+			if(c.getPosition() == 3 || c.getPosition() == -3)
+			{
+				player.changePosition(player.getPosition() + c.getPosition(), GGUI);
+				GGUI.moveCar(player.getPosition(), player.toString());
+				gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
+			}
+			if(c.getPosition() > 3 && c.getPosition() != 11)
+			{
+				if(c.getPosition() < player.getPosition())
+				{
+					player.acc.deposit(4000);	
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());	
+				}
+				player.setPosition(c.getPosition());
+				GGUI.moveCar(player.getPosition(), player.toString());
+				gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
+
+			}
+			if(c.getPosition() == 11)
+			{
+				gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
+			}
+			if(c.toString() == "Du benådes for fængsel")
+			{
+				if(player.getPrisonCard() == 1)
+				{
+					player.setPrisonCard(2);
+				}
+				else
+				{
+					player.setPrisonCard(1);	
+				}
+
+			}
+
 			break;
 		case 2:
 			if(player.getWorth() <= 15000)
