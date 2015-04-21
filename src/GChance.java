@@ -66,7 +66,7 @@ public class GChance extends GField {
 					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
 
 				}
-				if(c.toString() == "Benådes for fængsel")
+				if(c.toString() == "Du benådes for fængsel")
 				{
 					if(player.getPrisonCard() == 1)
 					{
