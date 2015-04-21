@@ -99,7 +99,7 @@ public class GameLauncher {
 							else 
 							{
 								//Stadig samme spillers tur
-								gui.showMessage("Du har slået to ens, og derfor fået en enkstra tur!");
+								gui.showMessage("Du har slået to ens, og derfor fået en ekstra tur!");
 							}
 						}
 						else
