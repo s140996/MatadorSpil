@@ -220,15 +220,19 @@ public class GTerritory extends GOwnable {
 	{
 		int count = 0;
 
-		for(int i = 0; i > 40; i++)
+		for(int i = 0; i < 40; i++)
 		{
 			GField field = gb.getField(i);
+			System.out.println(i);
 			if (field.getType() == "Territory")
 			{
+				System.out.println(field.getName());
 				GTerritory territory = (GTerritory) field;
-				if (territory.getColor() == super.getColor() && territory.getOwner() == super.getOwner())
+				System.out.println(territory.getOwner());
+				if (territory.getColor().equals(super.getColor()) && territory.getOwner() == super.getOwner())
 				{
 					count++;
+					System.out.println(count);
 				}
 			}
 		}
@@ -239,7 +243,7 @@ public class GTerritory extends GOwnable {
 		}
 		else if (count == 2)
 		{
-			if (super.getColor() == new Color(77, 77, 242) || super.getColor() == new Color(168, 53, 137))
+			if (super.getColor().equals(new Color(77, 77, 242)) || super.getColor().equals(new Color(168, 53, 137)))
 			{
 				return true;
 			}
