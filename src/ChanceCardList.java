@@ -6,7 +6,7 @@ public class ChanceCardList {
 	
 	private ArrayList<ChanceCard> list = new ArrayList<ChanceCard>();
 	private ChanceCard c1 = new ChanceCard("Du modtager 1000 kr i aktieudbytte.", 1000, 0);
-	private ChanceCard c2 = new ChanceCard("Ryk frem til start.", 0, 0);
+	private ChanceCard c2 = new ChanceCard("Ryk frem til start.", 0, 1);
 	private ChanceCard c3 = new ChanceCard("Gå i fængsel.", 0, 11);
 	private ChanceCard c4 = new ChanceCard("Gå i fængsel.", 0, 11);
 	private ChanceCard c5 = new ChanceCard("Told - for mange cigaretter.", -200, 0);
