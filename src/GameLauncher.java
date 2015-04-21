@@ -11,7 +11,7 @@ public class GameLauncher {
 	
 	private Player[] playerlist;
 	
-	private ChanceCardList cc = new ChanceCardList(); //Husk at blande et sted
+	private ChanceCardList cc = new ChanceCardList();
 	
 	public void spil()
 	{
@@ -34,7 +34,7 @@ public class GameLauncher {
 		
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
 		{ 
-			playerlist[playerNo] = new Player(gui.newPlayer(playerNo), 30000, 1, 0, 0, 0, false, true);
+			playerlist[playerNo] = new Player(gui.newPlayer(playerNo), 30000, 1, 0, 0, 0, 0, 0, false, true);
 			gui.addPlayer(playerlist[playerNo].toString());
 		}
 		
@@ -60,7 +60,7 @@ public class GameLauncher {
 				gui.moveCar(playerlist[playerNo].getPosition(), playerlist[playerNo].toString());
 				
 				//Spilleren lander på feltet
-				gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup.getLastRoll());
+				gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup.getLastRoll(), gb);
 				
 				con = false;
 				break;
