@@ -8,12 +8,14 @@ public class ChanceCard {
 	private int hotelTax;
 	private boolean all;
 	private boolean rich;
+	private int type;
 	
 	public ChanceCard (String text, int cash, int position)
 	{
 		this.text = text;
 		this.cash = cash;
 		this.position = position;
+		this.type = 1;
 	}
 	
 	// Matadorlegatet
@@ -22,6 +24,7 @@ public class ChanceCard {
 		this.text = text;
 		this.cash = cash;
 		this.rich = rich;
+		this.type = 2;
 	}
 	
 	//Ejendomsskat
@@ -31,6 +34,7 @@ public class ChanceCard {
 		this.hotelTax = houseTax;
 		this.hotelTax = hotelTax;
 		this.all = all;
+		this.type = 3;
 	}
 	
 	//Fødselsdag
@@ -38,7 +42,7 @@ public class ChanceCard {
 	{
 		this.text = text;
 		this.cash = cash;
-		
+		this.type = 4;
 		
 	}
 	
@@ -56,6 +60,11 @@ public class ChanceCard {
 	public String toString()
 	{
 		return this.text;
+	}
+	
+	public int getType()
+	{
+		return this.type;
 	}
 	
 }
