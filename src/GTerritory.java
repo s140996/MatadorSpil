@@ -205,6 +205,7 @@ public class GTerritory extends GOwnable {
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(hotelRent);
 				GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
+				// test
 			}
 			
 			
