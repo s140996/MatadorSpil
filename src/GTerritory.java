@@ -47,8 +47,8 @@ public class GTerritory extends GOwnable {
 
 			if (player.acc.getBalance() > getPrice()) {
 
-				boolean reply = GGUI.boolButton("Vil du købe grunden?",
-						"Køb grunden", "Nej tak");
+				boolean reply = GGUI.boolButton("Vil du kÃ¸be grunden?",
+						"KÃ¸b grunden", "Nej tak");
 				if (reply == true) {
 
 					player.acc.deposit(-getPrice());
@@ -71,8 +71,8 @@ public class GTerritory extends GOwnable {
 			if (player.acc.getBalance() > this.buildPrice) {
 
 				boolean reply = GGUI.boolButton(
-						"Du ejer grunden. Vil du købe et hus på den?",
-						"Køb huset", "Nej tak");
+						"Du ejer grunden. Vil du kÃ¸be et hus pÃ¥ den?",
+						"KÃ¸b huset", "Nej tak");
 				if (reply == true) {
 
 					player.acc.deposit(-buildPrice);
@@ -92,8 +92,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har et hus pÃ¥ den. Vil du købe et hus mere på grunden?",
-							"Køb et hus mere", "Nej tak");
+							"Du ejer grunden og du har et hus pÃ¥ den. Vil du kÃ¸be et hus mere pÃ¥ grunden?",
+							"KÃ¸b et hus mere", "Nej tak");
 			if (reply == true) {
 
 				player.acc.deposit(-buildPrice);
@@ -108,8 +108,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har to huse på den. Vil du købe et hus mere på grunden?",
-							"Køb et hus mere", "Nej tak");
+							"Du ejer grunden og du har to huse pÃ¥ den. Vil du kÃ¸be et hus mere pÃ¥ grunden?",
+							"KÃ¸b et hus mere", "Nej tak");
 			if (reply == true) {
 
 				player.acc.deposit(-buildPrice);
@@ -123,8 +123,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har tre huse pÃ¥ den. Vil du købe et hus mere på grunden?",
-							"Køb et hus mere", "Nej tak");
+							"Du ejer grunden og du har tre huse pÃ¥ den. Vil du kÃ¸be et hus mere pÃ¥ grunden?",
+							"KÃ¸b et hus mere", "Nej tak");
 			if (reply == true) {
 
 				player.acc.deposit(-buildPrice);
@@ -139,8 +139,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har fire huse på den. Vil du købe et hotel på grunden?",
-							"Køb et hotel", "Nej tak");
+							"Du ejer grunden og du har fire huse pÃ¥ den. Vil du kÃ¸be et hotel pÃ¥ grunden?",
+							"KÃ¸b et hotel", "Nej tak");
 			if (reply == true) {
 
 				player.acc.deposit(-buildPrice);
@@ -157,7 +157,7 @@ public class GTerritory extends GOwnable {
 		{
 			if (houseCount == 0)
 			{	
-					GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og skal derfor betale " + rent);
+					GGUI.showMessage("Du er landet pÃ¥ et felt der er ejet af en anden spiller og skal derfor betale " + rent);
 					player.acc.setBalance(player.acc.getBalance() - rent);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					super.getOwner().acc.deposit(rent);
@@ -168,7 +168,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 1)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har et hus pÃ¥ grunden, du skal derfor betale " + rent + " i husleje");
+				GGUI.showMessage("Du er landet pÃ¥ et felt der er ejet af en anden spiller og vedkommende har et hus pÃ¥ grunden, du skal derfor betale " + rent + " i husleje");
 				player.acc.deposit(-houseRent);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent);
@@ -179,7 +179,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 2)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har to huse pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pÃ¥ et felt der er ejet af en anden spiller og vedkommende har to huse pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent2);
@@ -189,7 +189,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 3)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har tre huse pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pÃ¥ et felt der er ejet af en anden spiller og vedkommende har tre huse pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent3);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent3);
@@ -199,7 +199,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 4)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har fire huse pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pÃ¥ et felt der er ejet af en anden spiller og vedkommende har fire huse pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent3);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent3);
@@ -209,7 +209,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 5)
 			{
 				
-				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har et hotel pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet pÃ¥ et felt der er ejet af en anden spiller og vedkommende har et hotel pÃ¥ grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-hotelRent);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(hotelRent);
