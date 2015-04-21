@@ -54,7 +54,7 @@ public class GTerritory extends GOwnable {
 					player.acc.deposit(-getPrice());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					super.setOwner(player);
-				
+					GGUI.setOwner(id, player.toString());
 
 				}
 
