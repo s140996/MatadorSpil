@@ -157,7 +157,7 @@ public class GTerritory extends GOwnable {
 		{
 			if (houseCount == 0)
 			{	
-					GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og skal derfor betale " + rent);
+					GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og skal derfor betale " + rent);
 					player.acc.setBalance(player.acc.getBalance() - rent);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					super.getOwner().acc.deposit(rent);
@@ -168,7 +168,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 1)
 			{
 				
-				GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og vedkommende har et hus p� grunden, du skal derfor betale " + rent + " i husleje");
+				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har et hus på grunden, du skal derfor betale " + rent + " i husleje");
 				player.acc.deposit(-houseRent);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent);
@@ -179,7 +179,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 2)
 			{
 				
-				GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og vedkommende har to huse p� grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har to huse på grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent2);
@@ -189,7 +189,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 3)
 			{
 				
-				GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og vedkommende har tre huse p� grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har tre huse på grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent3);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent3);
@@ -199,7 +199,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 4)
 			{
 				
-				GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og vedkommende har fire huse p� grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har fire huse på grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-houseRent3);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(houseRent3);
@@ -209,7 +209,7 @@ public class GTerritory extends GOwnable {
 			if (houseCount == 5)
 			{
 				
-				GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og vedkommende har et hotel p� grunden, du skal derfor betale " + houseRent + " i husleje");
+				GGUI.showMessage("Du er landet på et felt der er ejet af en anden spiller og vedkommende har et hotel på grunden, du skal derfor betale " + houseRent + " i husleje");
 				player.acc.deposit(-hotelRent);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.getOwner().acc.deposit(hotelRent);
