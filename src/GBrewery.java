@@ -13,29 +13,34 @@ public class GBrewery extends GOwnable {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, GameBoard gb) {
 		
-		if(isOwned() == false)
+		if(super.isOwned() == false)
 		{
 			boolean reply = GGUI.boolButton("Vil du købe grunden?", "Ja", "Nej");
 			
 				if(reply == true)
 				{
-					setOwner(player);
-					GGUI.setOwner(getID(), player.toString());
-					player.acc.setBalance(player.acc.getBalance()-getPrice());
+					super.setOwner(player);
+					GGUI.setOwner(super.getID(), player.toString());
+					player.acc.deposit(-super.getPrice());
 				}
 			}
 	
-		if(isOwned() == true)
+		if(super.isOwned() == true)
 		{
-			if(owner.equals(player))
+			if(super.getOwner() == player)
 			{
 				GGUI.showMessage("Du ejer den selv!");
 			}
 			
 			else
 			{
+						
+					
+					
+				}
+				
 				
 			}
 		
