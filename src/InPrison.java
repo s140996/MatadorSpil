@@ -9,7 +9,7 @@ public class InPrison {
 			player.setPrisonCard(player.getPrisonCard()-1);
 			player.setConvict(false);
 		}
-		else if (player.acc.getBalance() > 1000)
+		else
 		{
 			boolean reply = gui.boolButton("Betal eller Kast terninger?", "Betal", "Kast");
 			if(reply == true){
