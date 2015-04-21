@@ -29,6 +29,10 @@ public class InPrison {
 					{
 						player.setConvict(false);
 					}
+					else
+					{
+						gui.showMessage("Kast");
+					}
 				}
 			}
 		}
