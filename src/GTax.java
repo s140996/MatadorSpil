@@ -28,27 +28,32 @@ public class GTax extends GField {
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 		// TODO Auto-generated method stub
+		double pay = 0;
+		
 		if (this.percentageTax != 0)
 		{
 			boolean replay = GGUI.boolButton("Hvor meget vil du betale?", this.percentageTax + "% af samlet værdi", "" + this.baseTax);
 			
 			if(replay == true)
 			{
-				double pay = player.getWorth() * this.percentageTax / 100;
+				pay = player.getWorth() * this.percentageTax / 100;
 				
 				player.acc.deposit(-(int) pay);
 			}
 			else if(replay == false)
 			{
-				player.acc.deposit(-this.baseTax);
+				pay = this.baseTax;
+				player.acc.deposit(-(int) pay);
 			}
 		}
 		else
 		{
-			player.acc.deposit(-this.baseTax);
+			pay = this.baseTax;
+			player.acc.deposit(-(int) pay);
 		}
 		
 		GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+		GGUI.showMessage("Det betyder, at du skal betale " + (int) pay);
 	}
 
 	@Override
