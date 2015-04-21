@@ -56,7 +56,10 @@ public class GBrewery extends GOwnable {
 
 	@Override
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		// TODO Auto-generated method stub
+		
+		super.setOwner(null);
+		player.setBrewerysOwned(player.getBrewerysOwned()-1);
+		GGUI.removeOwner(fieldnumber);
 		
 	}
 
