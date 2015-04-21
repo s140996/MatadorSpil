@@ -13,15 +13,21 @@ public class InPrison {
 		{
 			boolean reply = gui.boolButton("Betal eller Kast terninger?", "Betal", "Kast");
 			if(reply == true){
+				
 				player.acc.setBalance(player.acc.getBalance()-1000);
+				gui.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setConvict(false);
 			}
 			else{
 				int i = 0;
 				while(i < 3 && player.getConvict() == true){
 					cup.roll();
-					if(cup.getDoubleRoll() > 0){
+					gui.setDice(cup.getDieOne(), cup.getDieTwo());
+					if(cup.getDoubleRoll() > 0)
+					{
 						player.setConvict(false);
+						player.changePosition(cup.getLastRoll(), gui);
+						gui.moveCar(player.getPosition(), player.toString());
 					}
 					i++;
 				}
