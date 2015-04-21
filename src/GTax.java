@@ -4,7 +4,6 @@ public class GTax extends GField {
 
 	private int baseTax;
 	private double percentageTax;
-//	private String owner;
 	
 	public GTax (int id, String name, int baseTax, double percentageTax)
 	{
@@ -25,29 +24,37 @@ public class GTax extends GField {
 	{
 		return this.percentageTax;
 	}
-	
-	//public int getPercentageTax(int playerWorth) {
-		
-	
-		
-	
 
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
 		// TODO Auto-generated method stub
+		if (this.percentageTax != 0)
+		{
+			boolean replay = GGUI.boolButton("Hvor meget vil du betale?", this.percentageTax + "% af samlet værdi", "" + this.baseTax);
+			
+			if(replay == true)
+			{
+				double pay = player.getWorth() * this.percentageTax / 100;
+				
+				player.acc.deposit(-(int) pay);
+			}
+			else if(replay == false)
+			{
+				player.acc.deposit(-this.baseTax);
+			}
+		}
+		else
+		{
+			player.acc.deposit(-this.baseTax);
+		}
 		
+		GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 	}
 
 	@Override
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
 		// TODO Auto-generated method stub
-		
-	//	if (owner != null)
-	//	{
-			
-	//		owner = null;
-			
-	//	}
+		//Her sker der intet, da den ikke kan ejes.
 	}
 	
 	
