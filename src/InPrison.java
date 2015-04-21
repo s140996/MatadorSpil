@@ -14,18 +14,19 @@ public class InPrison {
 		else
 		{
 			boolean reply = gui.boolButton("Betal eller Kast terninger?", "Betal", "Kast");
-			if(reply == true){
-				
+			if(reply == true)
+			{	
 				player.acc.setBalance(player.acc.getBalance()-1000);
 				gui.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setConvict(false);
 			}
 			else{
 				int i = 0;
-				while(i < 3 && player.getConvict() == true){
+				while(i < 3 && player.getConvict() == true)
+				{
 					cup.roll();
 					gui.setDice(cup.getDieOne(), cup.getDieTwo());
-					if(cup.getDoubleRoll() > 0)
+					if(cup.getDieOne() == cup.getDieTwo())
 					{
 						player.setConvict(false);
 					}
