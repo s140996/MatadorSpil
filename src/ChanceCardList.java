@@ -19,31 +19,31 @@ public class ChanceCardList {
 	private ChanceCard c11 = new ChanceCard("CHANCEKORT: Du har fundet en pung på gaden. Stjæl de 200 kr der ligger i den.", 200, 0);
 	private ChanceCard c12 = new ChanceCard("CHANCEKORT: Du har modtaget din vægtafgift. Betal 1000 kr.", -1000, 0);
 	// Ejendomsskat: 800 pr. hus og 2300 pr. hotel (Y)
-	private ChanceCard c13 = new ChanceCard(800, 2300, "Ejendomsskatten er steget.", true);
-	private ChanceCard c14 = new ChanceCard("Ryk frem til Grønningen", 0, 25);
+	private ChanceCard c13 = new ChanceCard(800, 2300, "CHANCEKORT: Ejendomsskatten er steget.", true);
+	private ChanceCard c14 = new ChanceCard("CHANCEKORT: Ryk frem til Grønningen", 0, 25);
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
-	private ChanceCard c15 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.");
+	private ChanceCard c15 = new ChanceCard("CHANCEKORT: Ryk frem til nærmeste redderi og betal dobbelt leje.");
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
-	private ChanceCard c16 = new ChanceCard("Ryk frem til nærmeste redderi og betal dobbelt leje.");
-	private ChanceCard c17 = new ChanceCard("Tag med LB færgen", 0, 6);
+	private ChanceCard c16 = new ChanceCard("CHANCEKORT: Ryk frem til nærmeste redderi og betal dobbelt leje.");
+	private ChanceCard c17 = new ChanceCard("CHANCEKORT: Tag med LB færgen", 0, 6);
 	// Benådes for fængsel må ikke rettes, uden også at rette i GChance
-	private ChanceCard c18 = new ChanceCard("Du benådes for fængsel", 0, 0);
-	private ChanceCard c19 = new ChanceCard("Lønforhøjelse.", 1000, 0);
-	private ChanceCard c20 = new ChanceCard("Ryk frem til Frederiksberh Allé.", 0, 12);
-	private ChanceCard c21 = new ChanceCard("Vundet i klasselotteriet.", 500, 0);
-	private ChanceCard c22 = new ChanceCard("Tag ind til Rådhuspladsen", 0, 40);
-	private ChanceCard c23 = new ChanceCard("Ryk tre felter tilbage.", 0, -3);
+	private ChanceCard c18 = new ChanceCard("CHANCEKORT: Du benådes for fængsel", 0, 0);
+	private ChanceCard c19 = new ChanceCard("CHANCEKORT: Lønforhøjelse.", 1000, 0);
+	private ChanceCard c20 = new ChanceCard("CHANCEKORT: Ryk frem til Frederiksberh Allé.", 0, 12);
+	private ChanceCard c21 = new ChanceCard("CHANCEKORT: Vundet i klasselotteriet.", 500, 0);
+	private ChanceCard c22 = new ChanceCard("CHANCEKORT: Tag ind til Rådhuspladsen", 0, 40);
+	private ChanceCard c23 = new ChanceCard("CHANCEKORT: Ryk tre felter tilbage.", 0, -3);
 	// 500 pr. hus og 2000 pr. hotel (Y)
-	private ChanceCard c24 = new ChanceCard("Oliepriserne er steget.", true);
-	private ChanceCard c25 = new ChanceCard("Reparation af vogn.", -3000, 0);		
-	private ChanceCard c26 = new ChanceCard("Reparation af vogn.", -3000, 0);		
+	private ChanceCard c24 = new ChanceCard("CHANCEKORT: Oliepriserne er steget.", true);
+	private ChanceCard c25 = new ChanceCard("CHANCEKORT: Reparation af vogn.", -3000, 0);		
+	private ChanceCard c26 = new ChanceCard("CHANCEKORT: Reparation af vogn.", -3000, 0);		
 	// +40000, hvis formue ikke overstiger 15000 kr
-	private ChanceCard c27 = new ChanceCard("Matadorlegatet.", 40000, false);
-	private ChanceCard c28 = new ChanceCard("Eftergivet skat.", 3000, 0);
-	private ChanceCard c29 = new ChanceCard("Aktieudbytte.", 1000, 0);
-	private ChanceCard c30 = new ChanceCard("Aktieudbytte.", 1000, 0);
-	private ChanceCard c31 = new ChanceCard("Kørt frem for Fuld stop. Betal 1000 kr.", -1000, 0);
-	private ChanceCard c32 = new ChanceCard("Parkeringsbøde.", -200, 0);
+	private ChanceCard c27 = new ChanceCard("CHANCEKORT: Matadorlegatet.", 40000, false);
+	private ChanceCard c28 = new ChanceCard("CHANCEKORT: Eftergivet skat.", 3000, 0);
+	private ChanceCard c29 = new ChanceCard("CHANCEKORT: Aktieudbytte.", 1000, 0);
+	private ChanceCard c30 = new ChanceCard("CHANCEKORT: Aktieudbytte.", 1000, 0);
+	private ChanceCard c31 = new ChanceCard("CHANCEKORT: Kørt frem for Fuld stop. Betal 1000 kr.", -1000, 0);
+	private ChanceCard c32 = new ChanceCard("CHANCEKORT: Parkeringsbøde.", -200, 0);
 	
 	public ChanceCardList()
 	{
