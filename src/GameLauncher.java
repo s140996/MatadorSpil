@@ -18,16 +18,24 @@ public class GameLauncher {
 	{
 		gui.createGameboard(gb);
 		cc.randomizer();
-
-		newGame();
-
+		
+		switch(gui.startMenu())
+		{
+		case "Nyt spil":
+			newGame();
+			break;
+		case "Load spil":
+			
+			break;
+		}
+		
 		boolean gameOn = true;
 		while (gameOn == true)
 		{
 			turn();
 		}
 	}
-
+	
 	public void newGame()
 	{	
 		amountOfPlayers = gui.amountOfPlayers();
