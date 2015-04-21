@@ -8,7 +8,7 @@ public class GPrison extends GField {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 		GGUI.showMessage("Du er på besøg i fængslet. Giv agt!");		
 	}
 

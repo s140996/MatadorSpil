@@ -13,7 +13,7 @@ public class GBrewery extends GOwnable {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 
 		if(super.isOwned() == false)
 		{
@@ -53,7 +53,7 @@ public class GBrewery extends GOwnable {
 					GGUI.showMessage("Velkommen til bryggeriet, betal ejeren for drikkevarerne!");
 					int multi = super.getOwner().getBrewerysOwned();
 
-					int pay = multi * getRent() * lastRoll;
+					int pay = multi * getRent() * cup.getLastRoll();
 
 					player.acc.deposit(-pay);
 					super.getOwner().acc.deposit(pay);

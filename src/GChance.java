@@ -14,7 +14,7 @@ public class GChance extends GField {
 
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 
 		ChanceCard c = cc.draw();
 
@@ -39,7 +39,7 @@ public class GChance extends GField {
 				{
 					player.changePosition(player.getPosition() + c.getPosition(), GGUI);
 					GGUI.moveCar(player.getPosition(), player.toString());
-					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
 					if(player.getPosition() > 37 && c.getPosition() != -3)
 					{
 						player.acc.deposit(4000);	
@@ -55,7 +55,7 @@ public class GChance extends GField {
 					}
 					player.setPosition(c.getPosition());
 					GGUI.moveCar(player.getPosition(), player.toString());
-					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
 
 				}
 				if(c.getPosition() == 11)
@@ -63,7 +63,7 @@ public class GChance extends GField {
 					player.setPosition(c.getPosition());
 					player.setConvict(true);
 					GGUI.moveCar(player.getPosition(), player.toString());
-					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
 
 				}
 				if(c.toString() == "Benådes for fængsel")
@@ -107,8 +107,8 @@ public class GChance extends GField {
 			{
 				player.setPosition(6);
 				GGUI.moveCar(6, player.toString());
-				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
+				gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
 
 				if(c.getPosition() > 36)
 				{
@@ -120,24 +120,24 @@ public class GChance extends GField {
 			{
 				player.setPosition(16);
 				GGUI.moveCar(16, player.toString());
-				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
+				gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
 
 			}
 			else if(c.getPosition() > 16 && c.getPosition() < 26)
 			{
 				player.setPosition(26);
 				GGUI.moveCar(26, player.toString());
-				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
+				gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
 
 			}
 			else if(c.getPosition() > 26 && c.getPosition() < 36)
 			{
 				player.setPosition(36);
 				GGUI.moveCar(36, player.toString());
-				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
+				gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
 
 			}
 			break;
