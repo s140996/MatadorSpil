@@ -14,7 +14,7 @@ public class Player {
 	
 	public Account acc = new Account(30000);
 	
-	public Player(String name, int worth, int position, int prisonCard, int fleetsOwned, int brewerysOwned, boolean convict, boolean alive)
+	public Player(String name, int worth, int position, int prisonCard, int fleetsOwned, int brewerysOwned, int houseCount, int hotelCount, boolean convict, boolean alive)
 	{
 		this.name = name;
 		this.worth = worth;
@@ -22,6 +22,8 @@ public class Player {
 		this.prisonCard = prisonCard;
 		this.fleetsOwned = fleetsOwned;
 		this.brewerysOwned = brewerysOwned;
+		this.houseCount = houseCount;
+		this.hotelCount = hotelCount;
 		this.convict = false;
 		this.alive = true;
 	}
