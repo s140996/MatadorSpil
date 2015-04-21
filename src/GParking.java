@@ -10,7 +10,7 @@ public class GParking extends GField {
 	
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
-		// TODO Auto-generated method stub
+		GGUI.showMessage("Velkommen til parkeringspladsen!! Ta' en pause!!");
 		
 	}
 
