@@ -6,6 +6,7 @@ public class InPrison {
 	{
 		if (player.getPrisonCard() > 0)
 		{
+			gui.showMessage("Du har brugt din benådning fra fænslet, du er nu fri igen!");
 			player.setPrisonCard(player.getPrisonCard()-1);
 			player.setConvict(false);
 		}
