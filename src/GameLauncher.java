@@ -18,7 +18,7 @@ public class GameLauncher {
 	{
 		gui.createGameboard(gb);
 		cc.randomizer();
-		
+
 		switch(gui.startMenu())
 		{
 		case "Nyt spil":
@@ -28,14 +28,14 @@ public class GameLauncher {
 			loadGame();
 			break;
 		}
-		
+
 		boolean gameOn = true;
 		while (gameOn == true)
 		{
 			turn();
 		}
 	}
-	
+
 	public void newGame()
 	{	
 		amountOfPlayers = gui.amountOfPlayers();
@@ -48,11 +48,11 @@ public class GameLauncher {
 		}
 
 	}
-	
+
 	public void loadGame()
 	{
 		//Skal loade fra databasen
-		
+
 		//Mangler
 	}
 
@@ -61,17 +61,23 @@ public class GameLauncher {
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
 		{
 			boolean con = true;
-			
+
 			cup.resetDoubleRoll();
-			
-			//Checker om spilleren er i fængslet
-			if (playerlist[playerNo].getConvict() == true)
+
+			while (con == true) //Den pågældende spillers tur
 			{
-				prison.inPrison(playerlist[playerNo], cup, gui);
-			}
-			else
-			{
-				while (con == true)
+				//Checker om spilleren er i fængslet
+				if (playerlist[playerNo].getConvict() == true)
+				{
+					prison.inPrison(playerlist[playerNo], cup, gui);
+
+					if (playerlist[playerNo].getConvict() == true)
+					{
+						con = false;
+					}
+				}
+
+				if (playerlist[playerNo].getConvict() == false)
 				{
 					switch (gui.turn(playerlist[playerNo]))
 					{
@@ -86,8 +92,8 @@ public class GameLauncher {
 
 						//Spilleren lander på feltet
 						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup, gb);
-						
-						if (cup.getDieOne() == cup.getDieTwo())
+
+						if (cup.getDieOne() == cup.getDieTwo() && playerlist[playerNo].getConvict() == false)
 						{
 							if (cup.getDoubleRoll() == 3)
 							{
@@ -106,6 +112,7 @@ public class GameLauncher {
 						{
 							con = false;
 						}
+						
 						break;
 					case "Sælg huse":
 
@@ -114,7 +121,7 @@ public class GameLauncher {
 
 						break;
 					case "Gem spil":
-						
+
 						break;
 					}
 				}
