@@ -32,15 +32,5 @@ public class InPrison {
 				}
 			}
 		}
-
-
-
-
-
 	}
-
-
-
-
-
 }
