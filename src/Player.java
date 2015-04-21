@@ -4,17 +4,22 @@ public class Player {
 	private int worth;
 	private int position;
 	private int prisonCard;
+	private int fleetsOwned;
+	private int brewerysOwned;
 	private boolean convict;
 	private boolean alive;
 	
+	
 	public Account acc = new Account(30000);
 	
-	public Player(String name, int worth, int position, int prisonCard, boolean convict, boolean alive)
+	public Player(String name, int worth, int position, int prisonCard, int fleetsOwned, int brewerysOwned, boolean convict, boolean alive)
 	{
 		this.name = name;
 		this.worth = worth;
 		this.position = position;
 		this.prisonCard = prisonCard;
+		this.fleetsOwned = fleetsOwned;
+		this.brewerysOwned = brewerysOwned;
 		this.convict = false;
 		this.alive = true;
 	}
@@ -68,6 +73,26 @@ public class Player {
 	public void setPrisonCard(int prisonCard)
 	{
 		this.prisonCard = prisonCard;
+	}
+	
+	public void setFleetsOwned(int fleetsOwned)
+	{
+		this.fleetsOwned = fleetsOwned;
+	}
+	
+	public int getFleetsOwned()
+	{
+		return fleetsOwned;
+	}
+	
+	public void setBrewerysOwned(int brewerysOwned)
+	{
+		this.brewerysOwned = brewerysOwned;
+	}
+	
+	public int getBrewerysOwned()
+	{
+		return brewerysOwned;
 	}
 	
 	public void setConvict(boolean convict)
