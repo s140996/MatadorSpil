@@ -78,9 +78,10 @@ public class GameLauncher {
 						//Spilleren lander på feltet
 						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup.getLastRoll(), gb);
 						
-						if (cup.getDieOne() == cup.getDieTwo())
+						if (cup.getDoubleRoll() > 0)
 						{
 							//Stadig samme spillers tur
+							gui.showMessage("Du har slået to ens, og derfor fået en enkstra tur!");
 						}
 						else
 						{
