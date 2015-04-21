@@ -77,6 +77,7 @@ public class GFleet extends GOwnable {
 
 				else 
 				{
+					GGUI.showMessage("Du er landet på en Færge der er ejet af en anden spiller, betal billetten " + getRent());
 					player.acc.deposit(-getRent());
 					super.getOwner().acc.deposit(getRent());
 

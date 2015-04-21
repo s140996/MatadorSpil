@@ -50,6 +50,7 @@ public class GBrewery extends GOwnable {
 
 				else 
 				{
+					GGUI.showMessage("Velkommen til bryggeriet, betal ejeren for drikkevarerne!");
 					int multi = super.getOwner().getBrewerysOwned();
 
 					int pay = multi * getRent() * lastRoll;

@@ -10,7 +10,8 @@ public class GGoPrison extends GField{
 	
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) 
-	{	
+	{
+		GGUI.showMessage("Desværre, du skal i fængsel!!");
 		player.setPosition(11);
 		player.setConvict(true);
 		player.acc.deposit(-4000);
