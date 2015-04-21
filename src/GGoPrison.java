@@ -10,8 +10,11 @@ public class GGoPrison extends GField{
 	
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
-		// TODO Auto-generated method stub
 		
+		player.setPosition(11);
+		player.setConvict(true);
+		
+		GGUI.moveCar(11, player.toString());
 	}
 
 	@Override
