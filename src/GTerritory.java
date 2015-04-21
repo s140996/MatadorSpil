@@ -47,8 +47,8 @@ public class GTerritory extends GOwnable {
 
 			if (player.acc.getBalance() > getPrice()) {
 
-				boolean reply = GGUI.boolButton("Vil du købe grunden?",
-						"Køb grunden", "Nej tak");
+				boolean reply = GGUI.boolButton("Vil du kÃ¸be grunden?",
+						"KÃ¸b grunden", "Nej tak");
 				if (reply == true) {
 
 					player.acc.setBalance(player.acc.getBalance() - getPrice());
@@ -66,8 +66,8 @@ public class GTerritory extends GOwnable {
 			if (player.acc.getBalance() > houseRent) {
 
 				boolean reply = GGUI.boolButton(
-						"Du ejer grunden. Vil du købe et hus på den?",
-						"Køb huset", "Nej tak");
+						"Du ejer grunden. Vil du kÃ¸be et hus pÃ¥ den?",
+						"KÃ¸b huset", "Nej tak");
 				if (reply == true) {
 
 					player.acc.setBalance(player.acc.getBalance() - houseRent);
@@ -83,8 +83,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har et hus på den. Vil du købe et hus mere på grunden?",
-							"Køb et hus mere", "Nej tak");
+							"Du ejer grunden og du har et hus pÃ¥ den. Vil du kÃ¸be et hus mere pÃ¥ grunden?",
+							"KÃ¸b et hus mere", "Nej tak");
 			if (reply == true) {
 
 				player.acc.setBalance(player.acc.getBalance() - houseRent2);
@@ -98,8 +98,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har to huse på den. Vil du købe et hus mere på grunden?",
-							"Køb et hus mere", "Nej tak");
+							"Du ejer grunden og du har to huse pÃ¥ den. Vil du kÃ¸be et hus mere pÃ¥ grunden?",
+							"KÃ¸b et hus mere", "Nej tak");
 			if (reply == true) {
 
 				player.acc.setBalance(player.acc.getBalance() - houseRent3);
@@ -112,8 +112,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har tre huse på den. Vil du købe et hus mere på grunden?",
-							"Køb et hus mere", "Nej tak");
+							"Du ejer grunden og du har tre huse pÃ¥ den. Vil du kÃ¸be et hus mere pÃ¥ grunden?",
+							"KÃ¸b et hus mere", "Nej tak");
 			if (reply == true) {
 
 				player.acc.setBalance(player.acc.getBalance() - houseRent4);
@@ -127,8 +127,8 @@ public class GTerritory extends GOwnable {
 
 			boolean reply = GGUI
 					.boolButton(
-							"Du ejer grunden og du har fire huse på den. Vil du købe et hotel på grunden?",
-							"Køb et hotel", "Nej tak");
+							"Du ejer grunden og du har fire huse pÃ¥ den. Vil du kÃ¸be et hotel pÃ¥ grunden?",
+							"KÃ¸b et hotel", "Nej tak");
 			if (reply == true) {
 
 				player.acc.setBalance(player.acc.getBalance() - hotelRent);
