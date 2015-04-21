@@ -227,7 +227,7 @@ public class GUIController {
 		GUI.create(fields);
 	}
 	
-	// *** Vælg antal spillere ***
+	// *** Choose number of players ***
 	public int amountOfPlayers()
 	{
 		int pick = 0;
@@ -244,7 +244,7 @@ public class GUIController {
 		return pick;
 	}
 
-	// *** Skriv spiller navn ***
+	// *** Type player name ***
 	public String newPlayer(int playerNo)
 	{
 		String ans = GUI.getUserString("Skriv navnet på spiller " + playerNo + ":");
