@@ -250,5 +250,12 @@ public class GUIController {
 		String ans = GUI.getUserString("Skriv navnet på spiller " + playerNo + ":");
 		return ans;
 	}
+	
+	// *** Turn overview ***
+	public String turn(Player player)
+	{
+		String ans = GUI.getUserButtonPressed("Det er " + player.toString() + "'s tur!", "Kast terning", "Sælg huse", "Pantsæt");
+		return ans;
+	}
 
 }

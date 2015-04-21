@@ -7,12 +7,22 @@ public class GameLauncher {
 	
 	private GUIController gui = new GUIController();
 	private GameBoard gb = new GameBoard();
+	private Cup cup = new Cup();
+	
+	private Player[] playerlist;
 	
 	private ChanceCardList cc = new ChanceCardList(); //Husk at blande et sted
 	
-	public static void main(String[] args) 
+	public void spil()
 	{
-		new GameLauncher().newGame();
+		newGame();
+		
+		boolean gameOn = true;
+		
+		while (gameOn == true)
+		{
+		turn();
+		}
 	}
 	
 	public void newGame()
@@ -20,7 +30,7 @@ public class GameLauncher {
 		gui.createGameboard(gb);
 	
 		amountOfPlayers = gui.amountOfPlayers();
-		Player[] playerlist = new Player[amountOfPlayers + 1];
+		playerlist = new Player[amountOfPlayers + 1];
 		
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
 		{ 
@@ -28,6 +38,41 @@ public class GameLauncher {
 			gui.addPlayer(playerlist[playerNo].toString());
 		}
 		
+	}
+	
+	public void turn()
+	{
+		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
+		{
+			boolean con = true;
+			
+			while (con == true)
+			{
+			switch (gui.turn(playerlist[playerNo]))
+			{
+			case "Kast terning":
+				//Kaster terning
+				cup.roll();
+				gui.setDice(cup.getDieOne(), cup.getDieTwo());
+				
+				//Flytter spiller
+				playerlist[playerNo].changePosition(cup.getLastRoll());
+				gui.moveCar(playerlist[playerNo].getPosition(), playerlist[playerNo].toString());
+				
+				//Spilleren lander på feltet
+				gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup.getLastRoll());
+				
+				con = false;
+				break;
+			case "Sælg huse":
+				
+				break;
+			case "Pantsæt":
+				
+				break;
+			}
+			}
+		}
 	}
 	
 }
