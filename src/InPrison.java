@@ -21,8 +21,7 @@ public class InPrison {
 				player.setConvict(false);
 			}
 			else{
-				int i = 0;
-				while(i < 3 && player.getConvict() == true)
+				for(int i = 0; i < 3 && player.getConvict() == true; i++)
 				{
 					cup.roll();
 					gui.setDice(cup.getDieOne(), cup.getDieTwo());
@@ -30,7 +29,6 @@ public class InPrison {
 					{
 						player.setConvict(false);
 					}
-					i++;
 				}
 			}
 		}
