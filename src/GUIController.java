@@ -254,7 +254,7 @@ public class GUIController {
 	// *** Turn overview ***
 	public String turn(Player player)
 	{
-		String ans = GUI.getUserButtonPressed("Det er " + player.toString() + "'s tur!", "Kast terning", "Sælg huse", "Pantsæt");
+		String ans = GUI.getUserButtonPressed("Det er " + player.toString() + "'s tur!", "Kast terning", "Sælg huse", "Pantsæt", "Gem spil");
 		return ans;
 	}
 	

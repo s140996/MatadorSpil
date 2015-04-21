@@ -78,6 +78,9 @@ public class GameLauncher {
 					case "Pantsæt":
 
 						break;
+					case "Gem spil":
+						
+						break;
 					}
 				}
 			}
