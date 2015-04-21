@@ -24,7 +24,7 @@ public class GameLauncher {
 		
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
 		{ 
-			playerlist[playerNo] = new Player(gui.newPlayer(playerNo), 30000, 1, 0, false, true);
+			playerlist[playerNo] = new Player(gui.newPlayer(playerNo), 30000, 1, 0, 0, 0, false, true);
 			gui.addPlayer(playerlist[playerNo].toString());
 		}
 		
