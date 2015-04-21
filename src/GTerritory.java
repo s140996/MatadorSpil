@@ -64,6 +64,9 @@ public class GTerritory extends GOwnable {
 		else if (super.getOwner() == player)
 
 		{
+			
+		 if (player != null) //pladsfylder
+			{
 
 			if (player.acc.getBalance() > houseRent) {
 
@@ -82,7 +85,10 @@ public class GTerritory extends GOwnable {
 
 		}
 
-		else if (houseCount == 1) {
+		
+		
+		
+		if (houseCount == 1) {
 
 			boolean reply = GGUI
 					.boolButton(
@@ -142,6 +148,9 @@ public class GTerritory extends GOwnable {
 				GGUI.setHotel(id, hasHotel = true);
 			}
 		}
+		
+		}
+		
 		
 		else if (super.getOwner() != null && super.getOwner() != player)
 			
