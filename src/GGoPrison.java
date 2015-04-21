@@ -9,7 +9,7 @@ public class GGoPrison extends GField{
 	}
 	
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) 
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) 
 	{	
 		player.setPosition(11);
 		player.setConvict(true);
