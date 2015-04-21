@@ -31,7 +31,7 @@ public class InPrison {
 					}
 					else
 					{
-						gui.showMessage("Kast");
+						gui.showMessage("Du slog ikke to ens. Prøv igen!");
 					}
 				}
 			}
