@@ -40,7 +40,7 @@ public class GTerritory extends GOwnable {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 		// TODO Auto-generated method stub
 
 		if (super.getOwner() == null) {
@@ -65,7 +65,7 @@ public class GTerritory extends GOwnable {
 
 		{
 			
-		 if (getSimilarCount(gb)) //pladsfylder
+		 if (getSimilarCount(gb))
 			{
 
 			if (player.acc.getBalance() > this.buildPrice) {

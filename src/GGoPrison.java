@@ -14,7 +14,6 @@ public class GGoPrison extends GField{
 		GGUI.showMessage("Desværre, du skal i fængsel!!");
 		player.setPosition(11);
 		player.setConvict(true);
-		player.acc.deposit(-4000);
 		GGUI.moveCar(11, player.toString());
 		cup.resetDoubleRoll();
 	}

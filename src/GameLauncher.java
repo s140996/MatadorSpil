@@ -54,7 +54,9 @@ public class GameLauncher {
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
 		{
 			boolean con = true;
-
+			
+			cup.resetDoubleRoll();
+			
 			//Checker om spilleren er i fængslet
 			if (playerlist[playerNo].getConvict() == true)
 			{
@@ -76,16 +78,25 @@ public class GameLauncher {
 						gui.moveCar(playerlist[playerNo].getPosition(), playerlist[playerNo].toString());
 
 						//Spilleren lander på feltet
-						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup.getLastRoll(), gb);
+						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup, gb);
 						
-						if (cup.getDoubleRoll() > 0)
+						if (cup.getDieOne() == cup.getDieTwo())
 						{
-							//Stadig samme spillers tur
-							gui.showMessage("Du har slået to ens, og derfor fået en enkstra tur!");
+							if (cup.getDoubleRoll() == 3)
+							{
+								//Går i fængsel
+								gb.getField(31 - 1).landOnField(playerlist[playerNo], gui, cc, cup, gb);
+								con = false;
+							}
+							else 
+							{
+								//Stadig samme spillers tur
+								gui.showMessage("Du har slået to ens, og derfor fået en enkstra tur!");
+							}
 						}
 						else
 						{
-						con = false;
+							con = false;
 						}
 						break;
 					case "Sælg huse":
