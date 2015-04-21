@@ -26,8 +26,6 @@ public class InPrison {
 					if(cup.getDoubleRoll() > 0)
 					{
 						player.setConvict(false);
-						player.changePosition(cup.getLastRoll(), gui);
-						gui.moveCar(player.getPosition(), player.toString());
 					}
 					i++;
 				}
