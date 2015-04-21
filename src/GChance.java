@@ -14,7 +14,7 @@ public class GChance extends GField {
 
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, GameBoard gb) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
 		
 		ChanceCard c = cc.draw();
 		
