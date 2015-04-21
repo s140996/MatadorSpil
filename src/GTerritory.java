@@ -157,7 +157,7 @@ public class GTerritory extends GOwnable {
 		{
 			if (houseCount == 0)
 			{	
-					GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og skal derfor betale" + rent);
+					GGUI.showMessage("Du er landet p� et felt der er ejet af en anden spiller og skal derfor betale " + rent);
 					player.acc.setBalance(player.acc.getBalance() - rent);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					super.getOwner().acc.deposit(rent);
