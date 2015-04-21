@@ -17,7 +17,7 @@ public class GBrewery extends GOwnable {
 		
 		if(super.isOwned() == false)
 		{
-			boolean reply = GGUI.boolButton("Vil du købe grunden?", "Ja", "Nej");
+			boolean reply = GGUI.boolButton("Vil du købe bryggeriet?", "Ja", "Nej");
 			
 				if(reply == true)
 				{
@@ -25,6 +25,7 @@ public class GBrewery extends GOwnable {
 					GGUI.setOwner(super.getID(), player.toString());
 					player.acc.deposit(-super.getPrice());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+					player.setBrewerysOwned(player.getBrewerysOwned()+1);
 				}
 			}
 	
