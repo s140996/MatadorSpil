@@ -27,9 +27,14 @@ public class GBrewery extends GOwnable {
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					player.setBrewerysOwned(player.getBrewerysOwned()+1);
 				}
-			}
+				
+				else if(reply == false)
+				{
+					GGUI.showMessage("Du valgte ikke at købe bryggeriet");
+				}
+		}
 	
-		if(super.isOwned() == true)
+		else if(super.isOwned() == true)
 		{
 			if(super.getOwner() == player)
 			{
