@@ -15,17 +15,17 @@ public class GChance extends GField {
 
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
-		
+
 		ChanceCard c = cc.draw();
-		
-		GGUI.displayChanceCard(c.toString());
-		
+
+		GGUI.showMessage(c.toString());
+
 		switch(c.getType())
 		{
 		case 1: 
 			player.acc.deposit(c.getCash());
 			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-			
+
 			if(c.getPosition() > 0)
 			{
 				if(c.getPosition() == 1)
@@ -39,7 +39,7 @@ public class GChance extends GField {
 					GGUI.moveCar(player.getPosition(), player.toString());
 					if(player.getPosition() > 37 && c.getPosition() != -3)
 					{
-						
+						player.acc.deposit(4000);	
 					}
 				}
 				if(c.getPosition() > 3 && c.getPosition() != 11)
@@ -54,9 +54,9 @@ public class GChance extends GField {
 						player.acc.deposit(-4000);
 					}
 					player.setPosition(c.getPosition());
+					player.setConvict(true);
 					GGUI.moveCar(player.getPosition(), player.toString());
-					
-					
+
 				}
 				if(c.toString() == "Benådes for fængsel")
 				{
@@ -68,8 +68,7 @@ public class GChance extends GField {
 					{
 						player.setPrisonCard(1);	
 					}
-					
-					GGUI.displayChanceCard(c.toString());
+
 				}
 			}
 			break;
@@ -78,7 +77,7 @@ public class GChance extends GField {
 			{
 				player.acc.deposit(40000);
 			}
-			
+
 			break;
 		case 3:
 			// ejendomsskat
@@ -96,10 +95,10 @@ public class GChance extends GField {
 			if(c.getPosition() > 36 || c.getPosition() < 6)
 			{
 				player.setPosition(6);
-				
-				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(6, player.toString());
+				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+
 				if(c.getPosition() > 36)
 				{
 					player.acc.deposit(4000);
@@ -108,23 +107,26 @@ public class GChance extends GField {
 			else if(c.getPosition() > 6 && c.getPosition() < 16)
 			{
 				player.setPosition(16);
-				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(16, player.toString());
+				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+
 			}
 			else if(c.getPosition() > 16 && c.getPosition() < 26)
 			{
 				player.setPosition(26);
-				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(26, player.toString());
+				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+
 			}
 			else if(c.getPosition() > 26 && c.getPosition() < 36)
 			{
 				player.setPosition(36);
-				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(36, player.toString());
+				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+
 			}
 			break;
 		case 6:
@@ -137,7 +139,7 @@ public class GChance extends GField {
 	@Override
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }
