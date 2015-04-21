@@ -64,7 +64,7 @@ public class GameLauncher {
 						gui.setDice(cup.getDieOne(), cup.getDieTwo());
 
 						//Flytter spiller
-						playerlist[playerNo].changePosition(cup.getLastRoll());
+						playerlist[playerNo].changePosition(cup.getLastRoll(), gui);
 						gui.moveCar(playerlist[playerNo].getPosition(), playerlist[playerNo].toString());
 
 						//Spilleren lander på feltet
