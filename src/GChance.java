@@ -35,8 +35,12 @@ public class GChance extends GField {
 				}
 				if(c.getPosition() == 3 || c.getPosition() == -3)
 				{
-					player.changePosition(player.getPosition() + c.getPosition());
+					player.changePosition(player.getPosition() + c.getPosition(), GGUI);
 					GGUI.moveCar(player.getPosition(), player.toString());
+					if(player.getPosition() > 37 && c.getPosition() != -3)
+					{
+						
+					}
 				}
 				if(c.getPosition() > 3 && c.getPosition() != 11)
 				{
@@ -93,8 +97,8 @@ public class GChance extends GField {
 			{
 				player.setPosition(6);
 				
-				gb.getField(6).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(6).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(6 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(6, player.toString());
 				if(c.getPosition() > 36)
 				{
@@ -104,22 +108,22 @@ public class GChance extends GField {
 			else if(c.getPosition() > 6 && c.getPosition() < 16)
 			{
 				player.setPosition(16);
-				gb.getField(16).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(16).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(16 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(16, player.toString());
 			}
 			else if(c.getPosition() > 16 && c.getPosition() < 26)
 			{
 				player.setPosition(26);
-				gb.getField(26).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(26).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(26 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(26, player.toString());
 			}
 			else if(c.getPosition() > 26 && c.getPosition() < 36)
 			{
 				player.setPosition(36);
-				gb.getField(36).landOnField(player, GGUI, cc, lastRoll, gb);
-				gb.getField(36).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
+				gb.getField(36 - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 				GGUI.moveCar(36, player.toString());
 			}
 			break;
