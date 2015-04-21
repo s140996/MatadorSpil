@@ -40,10 +40,10 @@ public class GTerritory extends GOwnable {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
 		// TODO Auto-generated method stub
 
-		if (owner == null) {
+		if (super.getOwner() == null) {
 
 			if (player.acc.getBalance() > getPrice()) {
 
@@ -52,14 +52,14 @@ public class GTerritory extends GOwnable {
 				if (reply == true) {
 
 					player.acc.setBalance(player.acc.getBalance() - getPrice());
-					owner = player;
+					super.setOwner(player);
 
 				}
 
 			}
 		}
 
-		else if (owner == player)
+		else if (super.getOwner() == player)
 
 		{
 
@@ -71,7 +71,7 @@ public class GTerritory extends GOwnable {
 				if (reply == true) {
 
 					player.acc.setBalance(player.acc.getBalance() - houseRent);
-					GGUI.setHouses(id, houseCount = 1);
+					GGUI.setHouses(id, houseCount = 1); 
 
 				}
 
