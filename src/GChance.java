@@ -118,12 +118,12 @@ public class GChance extends GField {
 				GGUI.moveCar(16, player.toString());
 				gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
 				
-				GField field = gb.getField(6 - 1);
+				GField field = gb.getField(16 - 1);
 				GFleet fleet = (GFleet) field;
 				
 				if (fleet.getOwner() != player)
 				{
-					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
+					gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
 
 			}
@@ -133,12 +133,12 @@ public class GChance extends GField {
 				GGUI.moveCar(26, player.toString());
 				gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
 				
-				GField field = gb.getField(6 - 1);
+				GField field = gb.getField(26 - 1);
 				GFleet fleet = (GFleet) field;
 				
 				if (fleet.getOwner() != player)
 				{
-					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
+					gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
 
 			}
@@ -148,12 +148,12 @@ public class GChance extends GField {
 				GGUI.moveCar(36, player.toString());
 				gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
 				
-				GField field = gb.getField(6 - 1);
+				GField field = gb.getField(36 - 1);
 				GFleet fleet = (GFleet) field;
 				
 				if (fleet.getOwner() != player)
 				{
-					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
+					gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
 
 			}

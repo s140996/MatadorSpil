@@ -17,7 +17,7 @@ public class GameLauncher {
 	public void spil()
 	{
 		gui.createGameboard(gb);
-		cc.randomizer();
+		//cc.randomizer();
 
 		switch(gui.startMenu())
 		{
