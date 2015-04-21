@@ -45,7 +45,7 @@ public class GBrewery extends GOwnable {
 			{
 				if (super.getOwner().getConvict() == true)
 				{
-
+					GGUI.showMessage("Ejeren sidder i fængsel og kan ikke modtage betaling!");
 				}
 
 				else 
