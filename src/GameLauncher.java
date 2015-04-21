@@ -77,8 +77,15 @@ public class GameLauncher {
 
 						//Spilleren lander på feltet
 						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup.getLastRoll(), gb);
-
+						
+						if (cup.getDieOne() == cup.getDieTwo())
+						{
+							//Stadig samme spillers tur
+						}
+						else
+						{
 						con = false;
+						}
 						break;
 					case "Sælg huse":
 
