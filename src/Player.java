@@ -38,7 +38,7 @@ public class Player {
 		return this.position;
 	}
 	
-	public void changePosition(int diceRoll)
+	public void changePosition(int diceRoll, GUIController GGUI)
 	{
 		this.position = this.position + diceRoll;
 		
@@ -46,6 +46,7 @@ public class Player {
 		{
 			this.position = this.position - 40;
 			this.acc.deposit(4000);
+			GGUI.setGUIBalance(this.acc.getBalance(), this.name);
 		}
 	}
 	
