@@ -252,10 +252,7 @@ public class GTerritory extends GOwnable {
 		
 		if (count == 3)
 		{
-			if (super.getColor() == new Color(246, 94, 5) || super.getColor() == new Color(206, 246, 5) || super.getColor() == new Color(129, 129, 129) || super.getColor() == new Color(255, 0, 0) || super.getColor() == new Color(255, 255, 255) || super.getColor() == new Color(255, 255, 0))
-			{
 				return true;
-			}
 		}
 		else if (count == 2)
 		{
