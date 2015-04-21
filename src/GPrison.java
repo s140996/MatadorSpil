@@ -8,7 +8,7 @@ public class GPrison extends GField {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
 		// TODO Auto-generated method stub
 		
 	}
