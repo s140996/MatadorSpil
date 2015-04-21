@@ -39,6 +39,7 @@ public class GChance extends GField {
 				{
 					player.changePosition(player.getPosition() + c.getPosition(), GGUI);
 					GGUI.moveCar(player.getPosition(), player.toString());
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 					if(player.getPosition() > 37 && c.getPosition() != -3)
 					{
 						player.acc.deposit(4000);	
@@ -54,6 +55,7 @@ public class GChance extends GField {
 					}
 					player.setPosition(c.getPosition());
 					GGUI.moveCar(player.getPosition(), player.toString());
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 
 				}
 				if(c.getPosition() == 11)
@@ -61,6 +63,7 @@ public class GChance extends GField {
 					player.setPosition(c.getPosition());
 					player.setConvict(true);
 					GGUI.moveCar(player.getPosition(), player.toString());
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, lastRoll, gb);
 
 				}
 				if(c.toString() == "Benådes for fængsel")
