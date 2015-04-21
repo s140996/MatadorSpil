@@ -40,7 +40,7 @@ public class GTerritory extends GOwnable {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
 		// TODO Auto-generated method stub
 
 		if (super.getOwner() == null) {

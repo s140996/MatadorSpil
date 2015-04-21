@@ -41,7 +41,7 @@ public class GFleet extends GOwnable {
 	}
 
 	@Override
-	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll) {
+	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, int lastRoll, GameBoard gb) {
 
 		if (super.isOwned() == false)
 		{
