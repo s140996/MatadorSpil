@@ -85,11 +85,8 @@ public class GChance extends GField {
 			//Mangler at alle andre spillere også skal betale for deres huse og hoteller
 			break;
 		case 4:
-			// nubers of players *
-			player.acc.deposit(200 );
+			player.acc.deposit(1000);
 			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-			//De andre spillere skal også betale
-			// fødselsdag
 			break;
 		case 5:
 			if(c.getPosition() > 36 || c.getPosition() < 6)

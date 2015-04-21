@@ -15,7 +15,7 @@ public class ChanceCardList {
 	private ChanceCard c8 = new ChanceCard("CHANCEKORT: Din restskat er gået ind. Modtag 1000 kr.", 1000, 0);
 	private ChanceCard c9 = new ChanceCard("CHANCEKORT: Du har solgt din gamle velo. Modtag 1000 kr.", 1000, 0);
 	// Skal have funktion med, så det er alle der betaler til fødselaren
-	private ChanceCard c10 = new ChanceCard("CHANCEKORT: Det er din fødselsdag. Modtag 200 kr. fra hver medspiller.", 200);
+	private ChanceCard c10 = new ChanceCard("CHANCEKORT: Du er blevet konfirmeret, og har fået 1000 kr af din bedstemor.", 1000);
 	private ChanceCard c11 = new ChanceCard("CHANCEKORT: Du har fundet en pung på gaden. Stjæl de 200 kr der ligger i den.", 200, 0);
 	private ChanceCard c12 = new ChanceCard("CHANCEKORT: Du har modtaget din vægtafgift. Betal 1000 kr.", -1000, 0);
 	// Ejendomsskat: 800 pr. hus og 2300 pr. hotel (Y)
