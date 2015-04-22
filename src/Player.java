@@ -62,13 +62,14 @@ public class Player {
 	
 	public int getWorth()
 	{
-		return this.worth;
+		return this.worth + this.acc.getBalance();
 	}
 	
 	public void setWorth(int worth)
 	{
 		this.worth = this.worth + worth;
 	}
+	
 	
 	public int getPrisonCard()
 	{
