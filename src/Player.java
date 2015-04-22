@@ -67,7 +67,7 @@ public class Player {
 	
 	public void setWorth(int worth)
 	{
-		this.worth = worth;
+		this.worth = this.worth + worth;
 	}
 	
 	public int getPrisonCard()

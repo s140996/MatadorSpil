@@ -52,6 +52,7 @@ public class GFleet extends GOwnable {
 				super.setOwner(player);
 				GGUI.setOwner(super.getID(), player.toString());
 				player.acc.deposit(-super.getPrice());
+				player.setWorth(super.getPrice());
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setFleetsOwned(player.getFleetsOwned()+1);
 			}
