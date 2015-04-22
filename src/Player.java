@@ -100,9 +100,9 @@ public class Player {
 		return brewerysOwned;
 	}
 	
-	public void setHouseCount(int houseCount)
+	public void setHouseCount(int addHouseCount)
 	{
-		this.houseCount = houseCount;
+		this.houseCount = this.houseCount + addHouseCount;
 	}
 	
 	public int getHouseCount()
@@ -110,9 +110,9 @@ public class Player {
 		return houseCount;
 	}
 	
-	public void setHotelCount(int hotelCount)
+	public void setHotelCount(int addHotelCount)
 	{
-		this.hotelCount = hotelCount;
+		this.hotelCount = this.hotelCount + addHotelCount;
 	}
 	
 	public int getHotelCount()

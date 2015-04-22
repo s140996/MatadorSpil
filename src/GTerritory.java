@@ -63,13 +63,14 @@ public class GTerritory extends GOwnable {
 			{
 				if (houseCount == 0)
 				{
-					boolean reply = GGUI.boolButton("Du ejer alle grundene. Vil du købe et hus på denne?", "Køb huset", "Nej tak");
+					boolean reply = GGUI.boolButton("Da du ejer alle grundene, kan du købet hus. Vil du det?", "Køb huset", "Nej tak");
 
 					if (reply == true) 
 					{
 						player.acc.deposit(-buildPrice);
 						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 						this.houseCount++;
+						super.getOwner().setHotelCount(1);
 						GGUI.setHouses(id, this.houseCount); 
 					}
 				}
@@ -86,6 +87,7 @@ public class GTerritory extends GOwnable {
 							player.acc.deposit(-this.buildPrice);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							this.houseCount++;
+							super.getOwner().setHouseCount(1);
 							GGUI.setHouses(this.id, this.houseCount); 
 						}
 						else if (reply == false)
@@ -108,6 +110,8 @@ public class GTerritory extends GOwnable {
 					{
 						player.acc.deposit(-buildPrice);
 						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+						super.getOwner().setHotelCount(1);
+						super.getOwner().setHouseCount(-4);
 						this.hasHotel = true;
 						GGUI.setHotel(this.id, this.hasHotel);
 					}
