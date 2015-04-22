@@ -28,6 +28,7 @@ public class InPrison {
 					if(cup.getDieOne() == cup.getDieTwo())
 					{
 						player.setConvict(false);
+						gui.showMessage("Du slog to ens og er løsladt!");
 					}
 					else
 					{

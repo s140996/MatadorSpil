@@ -100,7 +100,7 @@ public class GTerritory extends GOwnable {
 
 				}
 
-				if (houseCount == 4)
+				if (checkHouse(gb) == true)
 				{
 					boolean reply = GGUI.boolButton("Du har bygget 4 huse på alle grundene. Vil du købe et hotel på denne?", "Køb hotellet", "Nej tak");
 
@@ -207,16 +207,12 @@ public class GTerritory extends GOwnable {
 		for(int i = 0; i < 40; i++)
 		{
 			GField field = gb.getField(i);
-			System.out.println(i);
 			if (field.getType() == "Territory")
 			{
-				System.out.println(field.getName());
 				GTerritory territory = (GTerritory) field;
-				System.out.println(territory.getOwner());
 				if (territory.getColor().equals(super.getColor()) && territory.getOwner() == super.getOwner())
 				{
 					count++;
-					System.out.println(count);
 				}
 			}
 		}
@@ -243,16 +239,12 @@ public class GTerritory extends GOwnable {
 		for(int i = 0; i < 40; i++)
 		{
 			GField field = gb.getField(i);
-			System.out.println(i);
 			if (field.getType() == "Territory")
 			{
-				System.out.println(field.getName());
 				GTerritory territory = (GTerritory) field;
-				System.out.println(territory.getOwner());
 				if (territory.getColor().equals(super.getColor()) && territory.getOwner() == super.getOwner() && territory.getHouseCount() == 4)
 				{
 					count++;
-					System.out.println(count);
 				}
 			}
 		}
