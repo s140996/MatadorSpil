@@ -99,6 +99,20 @@ public class GChance extends GField {
 			break;
 		case 3:
 			// ejendomsskat
+			for(int i = 0; i>40; i++)
+			{
+				GField field = gb.getField(i);
+				if (field.getType() == "Territory")
+				{
+					GTerritory territory = (GTerritory) field;
+					if(territory.isOwned() == true)
+					{
+					int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount();
+					territory.getOwner().acc.deposit(pay2);
+					GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
+					}
+				}
+			}
 			int pay = player.getHouseCount() * 500 + player.getHotelCount() * 2300;
 			player.acc.deposit(-pay);
 			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
@@ -205,9 +219,20 @@ public class GChance extends GField {
 			break;
 		case 6:
 			//Oliepriserne er steget
-			int pay2 = player.getHouseCount() * 500 + player.getHotelCount() * 2000;
-			player.acc.deposit(-pay2);
-			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+			for(int i = 0; i>40; i++)
+			{
+				GField field = gb.getField(i);
+				if (field.getType() == "Territory")
+				{
+					GTerritory territory = (GTerritory) field;
+					if(territory.isOwned() == true)
+					{
+					int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount();
+					territory.getOwner().acc.deposit(pay2);
+					GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
+					}
+				}
+			}
 			break;
 		}
 	}

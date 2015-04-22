@@ -263,5 +263,17 @@ public class GTerritory extends GOwnable {
 	{
 		return this.houseCount;
 	}
+	
+	public int getHotelCount()
+	{
+		if (this.hasHotel == true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
 
 }
