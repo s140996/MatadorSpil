@@ -3,6 +3,8 @@ import java.util.*;
 
 
 public class GChance extends GField {
+	
+	private int pay;
 
 	public GChance (int id, String name)
 	{
@@ -111,14 +113,19 @@ public class GChance extends GField {
 			{
 				player.setPosition(6);
 				GGUI.moveCar(6, player.toString());
-				gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
-
+				
 				GField field = gb.getField(6 - 1);
 				GFleet fleet = (GFleet) field;
-
-				if (fleet.getOwner() != player)
+				
+				if(fleet.getOwner() == player)
 				{
 					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
+				}
+				if (fleet.getOwner() != player)
+				{
+					pay = 2 * fleet.getRent();
+					player.acc.deposit(-pay);
+					fleet.getOwner().acc.deposit(pay);
 				}
 
 				if(player.getPosition() > 36)
@@ -131,14 +138,18 @@ public class GChance extends GField {
 			{
 				player.setPosition(16);
 				GGUI.moveCar(16, player.toString());
-				gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
-
+				
 				GField field = gb.getField(16 - 1);
 				GFleet fleet = (GFleet) field;
-
-				if (fleet.getOwner() != player)
+				if(fleet.getOwner() == player)
 				{
 					gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
+				}
+				if (fleet.getOwner() != player)
+				{
+					pay = 2 * fleet.getRent();
+					player.acc.deposit(-pay);
+					fleet.getOwner().acc.deposit(pay);
 				}
 
 			}
@@ -146,14 +157,19 @@ public class GChance extends GField {
 			{
 				player.setPosition(26);
 				GGUI.moveCar(26, player.toString());
-				gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
-
+				
 				GField field = gb.getField(26 - 1);
 				GFleet fleet = (GFleet) field;
 
-				if (fleet.getOwner() != player)
+				if(fleet.getOwner() == player)
 				{
 					gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
+				}
+				if (fleet.getOwner() != player)
+				{
+					pay = 2 * fleet.getRent();
+					player.acc.deposit(-pay);
+					fleet.getOwner().acc.deposit(pay);
 				}
 
 			}
@@ -161,16 +177,20 @@ public class GChance extends GField {
 			{
 				player.setPosition(36);
 				GGUI.moveCar(36, player.toString());
-				gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
-
+				
 				GField field = gb.getField(36 - 1);
 				GFleet fleet = (GFleet) field;
 
-				if (fleet.getOwner() != player)
+				if(fleet.getOwner() == player)
 				{
 					gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-
+				if (fleet.getOwner() != player)
+				{
+					pay = 2 * fleet.getRent();
+					player.acc.deposit(-pay);
+					fleet.getOwner().acc.deposit(pay);
+				}
 			}
 			break;
 		case 6:
