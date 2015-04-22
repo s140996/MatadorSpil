@@ -258,11 +258,11 @@ public class GUIController {
 		return ans;
 	}
 	
-	//** Startup ***
+	// *** Startup ***
 	public String startMenu()
 	{
 		String ans = GUI.getUserButtonPressed("Velkommen!", "Nyt spil", "Load spil");
 		return ans;
 	}
-
+	
 }
