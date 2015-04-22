@@ -133,13 +133,17 @@ public class GChance extends GField {
 				{
 					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				else if (fleet.getOwner() != player && fleet.getOwner() != null)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
+				}
+				else
+				{
+					GGUI.showMessage("Ejeren sidder i fængsel og kan ikke modtage betaling!");
 				}
 
 				if(player.getPosition() > 36)
@@ -159,13 +163,17 @@ public class GChance extends GField {
 				{
 					gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				else if (fleet.getOwner() != player && fleet.getOwner() != null)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
+				}
+				else
+				{
+					GGUI.showMessage("Ejeren sidder i fængsel og kan ikke modtage betaling!");
 				}
 
 			}
@@ -181,13 +189,17 @@ public class GChance extends GField {
 				{
 					gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				else if (fleet.getOwner() != player && fleet.getOwner() != null)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
+				}
+				else
+				{
+					GGUI.showMessage("Ejeren sidder i fængsel og kan ikke modtage betaling!");
 				}
 
 			}
@@ -203,13 +215,17 @@ public class GChance extends GField {
 				{
 					gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				else if (fleet.getOwner() != player && fleet.getOwner() != null)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
+				}
+				else
+				{
+					GGUI.showMessage("Ejeren sidder i fængsel og kan ikke modtage betaling!");
 				}
 			}
 			break;
