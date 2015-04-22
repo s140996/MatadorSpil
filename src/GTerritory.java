@@ -53,6 +53,7 @@ public class GTerritory extends GOwnable {
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				super.setOwner(player);
 				GGUI.setOwner(id, player.toString());
+				player.setWorth(super.getPrice());
 			}
 		}
 		else if (super.getOwner() == player)
@@ -71,7 +72,8 @@ public class GTerritory extends GOwnable {
 						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 						this.houseCount++;
 						super.getOwner().setHotelCount(1);
-						GGUI.setHouses(id, this.houseCount); 
+						GGUI.setHouses(id, this.houseCount);
+						player.setWorth(this.buildPrice);
 					}
 				}
 
@@ -88,7 +90,8 @@ public class GTerritory extends GOwnable {
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							this.houseCount++;
 							super.getOwner().setHouseCount(1);
-							GGUI.setHouses(this.id, this.houseCount); 
+							GGUI.setHouses(this.id, this.houseCount);
+							player.setWorth(this.buildPrice);
 						}
 						else if (reply == false)
 						{
@@ -114,6 +117,7 @@ public class GTerritory extends GOwnable {
 						super.getOwner().setHouseCount(-4);
 						this.hasHotel = true;
 						GGUI.setHotel(this.id, this.hasHotel);
+						player.setWorth(this.buildPrice);
 					}
 				}
 
