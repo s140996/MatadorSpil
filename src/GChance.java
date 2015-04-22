@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class GChance extends GField {
-	
+
 	private int pay;
 
 	public GChance (int id, String name)
@@ -19,7 +19,7 @@ public class GChance extends GField {
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 
 		ChanceCard c = cc.draw();
-		
+
 		GGUI.showMessage("Træk et chancekort og prøv lykken!");
 
 		GGUI.showMessage(c.toString());
@@ -48,12 +48,12 @@ public class GChance extends GField {
 				}
 				else
 				{
-				player.changePosition(c.getPosition(), GGUI);
-				GGUI.moveCar(player.getPosition(), player.toString());
-				gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
+					player.changePosition(c.getPosition(), GGUI);
+					GGUI.moveCar(player.getPosition(), player.toString());
+					gb.getField(player.getPosition() - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				
-				
+
+
 			}
 			//Ryk frem til bestemt felt
 			if(c.getPosition() > 3 && c.getPosition() != 11)
@@ -107,16 +107,12 @@ public class GChance extends GField {
 					GTerritory territory = (GTerritory) field;
 					if(territory.isOwned() == true)
 					{
-					int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount();
-					territory.getOwner().acc.deposit(pay2);
-					GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
+						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2300;
+						territory.getOwner().acc.deposit(pay2);
+						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 					}
 				}
 			}
-			int pay = player.getHouseCount() * 500 + player.getHotelCount() * 2300;
-			player.acc.deposit(-pay);
-			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-			//Mangler at alle andre spillere også skal betale for deres huse og hoteller
 			break;
 		case 4:
 			//Konfirmation
@@ -129,10 +125,10 @@ public class GChance extends GField {
 			{
 				player.setPosition(6);
 				GGUI.moveCar(6, player.toString());
-				
+
 				GField field = gb.getField(6 - 1);
 				GFleet fleet = (GFleet) field;
-				
+
 				if(fleet.getOwner() == player || fleet.getOwner() == null)
 				{
 					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
@@ -156,7 +152,7 @@ public class GChance extends GField {
 			{
 				player.setPosition(16);
 				GGUI.moveCar(16, player.toString());
-				
+
 				GField field = gb.getField(16 - 1);
 				GFleet fleet = (GFleet) field;
 				if(fleet.getOwner() == player || fleet.getOwner() == null)
@@ -177,7 +173,7 @@ public class GChance extends GField {
 			{
 				player.setPosition(26);
 				GGUI.moveCar(26, player.toString());
-				
+
 				GField field = gb.getField(26 - 1);
 				GFleet fleet = (GFleet) field;
 
@@ -199,7 +195,7 @@ public class GChance extends GField {
 			{
 				player.setPosition(36);
 				GGUI.moveCar(36, player.toString());
-				
+
 				GField field = gb.getField(36 - 1);
 				GFleet fleet = (GFleet) field;
 
@@ -227,9 +223,9 @@ public class GChance extends GField {
 					GTerritory territory = (GTerritory) field;
 					if(territory.isOwned() == true)
 					{
-					int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount();
-					territory.getOwner().acc.deposit(pay2);
-					GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
+						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2000;
+						territory.getOwner().acc.deposit(pay2);
+						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 					}
 				}
 			}
