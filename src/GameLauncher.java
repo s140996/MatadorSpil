@@ -59,9 +59,7 @@ public class GameLauncher {
 	public void turn()
 	{
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
-		{
-			System.out.println(playerlist[playerNo].getWorth());
-			
+		{	
 			boolean con = true;
 
 			cup.resetDoubleRoll();
