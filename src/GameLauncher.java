@@ -98,7 +98,7 @@ public class GameLauncher {
 							if (cup.getDoubleRoll() == 3)
 							{
 								//Går i fængsel
-								gui.showMessage("Du har slået to gange tre ens!");
+								gui.showMessage("Du har slået tre gange to ens!");
 								gb.getField(31 - 1).landOnField(playerlist[playerNo], gui, cc, cup, gb);
 								con = false;
 							}

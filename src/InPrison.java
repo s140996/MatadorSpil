@@ -21,7 +21,7 @@ public class InPrison {
 				player.setConvict(false);
 			}
 			else{
-				for(int i = 0; i < 3 && player.getConvict() == true; i++)
+				for(int i = 2; i >= 0 && player.getConvict() == true; i--)
 				{
 					cup.roll();
 					gui.setDice(cup.getDieOne(), cup.getDieTwo());
@@ -31,7 +31,7 @@ public class InPrison {
 					}
 					else
 					{
-						gui.showMessage("Du slog ikke to ens. Prøv igen!");
+						gui.showMessage("Du har " + i + " forsøg tilbage!");
 					}
 				}
 			}
