@@ -107,7 +107,7 @@ public class GChance extends GField {
 			break;
 		case 5:
 			//Ryk frem til nærmeste redderi
-			if(c.getPosition() > 36 || c.getPosition() < 6)
+			if(player.getPosition() > 36 || player.getPosition() < 6)
 			{
 				player.setPosition(6);
 				GGUI.moveCar(6, player.toString());
@@ -121,13 +121,13 @@ public class GChance extends GField {
 					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
 
-				if(c.getPosition() > 36)
+				if(player.getPosition() > 36)
 				{
 					player.acc.deposit(4000);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				}
 			}
-			else if(c.getPosition() > 6 && c.getPosition() < 16)
+			else if(player.getPosition() > 6 && player.getPosition() < 16)
 			{
 				player.setPosition(16);
 				GGUI.moveCar(16, player.toString());
@@ -142,7 +142,7 @@ public class GChance extends GField {
 				}
 
 			}
-			else if(c.getPosition() > 16 && c.getPosition() < 26)
+			else if(player.getPosition() > 16 && player.getPosition() < 26)
 			{
 				player.setPosition(26);
 				GGUI.moveCar(26, player.toString());
@@ -157,7 +157,7 @@ public class GChance extends GField {
 				}
 
 			}
-			else if(c.getPosition() > 26 && c.getPosition() < 36)
+			else if(player.getPosition() > 26 && player.getPosition() < 36)
 			{
 				player.setPosition(36);
 				GGUI.moveCar(36, player.toString());
