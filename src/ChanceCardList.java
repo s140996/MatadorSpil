@@ -47,7 +47,7 @@ public class ChanceCardList {
 	
 	public ChanceCardList()
 	{
-		index = 0;
+		index = 15;
 		
 		list.add(0, c1);
 		list.add(1, c2);
@@ -91,14 +91,14 @@ public class ChanceCardList {
 	 {
 		ChanceCard c;
 		c = list.get(index);
-		if(index == 31)
-		{
-			index = 0;
-		}
-		else
-		{
-		index++;
-		}
+//		if(index == 31)
+//		{
+//			index = 0;
+//		}
+//		else
+//		{
+//		index++;
+//		}
 		return c;
 	 }
 }

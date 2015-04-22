@@ -19,6 +19,8 @@ public class GChance extends GField {
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 
 		ChanceCard c = cc.draw();
+		
+		GGUI.showMessage("Træk et chancekort og prøv lykken!");
 
 		GGUI.showMessage(c.toString());
 
@@ -72,7 +74,7 @@ public class GChance extends GField {
 				gb.getField(31 - 1).landOnField(player, GGUI, cc, cup, gb);
 			}
 			//Benådes for fængsel
-			if(c.toString() == "Du benådes for fængsel")
+			if(c.toString() == "CHANCEKORT: Du benådes for fængsel")
 			{
 				if(player.getPrisonCard() == 1)
 				{
@@ -117,15 +119,17 @@ public class GChance extends GField {
 				GField field = gb.getField(6 - 1);
 				GFleet fleet = (GFleet) field;
 				
-				if(fleet.getOwner() == player)
+				if(fleet.getOwner() == player || fleet.getOwner() == null)
 				{
 					gb.getField(6 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				if (fleet.getOwner() != player)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
 				}
 
 				if(player.getPosition() > 36)
@@ -141,15 +145,17 @@ public class GChance extends GField {
 				
 				GField field = gb.getField(16 - 1);
 				GFleet fleet = (GFleet) field;
-				if(fleet.getOwner() == player)
+				if(fleet.getOwner() == player || fleet.getOwner() == null)
 				{
 					gb.getField(16 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				if (fleet.getOwner() != player)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
 				}
 
 			}
@@ -161,15 +167,17 @@ public class GChance extends GField {
 				GField field = gb.getField(26 - 1);
 				GFleet fleet = (GFleet) field;
 
-				if(fleet.getOwner() == player)
+				if(fleet.getOwner() == player || fleet.getOwner() == null)
 				{
 					gb.getField(26 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				if (fleet.getOwner() != player)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
 				}
 
 			}
@@ -181,15 +189,17 @@ public class GChance extends GField {
 				GField field = gb.getField(36 - 1);
 				GFleet fleet = (GFleet) field;
 
-				if(fleet.getOwner() == player)
+				if(fleet.getOwner() == player || fleet.getOwner() == null)
 				{
 					gb.getField(36 - 1).landOnField(player, GGUI, cc, cup, gb);
 				}
-				if (fleet.getOwner() != player)
+				else if (fleet.getOwner() != player && fleet.getOwner() != null)
 				{
 					pay = 2 * fleet.getRent();
 					player.acc.deposit(-pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
 				}
 			}
 			break;
