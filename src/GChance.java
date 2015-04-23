@@ -110,6 +110,10 @@ public class GChance extends GField {
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2300;
 						territory.getOwner().acc.deposit(pay2);
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
+						if(pay2 > 0)
+						{
+						GGUI.showMessage(territory.getOwner().toString() + " skal betale " + pay + " kr i ejendomsskat for bebyggelsen på " + territory.getName());
+						}
 					}
 				}
 			}
@@ -242,7 +246,11 @@ public class GChance extends GField {
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2000;
 						territory.getOwner().acc.deposit(pay2);
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
-					}
+						if(pay > 0)
+						{
+						GGUI.showMessage(territory.getOwner().toString() + " skal betale " + pay + " kr for bebyggelsen på " + territory.getName());
+						}
+						}
 				}
 			}
 			break;
