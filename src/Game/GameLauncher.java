@@ -20,7 +20,7 @@ public class GameLauncher {
 
 	private ChanceCardList cc = new ChanceCardList();
 
-	public void spil()
+	public void game()
 	{
 		gui.createGameboard(gb);
 		//cc.randomizer();
