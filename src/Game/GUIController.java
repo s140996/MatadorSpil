@@ -144,7 +144,7 @@ public class GUIController {
 				.setBgColor(start.getColor())
 				.setTitle(start.getName())
 				.setFgColor(Color.white)
-				.setDescription("Modtag 4000, når du passerer start!")
+				.setDescription("Modtag 4000, når du lander på eller passerer start!")
 				.setSubText("Modtag: 4000")
 				.build();
 				break;
