@@ -45,18 +45,18 @@ public class GTax extends GField {
 			{
 				pay = player.getWorth() * this.percentageTax / 100;
 				
-				player.acc.deposit(-(int) pay);
+				player.acc.withdraw((int) pay);
 			}
 			else if(replay == false)
 			{
 				pay = this.baseTax;
-				player.acc.deposit(-(int) pay);
+				player.acc.withdraw((int) pay);
 			}
 		}
 		else
 		{
 			pay = this.baseTax;
-			player.acc.deposit(-(int) pay);
+			player.acc.withdraw((int) pay);
 		}
 		
 		GGUI.setGUIBalance(player.acc.getBalance(), player.toString());

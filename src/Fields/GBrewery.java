@@ -27,7 +27,7 @@ public class GBrewery extends GOwnable {
 			boolean reply = GGUI.boolButton("Vil du købe din pantsatte grund tilbage?", "Ja", "Nej");
 			if (reply == true)
 			{
-				player.acc.deposit(-getPrice() / 2);
+				player.acc.withdraw(getPrice() / 2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setWorth(super.getPrice());
 				super.setPawn(false);
@@ -48,7 +48,7 @@ public class GBrewery extends GOwnable {
 				{
 					super.setOwner(player);
 					GGUI.setOwner(super.getID(), player.toString());
-					player.acc.deposit(-super.getPrice());
+					player.acc.withdraw(super.getPrice());
 					player.setWorth(super.getPrice());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					player.setBrewerysOwned(player.getBrewerysOwned()+1);
@@ -82,7 +82,7 @@ public class GBrewery extends GOwnable {
 
 						GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + ",- til " + getOwner() + " for drikkevarerne!");
 
-						player.acc.deposit(-pay);
+						player.acc.withdraw(pay);
 						super.getOwner().acc.deposit(pay);
 
 						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());

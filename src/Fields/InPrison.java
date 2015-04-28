@@ -21,7 +21,7 @@ public class InPrison {
 			boolean reply = gui.boolButton("Betal 1000,- for din frihed eller kast terningerne og prøv lykken?", "Betal", "Kast");
 			if(reply == true)
 			{	
-				player.acc.deposit(-1000);
+				player.acc.withdraw(1000);
 				gui.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setConvict(false);
 			}

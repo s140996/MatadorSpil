@@ -115,7 +115,7 @@ public class GChance extends GField {
 					if(territory.isOwned() == true && territory.getPawn() == false)
 					{
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2300;
-						territory.getOwner().acc.deposit(-pay2);
+						territory.getOwner().acc.withdraw(pay2);
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 						if(pay2 > 0)
 						{
@@ -147,7 +147,7 @@ public class GChance extends GField {
 				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
-					player.acc.deposit(-pay);
+					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
@@ -178,7 +178,7 @@ public class GChance extends GField {
 				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
-					player.acc.deposit(-pay);
+					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
@@ -205,7 +205,7 @@ public class GChance extends GField {
 				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
-					player.acc.deposit(-pay);
+					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
@@ -232,7 +232,7 @@ public class GChance extends GField {
 				else if (fleet.getOwner() != player && fleet.getOwner() != null && fleet.getOwner().getConvict() == false)
 				{
 					pay = 2 * fleet.getRent();
-					player.acc.deposit(-pay);
+					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
@@ -255,7 +255,7 @@ public class GChance extends GField {
 					if(territory.isOwned() == true && territory.getPawn() == false)
 					{
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2000;
-						territory.getOwner().acc.deposit(-pay2);
+						territory.getOwner().acc.withdraw(pay2);
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 						if(pay > 0)
 						{
