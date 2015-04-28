@@ -6,9 +6,19 @@ public abstract class GOwnable extends GField {
 
 	private int price;
 	private Player owner;
+	private boolean pawn;
 	
 	public abstract int getRent(); 
 
+	public void setPawn (boolean setNew)
+	{
+		this.pawn = setNew;
+	}
+	
+	public boolean getPawn ()
+	{
+		return this.pawn;
+	}
 	
 	public void setPrice(int price) {
 		this.price = price;

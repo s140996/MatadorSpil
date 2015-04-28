@@ -16,62 +16,81 @@ public class GBrewery extends GOwnable {
 		super.setName(name);
 		super.setType("Brewery");
 		super.setPrice(price);
+		super.setPawn(false);
 		this.rent = rent;
 	}
 
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
-
-		if(super.isOwned() == false)
+		if (super.getPawn() == true && super.getOwner() == player)
 		{
-			boolean reply = GGUI.boolButton("Vil du købe bryggeriet?", "Ja", "Nej");
-
-			if(reply == true)
+			boolean reply = GGUI.boolButton("Vil du købe din pantsatte grund tilbage?", "Ja", "Nej");
+			if (reply == true)
 			{
-				super.setOwner(player);
-				GGUI.setOwner(super.getID(), player.toString());
-				player.acc.deposit(-super.getPrice());
-				player.setWorth(super.getPrice());
+				player.acc.deposit(-getPrice() / 2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-				player.setBrewerysOwned(player.getBrewerysOwned()+1);
-			}
-
-			else if(reply == false)
-			{
-				GGUI.showMessage("Du valgte ikke at købe bryggeriet");
+				player.setWorth(super.getPrice());
+				super.setPawn(false);
+				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2);
 			}
 		}
-
-		else if(super.isOwned() == true)
+		else if (super.getPawn() == true)
 		{
-			if(super.getOwner() == player)
+			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så der sker intet på dette felt.");
+		}
+		else
+		{
+			if(super.isOwned() == false)
 			{
-				GGUI.showMessage("Du ejer den selv!");
-			}
+				boolean reply = GGUI.boolButton("Vil du købe bryggeriet?", "Ja", "Nej");
 
-			else
-			{
-				if (super.getOwner().getConvict() == true)
+				if(reply == true)
 				{
-					GGUI.showMessage(getOwner() + " sidder i fængsel og kan ikke modtage betaling!");
-				}
-
-				else 
-				{
-					int multi = super.getOwner().getBrewerysOwned();
-
-					int pay = multi * getRent() * cup.getLastRoll();
-					
-					GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + " til " + getOwner() + " for drikkevarerne!");
-
-					player.acc.deposit(-pay);
-					super.getOwner().acc.deposit(pay);
-
+					super.setOwner(player);
+					GGUI.setOwner(super.getID(), player.toString());
+					player.acc.deposit(-super.getPrice());
+					player.setWorth(super.getPrice());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-					GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+					player.setBrewerysOwned(player.getBrewerysOwned()+1);
+				}
+
+				else if(reply == false)
+				{
+					GGUI.showMessage("Du valgte ikke at købe bryggeriet");
 				}
 			}
 
+			else if(super.isOwned() == true)
+			{
+				if(super.getOwner() == player)
+				{
+					GGUI.showMessage("Du ejer den selv!");
+				}
+
+				else
+				{
+					if (super.getOwner().getConvict() == true)
+					{
+						GGUI.showMessage(getOwner() + " sidder i fængsel og kan ikke modtage betaling!");
+					}
+
+					else 
+					{
+						int multi = super.getOwner().getBrewerysOwned();
+
+						int pay = multi * getRent() * cup.getLastRoll();
+
+						GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + " til " + getOwner() + " for drikkevarerne!");
+
+						player.acc.deposit(-pay);
+						super.getOwner().acc.deposit(pay);
+
+						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+						GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+					}
+				}
+
+			}
 		}
 
 	}

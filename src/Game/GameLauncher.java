@@ -2,9 +2,8 @@ package Game;
 import ChanceCard.ChanceCardList;
 import Die.Cup;
 import Fields.InPrison;
+import Fields.Pawn;
 import Player.Player;
-
-
 
 public class GameLauncher {
 
@@ -15,6 +14,7 @@ public class GameLauncher {
 	private GameBoard gb = new GameBoard();
 	private Cup cup = new Cup();
 	private InPrison prison = new InPrison();
+	private Pawn pawn = new Pawn();
 
 	private Player[] playerlist;
 
@@ -124,7 +124,7 @@ public class GameLauncher {
 
 						break;
 					case "Pantsæt":
-
+						pawn.pawnGround(playerlist[playerNo], gb, gui);
 						break;
 					case "Gem spil":
 

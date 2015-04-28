@@ -18,7 +18,6 @@ public class GTerritory extends GOwnable {
 	private int hotelRent;
 	private int houseCount;
 	private boolean hasHotel;
-	private boolean pawn;
 
 	public GTerritory(int id, String name, int price, int rent, int buildPrice,
 			int houseRent, int houseRent2, int houseRent3, int houseRent4,
@@ -28,6 +27,7 @@ public class GTerritory extends GOwnable {
 		super.setType("Territory");
 		super.setPrice(price);
 		super.setColor(color);
+		super.setPawn(false);
 		this.rent = rent;
 		this.buildPrice = buildPrice;
 		this.houseRent = houseRent;
@@ -35,7 +35,6 @@ public class GTerritory extends GOwnable {
 		this.houseRent3 = houseRent3;
 		this.houseRent4 = houseRent4;
 		this.hotelRent = hotelRent;
-		this.pawn = false;
 	}
 
 	@Override
@@ -48,7 +47,7 @@ public class GTerritory extends GOwnable {
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 		// TODO Auto-generated method stub
 
-		if (this.pawn == true && super.getOwner() == player)
+		if (super.getPawn() == true && super.getOwner() == player)
 		{
 			boolean reply = GGUI.boolButton("Vil du købe din pantsatte grund tilbage?", "Ja", "Nej");
 			if (reply == true)
@@ -56,11 +55,11 @@ public class GTerritory extends GOwnable {
 				player.acc.deposit(-getPrice() / 2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setWorth(super.getPrice());
-				this.pawn = false;
+				super.setPawn(false);
 				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2);
 			}
 		}
-		else if (this.pawn == true)
+		else if (super.getPawn() == true)
 		{
 			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så der sker intet på dette felt.");
 		}
@@ -311,8 +310,4 @@ public class GTerritory extends GOwnable {
 		}
 	}
 
-	public void setPawn (boolean setNew)
-	{
-		this.pawn = setNew;
-	}
 }

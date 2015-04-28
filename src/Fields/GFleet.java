@@ -17,8 +17,9 @@ public class GFleet extends GOwnable {
 		super.setName(name);
 		super.setType("Fleet");
 		super.setPrice(price);
-		this.rent = rent;
 		super.setColor(new Color(185, 236, 252));
+		super.setPawn(false);
+		this.rent = rent;
 	}
 
 	@Override
@@ -50,49 +51,68 @@ public class GFleet extends GOwnable {
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 
-		if (super.isOwned() == false)
+		if (super.getPawn() == true && super.getOwner() == player)
 		{
-			boolean reply = GGUI.boolButton("Vil du købe Færgen?", "Ja", "Nej");
-
-			if(reply == true)
+			boolean reply = GGUI.boolButton("Vil du købe din pantsatte grund tilbage?", "Ja", "Nej");
+			if (reply == true)
 			{
-				super.setOwner(player);
-				GGUI.setOwner(super.getID(), player.toString());
-				player.acc.deposit(-super.getPrice());
-				player.setWorth(super.getPrice());
+				player.acc.deposit(-getPrice() / 2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-				player.setFleetsOwned(player.getFleetsOwned()+1);
-			}
-			else if(reply == false)
-			{
-				GGUI.showMessage("Du valgte ikke at købe færgen");
+				player.setWorth(super.getPrice());
+				super.setPawn(false);
+				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2);
 			}
 		}
-
-		else if(super.isOwned() == true)
+		else if (super.getPawn() == true)
 		{
-			if(super.getOwner() == player)
+			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så der sker intet på dette felt.");
+		}
+		else
+		{
+			if (super.isOwned() == false)
 			{
-				GGUI.showMessage("Du ejer den selv!");
+				boolean reply = GGUI.boolButton("Vil du købe Færgen?", "Ja", "Nej");
+
+				if(reply == true)
+				{
+					super.setOwner(player);
+					GGUI.setOwner(super.getID(), player.toString());
+					player.acc.deposit(-super.getPrice());
+					player.setWorth(super.getPrice());
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+					player.setFleetsOwned(player.getFleetsOwned()+1);
+				}
+				else if(reply == false)
+				{
+					GGUI.showMessage("Du valgte ikke at købe færgen");
+				}
 			}
 
-			else
+			else if(super.isOwned() == true)
 			{
-				if (super.getOwner().getConvict() == true)
+				if(super.getOwner() == player)
 				{
-					GGUI.showMessage(getOwner() + " sidder i fængslel og kan ikke modtage betaling!");
+					GGUI.showMessage("Du ejer den selv!");
 				}
 
-				else 
+				else
 				{
-					GGUI.showMessage("Du er landet på en Færge der er ejet af " + getOwner() + ", betal billetten " + getRent());
-					player.acc.deposit(-getRent());
-					super.getOwner().acc.deposit(getRent());
+					if (super.getOwner().getConvict() == true)
+					{
+						GGUI.showMessage(getOwner() + " sidder i fængslel og kan ikke modtage betaling!");
+					}
 
-					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-					GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
-				}
-			}	
+					else 
+					{
+						GGUI.showMessage("Du er landet på en Færge der er ejet af " + getOwner() + ", betal billetten " + getRent());
+						player.acc.deposit(-getRent());
+						super.getOwner().acc.deposit(getRent());
+
+						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+						GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+					}
+				}	
+			}
 		}
 
 	}
