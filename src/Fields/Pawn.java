@@ -110,7 +110,7 @@ public class Pawn {
 			{
 				GTerritory territory = (GTerritory) field;
 
-				if (territory.getHouseCount() > 0)
+				if (territory.getHouseCount() > 0 && territory.getOwner() == player)
 				{
 					count++;
 
@@ -118,7 +118,7 @@ public class Pawn {
 
 					while (run == true)
 					{
-						if (0 < territory.getHouseCount() && territory.getOwner() == player)
+						if (0 < territory.getHouseCount())
 						{
 							boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hus og modtage " + territory.getBuildPrice() / 2 + "?", "Ja", "Nej");
 

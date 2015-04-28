@@ -137,6 +137,7 @@ public class GTerritory extends GOwnable {
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							super.getOwner().setHotelCount(1);
 							super.getOwner().setHouseCount(-4);
+							this.houseCount = 0;
 							this.hasHotel = true;
 							GGUI.setHotel(this.id, this.hasHotel);
 							player.setWorth(this.buildPrice);
