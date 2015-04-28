@@ -118,7 +118,7 @@ public class Pawn {
 
 					while (run == true)
 					{
-						if (0 < territory.getHouseCount() && territory.getHouseCount() <= 4)
+						if (0 < territory.getHouseCount())
 						{
 							boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hus og modtage " + territory.getBuildPrice() / 2 + "?", "Ja", "Nej");
 

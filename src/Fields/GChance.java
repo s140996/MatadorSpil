@@ -112,7 +112,7 @@ public class GChance extends GField {
 				if (field.getType() == "Territory")
 				{
 					GTerritory territory = (GTerritory) field;
-					if(territory.isOwned() == true)
+					if(territory.isOwned() == true && territory.getPawn() == false)
 					{
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2300;
 						territory.getOwner().acc.deposit(pay2);
@@ -252,7 +252,7 @@ public class GChance extends GField {
 				if (field.getType() == "Territory")
 				{
 					GTerritory territory = (GTerritory) field;
-					if(territory.isOwned() == true)
+					if(territory.isOwned() == true && territory.getPawn() == false)
 					{
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2000;
 						territory.getOwner().acc.deposit(pay2);
