@@ -11,6 +11,7 @@ public class GTerritory extends GOwnable {
 	private int hotelRent;
 	private int houseCount;
 	private boolean hasHotel;
+	private boolean pawn;
 
 	public GTerritory(int id, String name, int price, int rent, int buildPrice,
 			int houseRent, int houseRent2, int houseRent3, int houseRent4,
@@ -27,6 +28,7 @@ public class GTerritory extends GOwnable {
 		this.houseRent3 = houseRent3;
 		this.houseRent4 = houseRent4;
 		this.hotelRent = hotelRent;
+		this.pawn = false;
 	}
 
 	@Override
