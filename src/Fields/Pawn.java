@@ -71,7 +71,7 @@ public class Pawn {
 			{
 				GTerritory territory = (GTerritory) field;
 
-				if (territory.getHotelCount() == 1)
+				if (territory.getHotelCount() == 1 && territory.getOwner() == player)
 				{
 					count++;
 					boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hotel og modtage " + territory.getBuildPrice() / 2 + "?", "Ja", "Nej");
@@ -118,7 +118,7 @@ public class Pawn {
 
 					while (run == true)
 					{
-						if (0 < territory.getHouseCount())
+						if (0 < territory.getHouseCount() && territory.getOwner() == player)
 						{
 							boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hus og modtage " + territory.getBuildPrice() / 2 + "?", "Ja", "Nej");
 
@@ -128,7 +128,7 @@ public class Pawn {
 								gui.setGUIBalance(player.acc.getBalance(), player.toString());
 								player.setWorth(-territory.getBuildPrice());
 								player.setHouseCount(-1);
-								territory.setHouse(player.getHouseCount() - 1);
+								territory.setHouse(-1);
 								gui.setHouses(territory.getID(), territory.getHouseCount());
 							}
 							else if (reply == false)
