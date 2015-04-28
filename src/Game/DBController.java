@@ -22,7 +22,7 @@ public class DBController {
 
 		stmt = con.createStatement();
 
-		String sql = "CREATE DATABASE IF NOT EXISTS Matador";
+		String sql = "CREATE DATABASE IF NOT EXISTS MatadorGrp4";
 		stmt.executeUpdate(sql);
 		}
 		catch (Exception e)
