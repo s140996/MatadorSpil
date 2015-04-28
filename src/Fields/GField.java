@@ -23,7 +23,7 @@ public abstract class GField {
 	
 	public String getName()
 	{
-		return this.name;
+		return name;
 	}
 	
 	public void setID(int id)
