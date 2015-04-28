@@ -12,13 +12,13 @@ public class InPrison {
 		gui.showMessage("Det er " + player.toString() + "'s tur!");
 		if (player.getPrisonCard() > 0)
 		{
-			gui.showMessage("Du har brugt din benådning fra fænslet, du er nu fri igen!");
+			gui.showMessage("Du har brugt din benådning fra fængslet, du er nu fri igen!");
 			player.setPrisonCard(player.getPrisonCard()-1);
 			player.setConvict(false);
 		}
 		else
 		{
-			boolean reply = gui.boolButton("Betal 1000,- for din frihed eller kast terningerne og prøv lykken?", "Betal", "Kast");
+			boolean reply = gui.boolButton("Betal 1000 for din frihed eller kast terningerne og prøv lykken?", "Betal", "Kast");
 			if(reply == true)
 			{	
 				player.acc.deposit(-1000);
