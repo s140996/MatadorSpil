@@ -21,8 +21,22 @@ public class Account {
 	
 	public void deposit(int newCash)
 	{
-		this.balance = this.balance + newCash;
+		if(newCash >= 0)
+		{
+			this.balance += newCash;
+		}
 	}
 
+	public void withdraw(int newCash)
+	{
+		if(newCash <= this.balance)
+		{
+			this.balance -= newCash;
+		}
+		else if(newCash > this.balance)
+		{
+			this.balance = 0;
+		}
+	}
 	
 }
