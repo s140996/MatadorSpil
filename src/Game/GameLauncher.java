@@ -23,7 +23,7 @@ public class GameLauncher {
 	public void game()
 	{
 		gui.createGameboard(gb);
-		//cc.randomizer();
+		cc.randomizer();
 
 		switch(gui.startMenu())
 		{
@@ -31,7 +31,7 @@ public class GameLauncher {
 			newGame();
 			break;
 		case "Load spil":
-			loadGame();
+			
 			break;
 		}
 
@@ -53,13 +53,6 @@ public class GameLauncher {
 			gui.addPlayer(playerlist[playerNo].toString());
 		}
 
-	}
-
-	public void loadGame()
-	{
-		//Skal loade fra databasen
-
-		//Mangler
 	}
 
 	public void turn()

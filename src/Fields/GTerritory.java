@@ -79,7 +79,7 @@ public class GTerritory extends GOwnable {
 				}
 				else
 				{
-					GGUI.showMessage("Du valgte ikke at købe grunde.");
+					GGUI.showMessage("Du valgte ikke at købe grunden.");
 				}
 				
 			}
