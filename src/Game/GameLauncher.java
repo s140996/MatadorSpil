@@ -120,8 +120,11 @@ public class GameLauncher {
 						}
 						
 						break;
+					case "Sælg hotel":
+						pawn.sellHotel(playerlist[playerNo], gb, gui);
+						break;
 					case "Sælg huse":
-						pawn.pawnGround(playerlist[playerNo], gb, gui);
+						
 						break;
 					case "Pantsæt":
 						pawn.pawnGround(playerlist[playerNo], gb, gui);

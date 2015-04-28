@@ -20,7 +20,7 @@ public class Pawn {
 				if (ownField.getPawn() == false && ownField.getOwner() == player)
 				{
 					count++;
-					boolean reply = gui.boolButton("Vil du pantsætte " + ownField.getName() + " og modtag " + ownField.getPrice() / 2 + "?", "Ja", "Nej");
+					boolean reply = gui.boolButton("Vil du pantsætte " + ownField.getName() + " og modtage " + ownField.getPrice() / 2 + "?", "Ja", "Nej");
 					
 					if (reply == true)
 					{
@@ -38,7 +38,7 @@ public class Pawn {
 				if (territory.getPawn() == false && territory.getHouseCount() == 0 && territory.getHotelCount() == 0 && territory.getOwner() == player)
 				{
 					count++;
-					boolean reply = gui.boolButton("Vil du pantsætte " + territory.getName() + " og modtag " + territory.getPrice() / 2 + "?", "Ja", "Nej");
+					boolean reply = gui.boolButton("Vil du pantsætte " + territory.getName() + " og modtage " + territory.getPrice() / 2 + "?", "Ja", "Nej");
 					
 					if (reply == true)
 					{
@@ -59,7 +59,7 @@ public class Pawn {
 		
 	}
 	
-	public void pawnBuilding (Player player, GameBoard gb, GUIController gui)
+	public void sellHotel (Player player, GameBoard gb, GUIController gui)
 	{
 		int count = 0;
 		
@@ -73,20 +73,28 @@ public class Pawn {
 				
 				if (territory.getHotelCount() == 1)
 				{
+					count++;
+					boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hotel og modtage " + territory.getPrice() / 2 + "?", "Ja", "Nej");
 					
-				}
-					
-				if (territory.getHotelCount() > 0)
-				{
-					
-					
+					if (reply == true)
+					{
+					player.acc.deposit(territory.getBuildPrice() / 2);
+					gui.setGUIBalance(player.acc.getBalance(), player.toString());
+					player.setWorth(-territory.getBuildPrice());
+					player.setHotelCount(-1);
+					territory.removeHotel();
+					gui.setHotel(territory.getID(), false);
+					player.setHouseCount(4);
+					territory.setHouse(4);
+					gui.setHouses(territory.getID(), territory.getHouseCount());
+					}
 				}
 			}
 		}
 		
 		if (count == 0)
 		{
-			gui.showMessage("Du har ingen grunde at pantsætte. Bemærk, hvis der er bygget huse eller hoteller på en grund, så skal de sælges før, at den kan pantsættes.");
+			gui.showMessage("Du har ingen hoteller at sælge.");
 		}
 	}
 	

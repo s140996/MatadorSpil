@@ -309,5 +309,15 @@ public class GTerritory extends GOwnable {
 			return 0;
 		}
 	}
+	
+	public void setHouse(int house)
+	{
+		this.houseCount = this.houseCount + house;
+	}
+	
+	public void removeHotel()
+	{
+		this.hasHotel = false;
+	}
 
 }
