@@ -89,6 +89,9 @@ public class GameLauncher {
 						//Flytter spiller
 						playerlist[playerNo].changePosition(cup.getLastRoll(), gui);
 						gui.moveCar(playerlist[playerNo].getPosition(), playerlist[playerNo].toString());
+						
+						//Sætter lastBalance
+						playerlist[playerNo].acc.setLastBalance(playerlist[playerNo].acc.getBalance());
 
 						//Spilleren lander på feltet
 						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup, gb);

@@ -30,7 +30,7 @@ public class GTaxTest {
 	private boolean convict = false;
 	private boolean alive = true;
 	
-	Player Player = new Player(name, worth, position, prisonCard, fleetsOwned, brewerysOwned, houseCount, hotelCount, convict, alive);
+	Player Player = new Player(name, worth, position, prisonCard, fleetsOwned, brewerysOwned, convict, alive);
 	Account Account = new Account(10000);
 	
 	@Test
