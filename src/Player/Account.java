@@ -3,6 +3,7 @@ package Player;
 public class Account {
 	
 	private int balance;
+	private int lastBalance;
 	
 	public Account(int balance)
 	{
@@ -17,6 +18,16 @@ public class Account {
 	public int getBalance()
 	{
 		return balance;
+	}
+	
+	public void setLastBalance(int Cash)
+	{
+		this.balance = Cash;
+	}
+	
+	public int getLastBalance()
+	{
+		return this.lastBalance;
 	}
 	
 	public void deposit(int newCash)
