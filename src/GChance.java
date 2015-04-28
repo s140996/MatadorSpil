@@ -112,7 +112,7 @@ public class GChance extends GField {
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 						if(pay2 > 0)
 						{
-						GGUI.showMessage(territory.getOwner().toString() + " skal betale " + pay + " kr i ejendomsskat for bebyggelsen på " + territory.getName());
+							GGUI.showMessage(territory.getOwner().toString() + " skal betale " + pay + " kr i ejendomsskat for bebyggelsen på " + territory.getName());
 						}
 					}
 				}
@@ -252,9 +252,9 @@ public class GChance extends GField {
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 						if(pay > 0)
 						{
-						GGUI.showMessage(territory.getOwner().toString() + " skal betale " + pay + " kr for bebyggelsen på " + territory.getName());
+							GGUI.showMessage(territory.getOwner().toString() + " skal betale " + pay + " kr for bebyggelsen på " + territory.getName());
 						}
-						}
+					}
 				}
 			}
 			break;
