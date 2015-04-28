@@ -82,11 +82,23 @@ public class GBrewery extends GOwnable {
 
 						GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + ",- til " + getOwner() + " for drikkevarerne!");
 
-						player.acc.withdraw(pay);
-						super.getOwner().acc.deposit(pay);
+						if( player.acc.getBalance() < pay )
+						{
+							getOwner().acc.deposit(player.acc.getBalance());
+							player.acc.setBalance(0);
+							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+							GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+							GGUI.showMessage("Du har ikke råd til at betale, og derfor ude af spillet");
+						}
+						
+						else if( player.acc.getBalance() > pay)
+						{
+							player.acc.withdraw(pay);
+							super.getOwner().acc.deposit(pay);
+							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+							GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+						}
 
-						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-						GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
 					}
 				}
 
