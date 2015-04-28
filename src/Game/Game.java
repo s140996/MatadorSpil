@@ -1,11 +1,9 @@
 package Game;
 
-
 public class Game {
 
 	public static void main(String[] args) {
-		GameLauncher game = new GameLauncher();
-		game.game();
+		new GameLauncher().game();
 	}
 	
 }
