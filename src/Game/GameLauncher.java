@@ -19,7 +19,8 @@ public class GameLauncher {
 	private Player[] playerlist;
 
 	private ChanceCardList cc = new ChanceCardList();
-
+	private DBController db = new DBController();
+	
 	public void game()
 	{
 		gui.createGameboard(gb);
@@ -31,7 +32,7 @@ public class GameLauncher {
 			newGame();
 			break;
 		case "Load spil":
-			
+			db.load();
 			break;
 		}
 
@@ -123,7 +124,7 @@ public class GameLauncher {
 						pawn.pawnGround(playerlist[playerNo], gb, gui);
 						break;
 					case "Gem spil":
-
+						db.save();
 						break;
 					}
 				}
