@@ -77,6 +77,11 @@ public class GTerritory extends GOwnable {
 					GGUI.setOwner(id, player.toString());
 					player.setWorth(super.getPrice());
 				}
+				else
+				{
+					GGUI.showMessage("Du valgte ikke at købe grunde.");
+				}
+				
 			}
 			else if (super.getOwner() == player)
 			{
