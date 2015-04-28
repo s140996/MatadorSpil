@@ -53,7 +53,12 @@ public class DBController {
 				+ "Name varchar(255) primary key,"
 				+ "Position int,"
 				+ "Color varchar(255),"
-				+ "PrisonCard int"
+				+ "PrisonCard int,"
+				+ "worth int,"
+				+ "fleetsOwned int,"
+				+ "brewerysOwned int,"
+				+ "convict boolean,"
+				+ "alive boolean,"
 				+ ");";
 		
 		stmt.executeUpdate(sql);
