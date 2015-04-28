@@ -47,7 +47,7 @@ public class DBController {
 		con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
 		stmt = con.createStatement();
-		String sql = "DROP TABLE IF EXCISTS Player;";
+		String sql = "DROP TABLE IF EXISTS Player;";
 		
 		stmt.executeUpdate(sql);
 		
