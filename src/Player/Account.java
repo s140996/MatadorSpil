@@ -37,6 +37,7 @@ public class Account {
 		{
 			this.balance = 0;
 		}
+		
 	}
 	
 }

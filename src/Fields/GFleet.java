@@ -56,7 +56,7 @@ public class GFleet extends GOwnable {
 			boolean reply = GGUI.boolButton("Vil du købe din pantsatte grund tilbage?", "Ja", "Nej");
 			if (reply == true)
 			{
-				player.acc.deposit(-getPrice() / 2);
+				player.acc.withdraw(getPrice() / 2);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setWorth(super.getPrice());
 				super.setPawn(false);
@@ -77,7 +77,7 @@ public class GFleet extends GOwnable {
 				{
 					super.setOwner(player);
 					GGUI.setOwner(super.getID(), player.toString());
-					player.acc.deposit(-super.getPrice());
+					player.acc.withdraw(super.getPrice());
 					player.setWorth(super.getPrice());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					player.setFleetsOwned(player.getFleetsOwned()+1);
@@ -105,7 +105,7 @@ public class GFleet extends GOwnable {
 					else 
 					{
 						GGUI.showMessage("Du er landet på en Færge der er ejet af " + getOwner() + ", betal billetten på " + getRent() + ",-");
-						player.acc.deposit(-getRent());
+						player.acc.withdraw(getRent());
 						super.getOwner().acc.deposit(getRent());
 
 						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
