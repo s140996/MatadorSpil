@@ -1,6 +1,8 @@
 package Game;
 import java.sql.*;
 
+import Player.Player;
+
 public class DBController {
 
 	private String JDBC_driver = "com.mysql.jdbc.Driver";
@@ -34,7 +36,7 @@ public class DBController {
 		}
 	}
 	
-	public void save()
+	public void save(Player[] playerlist)
 	{	
 		con = null;
 		stmt = null;
@@ -62,6 +64,13 @@ public class DBController {
 				+ ");";
 		
 		stmt.executeUpdate(sql);
+		
+		for (int i = 1; i < playerlist.length + 1; i++)
+		{
+			sql = "INSERT INTO Player VALUES ('" + playerlist[i].toString() + "', ";
+			
+			stmt.executeUpdate(sql);
+		}
 		
 		}
 		catch (Exception e)
