@@ -10,7 +10,7 @@ public class ChanceCardList {
 	private ChanceCard c2 = new ChanceCard("CHANCEKORT: Ryk frem til start.", 0, 1);
 	private ChanceCard c3 = new ChanceCard("CHANCEKORT: Gå i fængsel.", 0, 11);
 	private ChanceCard c4 = new ChanceCard("CHANCEKORT: Gå i fængsel.", 0, 11);
-	private ChanceCard c5 = new ChanceCard("CHANCEKORT: Du har haft for mange cigaretter med hjem. Betal 200,-. i told-bøde", -200, 0);
+	private ChanceCard c5 = new ChanceCard("CHANCEKORT: Du har haft for mange cigaretter med hjem. Betal 200,- i told-bøde.", -200, 0);
 	private ChanceCard c6 = new ChanceCard("CHANCEKORT: Du har modtaget din tandlægeregning. Betal 2000,-.", -2000, 0);
 	private ChanceCard c7 = new ChanceCard("CHANCEKORT: Du har haft 12 rigtige i tips 13. Modtag 1000,-.", 1000, 0);
 	private ChanceCard c8 = new ChanceCard("CHANCEKORT: Din restskat er gået ind. Modtag 1000,-.", 1000, 0);
