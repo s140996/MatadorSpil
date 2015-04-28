@@ -7,22 +7,29 @@ public class DBController {
 	private String DB_url = "jdbc:mysql://localhost/";
 	private String USER = "root";
 	private String PASS = "";
+	private String dbName = "MatadorGrp4";
+	private Connection con;
+	private Statement stmt;
 
 	public DBController() 
 	{
-		Connection con = null;
-		Statement stmt = null;
+		con = null;
+		stmt = null;
 
 		try 
 		{
 		Class.forName(JDBC_driver);
 
 		//Opretter forbindelse til databasen
-		con = DriverManager.getConnection(DB_url, USER, PASS);
+		con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
 		stmt = con.createStatement();
 
-		String sql = "CREATE DATABASE IF NOT EXISTS MatadorGrp4";
+		String sql = "CREATE TABLE Player ("
+				+ "ID int,"
+				+ "Name varchar(255) primary key"
+				+ ");";
+		
 		stmt.executeUpdate(sql);
 		}
 		catch (Exception e)
@@ -32,8 +39,23 @@ public class DBController {
 	}
 	
 	public void save()
-	{
+	{	
+		con = null;
+		stmt = null;
 		
+		try
+		{
+		Class.forName(JDBC_driver);
+
+		//Opretter forbindelse til databasen
+		con = DriverManager.getConnection(DB_url, USER, PASS);
+
+		stmt = con.createStatement();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void load()
