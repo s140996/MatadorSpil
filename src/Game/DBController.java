@@ -47,13 +47,17 @@ public class DBController {
 		con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
 		stmt = con.createStatement();
-		String sql = "DROP TABLE IF EXCISTS Player;"
-				+ "CREATE TABLE Player ("
-				+ "ID int,"
-				+ "Name varchar(255) primary key"
-				+ ");";
+		String sql = "DROP TABLE IF EXCISTS Player;";
 		
 		stmt.executeUpdate(sql);
+		
+		sql = "CREATE TABLE Player ("
+		+ "ID int,"
+		+ "Name varchar(255) primary key"
+		+ ");";
+		
+		stmt.executeUpdate(sql);
+		
 		}
 		catch (Exception e)
 		{
