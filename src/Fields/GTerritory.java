@@ -109,7 +109,7 @@ public class GTerritory extends GOwnable {
 					while (run == true) {
 						if (0 < houseCount && houseCount < 4)
 						{
-							boolean reply = GGUI.boolButton("Vil du købe endnu et hus på denne grund?", "Køb huset", "Nej tak");
+							boolean reply = GGUI.boolButton("Vil du købe endnu et hus på denne grund?", "Køb et hus", "Nej tak");
 
 							if (reply == true) 
 							{
