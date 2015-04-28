@@ -59,4 +59,35 @@ public class Pawn {
 		
 	}
 	
+	public void pawnBuilding (Player player, GameBoard gb, GUIController gui)
+	{
+		int count = 0;
+		
+		for(int i = 0; i < 40; i++)
+		{
+			GField field = gb.getField(i);
+			
+			if (field.getType() == "Territory")
+			{
+				GTerritory territory = (GTerritory) field;
+				
+				if (territory.getHotelCount() == 1)
+				{
+					
+				}
+					
+				if (territory.getHotelCount() > 0)
+				{
+					
+					
+				}
+			}
+		}
+		
+		if (count == 0)
+		{
+			gui.showMessage("Du har ingen grunde at pantsætte. Bemærk, hvis der er bygget huse eller hoteller på en grund, så skal de sælges før, at den kan pantsættes.");
+		}
+	}
+	
 }
