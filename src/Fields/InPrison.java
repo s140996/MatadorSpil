@@ -18,7 +18,7 @@ public class InPrison {
 		}
 		else
 		{
-			boolean reply = gui.boolButton("Betal 1000 kr for din frihed eller kast terningerne og prøv lykken?", "Betal", "Kast");
+			boolean reply = gui.boolButton("Betal 1000,- for din frihed eller kast terningerne og prøv lykken?", "Betal", "Kast");
 			if(reply == true)
 			{	
 				player.acc.deposit(-1000);

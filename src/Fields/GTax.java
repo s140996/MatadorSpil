@@ -39,7 +39,7 @@ public class GTax extends GField {
 		
 		if (this.percentageTax != 0)
 		{
-			boolean replay = GGUI.boolButton("Hvor meget vil du betale?", this.percentageTax + "% af samlet værdi", "" + this.baseTax);
+			boolean replay = GGUI.boolButton("Hvor meget vil du betale?", this.percentageTax + "% af samlet værdi", "" + this.baseTax  + ",-");
 			
 			if(replay == true)
 			{
@@ -60,7 +60,7 @@ public class GTax extends GField {
 		}
 		
 		GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-		GGUI.showMessage("Det betyder, at du skal betale " + (int) pay);
+		GGUI.showMessage("Det betyder, at du skal betale " + (int) pay  + ",-");
 	}
 	
 

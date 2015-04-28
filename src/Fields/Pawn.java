@@ -20,7 +20,7 @@ public class Pawn {
 				if (ownField.getPawn() == false && ownField.getOwner() == player)
 				{
 					count++;
-					boolean reply = gui.boolButton("Vil du pantsætte " + ownField.getName() + " og modtage " + ownField.getPrice() / 2 + "?", "Ja", "Nej");
+					boolean reply = gui.boolButton("Vil du pantsætte " + ownField.getName() + " og modtage " + ownField.getPrice() / 2 + ",-?", "Ja", "Nej");
 
 					if (reply == true)
 					{
@@ -38,7 +38,7 @@ public class Pawn {
 				if (territory.getPawn() == false && territory.getHouseCount() == 0 && territory.getHotelCount() == 0 && territory.getOwner() == player)
 				{
 					count++;
-					boolean reply = gui.boolButton("Vil du pantsætte " + territory.getName() + " og modtage " + territory.getPrice() / 2 + "?", "Ja", "Nej");
+					boolean reply = gui.boolButton("Vil du pantsætte " + territory.getName() + " og modtage " + territory.getPrice() / 2 + ",-?", "Ja", "Nej");
 
 					if (reply == true)
 					{
@@ -74,7 +74,7 @@ public class Pawn {
 				if (territory.getHotelCount() == 1 && territory.getOwner() == player)
 				{
 					count++;
-					boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hotel og modtage " + territory.getBuildPrice() / 2 + "?", "Ja", "Nej");
+					boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hotel og modtage " + territory.getBuildPrice() / 2 + ",-?", "Ja", "Nej");
 
 					if (reply == true)
 					{
@@ -120,7 +120,7 @@ public class Pawn {
 					{
 						if (0 < territory.getHouseCount())
 						{
-							boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hus og modtage " + territory.getBuildPrice() / 2 + "?", "Ja", "Nej");
+							boolean reply = gui.boolButton("Vil du sælge " + territory.getName() + "'s hus og modtage " + territory.getBuildPrice() / 2 + ",-?", "Ja", "Nej");
 
 							if (reply == true)
 							{

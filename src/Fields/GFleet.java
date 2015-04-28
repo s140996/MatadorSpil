@@ -60,12 +60,12 @@ public class GFleet extends GOwnable {
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setWorth(super.getPrice());
 				super.setPawn(false);
-				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2);
+				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2 + ",-");
 			}
 		}
 		else if (super.getPawn() == true)
 		{
-			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så der sker intet på dette felt.");
+			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så du skal ikke betale til ejeren.");
 		}
 		else
 		{
@@ -104,7 +104,7 @@ public class GFleet extends GOwnable {
 
 					else 
 					{
-						GGUI.showMessage("Du er landet på en Færge der er ejet af " + getOwner() + ", betal billetten " + getRent());
+						GGUI.showMessage("Du er landet på en Færge der er ejet af " + getOwner() + ", betal billetten på " + getRent() + ",-");
 						player.acc.deposit(-getRent());
 						super.getOwner().acc.deposit(getRent());
 

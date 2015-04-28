@@ -144,7 +144,7 @@ public class GUIController {
 				.setBgColor(start.getColor())
 				.setTitle(start.getName())
 				.setFgColor(Color.white)
-				.setDescription("Modtag 4000, når du lander på eller passerer start!")
+				.setDescription("Modtag 4000,-, når du lander på eller passerer start!")
 				.setSubText("Modtag: 4000")
 				.build();
 				break;
@@ -153,8 +153,8 @@ public class GUIController {
 				GTerritory territory = (GTerritory) field;
 				fields[i] = new Street.Builder()
 				.setTitle(territory.getName())
-				.setDescription("Hus/hotel-pris: " + territory.getBuildPrice())
-				.setSubText("Pris: " + territory.getPrice())
+				.setDescription("Hus/hotel-pris: " + territory.getBuildPrice() + ",-")
+				.setSubText("Pris: " + territory.getPrice() + ",-")
 				.setBgColor(territory.getColor())
 				.build();
 				break;
@@ -170,7 +170,7 @@ public class GUIController {
 				GFleet fleet = (GFleet) field;
 				fields[i] = new Shipping.Builder()
 				.setTitle("")
-				.setSubText("Pris: " + fleet.getPrice())
+				.setSubText("Pris: " + fleet.getPrice() + ",-")
 				.setDescription(fleet.getName())
 				.setBgColor(fleet.getColor())
 				.build();
@@ -184,7 +184,7 @@ public class GUIController {
 					fields[i] = new Tax.Builder()
 					.setTitle("Betal: " + tax.getBasetax())
 					.setDescription(tax.getName())
-					.setSubText("Du kan vælge at betale " + tax.getBasetax() + " eller " + (int) tax.getPercentageTax() + "% af, hvad du har af værdier!")
+					.setSubText("Du kan vælge at betale " + tax.getBasetax() + ",- eller " + (int) tax.getPercentageTax() + "% af, hvad du har af værdier!")
 					.setBgColor(tax.getColor())
 					.build();
 				}
@@ -193,7 +193,7 @@ public class GUIController {
 					fields[i] = new Tax.Builder()
 					.setTitle("Betal: " + tax.getBasetax())
 					.setDescription(tax.getName())
-					.setSubText("Du skal betale en skat på " + tax.getBasetax() + "!")
+					.setSubText("Du skal betale en skat på " + tax.getBasetax() + ",-!")
 					.setBgColor(tax.getColor())
 					.build();
 				}
@@ -203,7 +203,7 @@ public class GUIController {
 				GBrewery brewery = (GBrewery) field;
 				fields[i] = new Brewery.Builder()
 				.setTitle(brewery.getName())
-				.setDescription("Leje: Ejes én virksomhed, så betales " + brewery.getRent() + " gange øjnene, ellers hvis det er den samme ejer ved begge virksomheder, så betales " + 2 * brewery.getRent() + " gange øjnene.")
+				.setDescription("Leje: Ejes én virksomhed, så betales " + brewery.getRent() + ",- gange øjnene, ellers hvis det er den samme ejer ved begge virksomheder, så betales " + 2 * brewery.getRent() + ",- gange øjnene.")
 				.setSubText("Pris: " + brewery.getPrice())
 				.build();
 				break;

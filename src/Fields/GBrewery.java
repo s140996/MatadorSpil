@@ -31,12 +31,12 @@ public class GBrewery extends GOwnable {
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setWorth(super.getPrice());
 				super.setPawn(false);
-				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2);
+				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2 + ",-");
 			}
 		}
 		else if (super.getPawn() == true)
 		{
-			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så der sker intet på dette felt.");
+			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så du skal ikke betale til ejeren.");
 		}
 		else
 		{
@@ -80,7 +80,7 @@ public class GBrewery extends GOwnable {
 
 						int pay = multi * getRent() * cup.getLastRoll();
 
-						GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + " til " + getOwner() + " for drikkevarerne!");
+						GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + ",- til " + getOwner() + " for drikkevarerne!");
 
 						player.acc.deposit(-pay);
 						super.getOwner().acc.deposit(pay);
