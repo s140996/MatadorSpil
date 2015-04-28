@@ -106,7 +106,7 @@ public class GChance extends GField {
 			break;
 		case 3:
 			// ejendomsskat
-			for(int i = 0; i>40; i++)
+			for(int i = 0; i < 40; i++)
 			{
 				GField field = gb.getField(i);
 				if (field.getType() == "Territory")
@@ -246,7 +246,7 @@ public class GChance extends GField {
 			break;
 		case 6:
 			//Oliepriserne er steget
-			for(int i = 0; i>40; i++)
+			for(int i = 0; i < 40; i++)
 			{
 				GField field = gb.getField(i);
 				if (field.getType() == "Territory")
