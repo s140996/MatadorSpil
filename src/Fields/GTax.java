@@ -1,4 +1,11 @@
+package Fields;
 import java.awt.Color;
+
+import ChanceCard.ChanceCardList;
+import Die.Cup;
+import Game.GUIController;
+import Game.GameBoard;
+import Player.Player;
 
 public class GTax extends GField {
 

@@ -1,3 +1,8 @@
+package Fields;
+import Die.Cup;
+import Game.GUIController;
+import Player.Player;
+
 
 public class InPrison {
 

@@ -1,3 +1,6 @@
+package Player;
+import Game.GUIController;
+
 public class Player {
 	
 	private String name;

@@ -1,3 +1,6 @@
+package Fields;
+import Player.Player;
+
 
 public abstract class GOwnable extends GField {
 

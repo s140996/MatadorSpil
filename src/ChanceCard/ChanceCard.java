@@ -1,3 +1,4 @@
+package ChanceCard;
 
 public class ChanceCard {
 

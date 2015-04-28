@@ -1,5 +1,17 @@
+package Game;
 import java.awt.Color;
 
+import Fields.GBrewery;
+import Fields.GChance;
+import Fields.GField;
+import Fields.GFleet;
+import Fields.GGoPrison;
+import Fields.GParking;
+import Fields.GPrison;
+import Fields.GStart;
+import Fields.GTax;
+import Fields.GTerritory;
+import Player.Player;
 import desktop_codebehind.Car;
 import desktop_fields.*;
 import desktop_resources.GUI;

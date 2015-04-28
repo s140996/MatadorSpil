@@ -1,3 +1,10 @@
+package Fields;
+import ChanceCard.ChanceCardList;
+import Die.Cup;
+import Game.GUIController;
+import Game.GameBoard;
+import Player.Player;
+
 public class GPrison extends GField {
 	
 	public GPrison (int id, String name)

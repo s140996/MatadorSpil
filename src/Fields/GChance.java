@@ -1,5 +1,13 @@
+package Fields;
 import java.awt.*;
 import java.util.*;
+
+import ChanceCard.ChanceCard;
+import ChanceCard.ChanceCardList;
+import Die.Cup;
+import Game.GUIController;
+import Game.GameBoard;
+import Player.Player;
 
 
 public class GChance extends GField {
