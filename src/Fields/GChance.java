@@ -115,7 +115,7 @@ public class GChance extends GField {
 					if(territory.isOwned() == true && territory.getPawn() == false)
 					{
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2300;
-						territory.getOwner().acc.deposit(pay2);
+						territory.getOwner().acc.deposit(-pay2);
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 						if(pay2 > 0)
 						{
@@ -255,7 +255,7 @@ public class GChance extends GField {
 					if(territory.isOwned() == true && territory.getPawn() == false)
 					{
 						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2000;
-						territory.getOwner().acc.deposit(pay2);
+						territory.getOwner().acc.deposit(-pay2);
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 						if(pay > 0)
 						{
