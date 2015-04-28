@@ -10,6 +10,11 @@ public class AccountTest {
 
 	Account Account = new Account(5000);
 	
+	@Test
+	public void testAccount() {
+		Account = new Account(2500);
+		assertEquals(Account.getBalance(),2500);
+	}
 	
 	@Test
 	public void testgetBalance() {
