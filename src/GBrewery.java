@@ -46,7 +46,7 @@ public class GBrewery extends GOwnable {
 			{
 				if (super.getOwner().getConvict() == true)
 				{
-					GGUI.showMessage("Ejeren sidder i fængsel og kan ikke modtage betaling!");
+					GGUI.showMessage(getOwner() + " sidder i fængsel og kan ikke modtage betaling!");
 				}
 
 				else 
@@ -55,7 +55,7 @@ public class GBrewery extends GOwnable {
 
 					int pay = multi * getRent() * cup.getLastRoll();
 					
-					GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + " til ejeren for drikkevarerne!");
+					GGUI.showMessage("Velkommen til bryggeriet, betal: " + pay + " til " + getOwner() + " for drikkevarerne!");
 
 					player.acc.deposit(-pay);
 					super.getOwner().acc.deposit(pay);

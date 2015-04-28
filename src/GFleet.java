@@ -73,12 +73,12 @@ public class GFleet extends GOwnable {
 			{
 				if (super.getOwner().getConvict() == true)
 				{
-					GGUI.showMessage("Ejeren sidder i fængslel og kan ikke modtage betaling!");
+					GGUI.showMessage(getOwner() + " sidder i fængslel og kan ikke modtage betaling!");
 				}
 
 				else 
 				{
-					GGUI.showMessage("Du er landet på en Færge der er ejet af en anden spiller, betal billetten " + getRent());
+					GGUI.showMessage("Du er landet på en Færge der er ejet af " + getOwner() + ", betal billetten " + getRent());
 					player.acc.deposit(-getRent());
 					super.getOwner().acc.deposit(getRent());
 
