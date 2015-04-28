@@ -124,7 +124,7 @@ public class GameLauncher {
 						pawn.sellHotel(playerlist[playerNo], gb, gui);
 						break;
 					case "Sælg huse":
-						
+						pawn.sellHouse(playerlist[playerNo], gb, gui);
 						break;
 					case "Pantsæt":
 						pawn.pawnGround(playerlist[playerNo], gb, gui);
