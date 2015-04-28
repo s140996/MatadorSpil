@@ -15,7 +15,6 @@ public abstract class GField {
 	private Color color;
 	
 	public abstract void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb);
-	public abstract void removeOwner(Player player, int fieldnumber, GUIController GGUI);
 	
 	public void setName(String name)
 	{

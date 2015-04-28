@@ -25,12 +25,6 @@ public class GGoPrison extends GField{
 		cup.resetDoubleRoll();
 	}
 
-	@Override
-	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 	
 }

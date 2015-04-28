@@ -21,10 +21,5 @@ public class GParking extends GField {
 		
 	}
 
-	@Override
-	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

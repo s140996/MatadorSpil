@@ -19,10 +19,5 @@ public class GPrison extends GField {
 		GGUI.showMessage("Du er på besøg i fængslet. Giv agt!");		
 	}
 
-	@Override
-	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

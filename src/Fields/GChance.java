@@ -1,6 +1,5 @@
 package Fields;
 import java.awt.*;
-import java.util.*;
 
 import ChanceCard.ChanceCard;
 import ChanceCard.ChanceCardList;
@@ -267,12 +266,6 @@ public class GChance extends GField {
 			}
 			break;
 		}
-	}
-
-	@Override
-	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

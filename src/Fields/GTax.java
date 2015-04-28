@@ -62,13 +62,6 @@ public class GTax extends GField {
 		GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 		GGUI.showMessage("Det betyder, at du skal betale " + (int) pay);
 	}
-
-	@Override
-	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		// TODO Auto-generated method stub
-		//Her sker der intet, da den ikke kan ejes.
-	}
-	
 	
 
 }

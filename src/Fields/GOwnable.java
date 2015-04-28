@@ -1,4 +1,5 @@
 package Fields;
+import Game.GUIController;
 import Player.Player;
 
 
@@ -7,6 +8,8 @@ public abstract class GOwnable extends GField {
 	private int price;
 	private Player owner;
 	private boolean pawn;
+	
+	public abstract void removeOwner(Player player, int fieldnumber, GUIController GGUI);
 	
 	public abstract int getRent(); 
 
