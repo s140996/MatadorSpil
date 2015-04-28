@@ -81,10 +81,8 @@ public class Pawn {
 						player.acc.deposit(territory.getBuildPrice() / 2);
 						gui.setGUIBalance(player.acc.getBalance(), player.toString());
 						player.setWorth(-territory.getBuildPrice());
-						player.setHotelCount(-1);
 						territory.removeHotel();
 						gui.setHotel(territory.getID(), false);
-						player.setHouseCount(4);
 						territory.setHouse(4);
 						gui.setHouses(territory.getID(), territory.getHouseCount());
 					}
@@ -127,7 +125,6 @@ public class Pawn {
 								player.acc.deposit(territory.getBuildPrice() / 2);
 								gui.setGUIBalance(player.acc.getBalance(), player.toString());
 								player.setWorth(-territory.getBuildPrice());
-								player.setHouseCount(-1);
 								territory.setHouse(-1);
 								gui.setHouses(territory.getID(), territory.getHouseCount());
 							}

@@ -98,7 +98,6 @@ public class GTerritory extends GOwnable {
 							player.acc.withdraw(buildPrice);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							this.houseCount++;
-							super.getOwner().setHotelCount(1);
 							GGUI.setHouses(id, this.houseCount);
 							player.setWorth(this.buildPrice);
 						}
@@ -116,7 +115,6 @@ public class GTerritory extends GOwnable {
 								player.acc.withdraw(this.buildPrice);
 								GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 								this.houseCount++;
-								super.getOwner().setHouseCount(1);
 								GGUI.setHouses(this.id, this.houseCount);
 								player.setWorth(this.buildPrice);
 							}
@@ -140,8 +138,6 @@ public class GTerritory extends GOwnable {
 						{
 							player.acc.withdraw(buildPrice);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-							super.getOwner().setHotelCount(1);
-							super.getOwner().setHouseCount(-4);
 							this.houseCount = 0;
 							this.hasHotel = true;
 							GGUI.setHotel(this.id, this.hasHotel);
