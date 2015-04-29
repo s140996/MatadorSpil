@@ -137,7 +137,7 @@ public class DBController {
 			for (int i = 0; i < 40; i++)
 			{
 				GOwnable own= (GOwnable) gb.getField(i);
-				
+				GTerritory territory = (GTerritory) gb.getField(i);
 				
 				
 				sql = "INSERT INTO GameBoard VALUES ("
@@ -145,7 +145,9 @@ public class DBController {
 						+ gb.getField(i).getID() + ", '"
 						+ gb.getField(i).getName() + "','"
 						+ own.getOwner().toString() + "',"
-						+ own.getPawn()
+						+ own.getPawnDB() + ","
+						+ territory.getHouseCount() + ","
+						+ territory.getHotelCount()
 						+ ");";
 
 				stmt.executeUpdate(sql);
