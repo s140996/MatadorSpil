@@ -2,6 +2,7 @@ package Game;
 import ChanceCard.ChanceCardList;
 import Die.Cup;
 import Fields.GField;
+import Fields.GOwnable;
 import Fields.GTerritory;
 import Fields.InPrison;
 import Fields.Pawn;
@@ -22,7 +23,7 @@ public class GameLauncher {
 
 	private ChanceCardList cc = new ChanceCardList();
 	private DBController db = new DBController();
-	
+
 	public void game()
 	{
 		gui.createGameboard(gb);
@@ -91,62 +92,35 @@ public class GameLauncher {
 						//Flytter spiller
 						playerlist[playerNo].changePosition(cup.getLastRoll(), gui);
 						gui.moveCar(playerlist[playerNo].getPosition(), playerlist[playerNo].toString());
-						
+
 						//Sætter lastBalance
 						playerlist[playerNo].acc.setLastBalance(playerlist[playerNo].acc.getBalance());
 
 						//Spilleren lander på feltet
 						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup, gb);
-						
+
 						//Tjekker om spiller har tabt
 						if (playerlist[playerNo].acc.getBalance() == 0)
 						{
-							
 							gui.playerLost(playerlist[playerNo].toString());
-							
+
 							playerlist[playerNo].setAlive(false);
-							
+
 							for(int i = 0; i < 40; i++)
 							{
 								GField field = gb.getField(i);
-								if (field.getType() == "Territory")
+								if (field.getType() == "Territory" || field.getType() == "Fleet" || field.getType() == "Brewery")
 								{
-									GTerritory territory = (GTerritory) field;
-									if (territory.getOwner() == playerlist[playerNo])
+									GOwnable ownField = (GOwnable) field;
+									if (ownField.getOwner() == playerlist[playerNo])
 									{
 										gui.removeOwner(i);
-										territory.removeOwner(playerlist[playerNo], i, gui);
-									}
-								}
-						}
-							for(int i = 0; i < 40; i++)
-							{
-								GField field = gb.getField(i);
-								if (field.getType() == "Fleet")
-								{
-									GTerritory fleet = (GTerritory) field;
-									if (fleet.getOwner() == playerlist[playerNo])
-									{
-										gui.removeOwner(i);
-										fleet.removeOwner(playerlist[playerNo], i, gui);
-									}
-								}
-							}
-							for(int i = 0; i < 40; i++)
-							{
-								GField field = gb.getField(i);
-								if (field.getType() == "Brewery")
-								{
-									GTerritory brewery = (GTerritory) field;
-									if (brewery.getOwner() == playerlist[playerNo])
-									{
-										gui.removeOwner(i);
-										brewery.removeOwner(playerlist[playerNo], i, gui);
+										ownField.removeOwner(playerlist[playerNo], i, gui);
 									}
 								}
 							}
 						}
-						
+
 						if (cup.getDieOne() == cup.getDieTwo() && playerlist[playerNo].getConvict() == false)
 						{
 							if (cup.getDoubleRoll() == 3)
@@ -166,7 +140,7 @@ public class GameLauncher {
 						{
 							con = false;
 						}
-						
+
 						break;
 					case "Sælg hotel":
 						pawn.sellHotel(playerlist[playerNo], gb, gui);
@@ -185,7 +159,7 @@ public class GameLauncher {
 			}
 		}
 	}
-	
+
 	public void setAmountOfPlayers(int no)
 	{
 		this.amountOfPlayers = no;
