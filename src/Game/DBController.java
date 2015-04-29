@@ -102,6 +102,8 @@ public class DBController {
 					+ "Balance int,"
 					+ ");";
 
+			stmt.executeUpdate(sql);
+			
 			// ** Gemmer konto i DB **
 			for (int i = 1; i < amountOfPlayers + 1; i++)
 			{
