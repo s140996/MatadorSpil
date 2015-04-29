@@ -1,11 +1,7 @@
 package Game;
 import ChanceCard.ChanceCardList;
 import Die.Cup;
-import Fields.GField;
-import Fields.GOwnable;
-import Fields.GTerritory;
-import Fields.InPrison;
-import Fields.Pawn;
+import Fields.*;
 import Player.Player;
 
 public class GameLauncher {
@@ -114,8 +110,7 @@ public class GameLauncher {
 									GOwnable ownField = (GOwnable) field;
 									if (ownField.getOwner() == playerlist[playerNo])
 									{
-										gui.removeOwner(i);
-										ownField.removeOwner(playerlist[playerNo], i, gui);
+										ownField.removeOwner(playerlist[playerNo], ownField.getID(), gui);
 									}
 								}
 							}

@@ -308,8 +308,8 @@ public class GTerritory extends GOwnable {
 
 	@Override
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		
-
+		super.setOwner(null);
+		GGUI.removeOwner(fieldnumber);
 	}
 
 	public int getBuildPrice() {

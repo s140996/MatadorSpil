@@ -28,6 +28,14 @@ public class Pawn {
 						gui.setGUIBalance(player.acc.getBalance(), player.toString());
 						player.setWorth(-ownField.getPrice());
 						ownField.setPawn(true);
+						if (ownField.getType() == "Brewery")
+						{
+							player.setBrewerysOwned(player.getBrewerysOwned() - 1);
+						}
+						else if (ownField.getType() == "Fleet")
+						{
+							player.setFleetsOwned(player.getFleetsOwned() - 1);
+						}
 					}
 				}
 			}

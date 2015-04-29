@@ -60,6 +60,7 @@ public class GFleet extends GOwnable {
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				player.setWorth(super.getPrice());
 				super.setPawn(false);
+				player.setFleetsOwned(player.getFleetsOwned() + 1);
 				GGUI.showMessage("Du har tilbagekøbt din pantsatte grund for " + super.getPrice() / 2 + ",-");
 			}
 		}
