@@ -1,6 +1,7 @@
 package Fields;
 import java.awt.Color;
 
+import desktop_resources.GUI;
 import ChanceCard.ChanceCardList;
 import Die.Cup;
 import Game.GUIController;
@@ -34,7 +35,7 @@ public class GTax extends GField {
 
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
-		// TODO Auto-generated method stub
+		
 		double pay = 0;
 		
 		if (this.percentageTax != 0)
@@ -49,8 +50,18 @@ public class GTax extends GField {
 			}
 			else if(replay == false)
 			{
+				if(player.acc.getBalance() < this.baseTax)
+				{
+					GUI.showMessage("Du har ikke råd til at betale alm. skat, betal derfor 10% af din samlede værdi");
+					pay = player.getWorth() * this.percentageTax / 100;
+					
+					player.acc.withdraw((int) pay);
+				}
+				else
+				{
 				pay = this.baseTax;
 				player.acc.withdraw((int) pay);
+				}
 			}
 		}
 		else
