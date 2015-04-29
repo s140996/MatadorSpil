@@ -52,12 +52,14 @@ public class DBController {
 
 			stmt = con.createStatement();
 
+			// ** Sletter spiller tabellen, hvis den eksisterer **
 			sql = "DROP TABLE IF EXISTS Player;";
 
 			stmt.executeUpdate(sql);
 
+			// ** Laver spiller tabellen **
 			sql = "CREATE TABLE Player ("
-					+ "ID int,"
+					+ "ColorID int,"
 					+ "Name varchar(255) primary key,"
 					+ "Position int,"
 					+ "PrisonCard int,"
@@ -71,6 +73,7 @@ public class DBController {
 
 			stmt.executeUpdate(sql);
 
+			// ** Gemmer spiller i DB **
 			for (int i = 1; i < amountOfPlayers + 1; i++)
 			{
 				sql = "INSERT INTO Player VALUES ("
@@ -83,6 +86,29 @@ public class DBController {
 						+ playerlist[i].getBrewerysOwned() + ", "
 						+ playerlist[i].getConvictDB() + ", "
 						+ playerlist[i].getAliveDB()
+						+ ");";
+
+				stmt.executeUpdate(sql);
+			}
+
+			// ** Sletter konto tabellen, hvis den eksisterer **
+			sql = "DROP TABLE IF EXISTS Account;";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver konto tabellen **
+			sql = "CREATE TABLE Account ("
+					+ "Name varchar(255) primary key,"
+					+ "Balance int,"
+					+ ");";
+
+			// ** Gemmer konto i DB **
+			for (int i = 1; i < amountOfPlayers + 1; i++)
+			{
+				sql = "INSERT INTO Account VALUES ("
+						+ "'" 
+						+ playerlist[i].toString() + "', "
+						+ playerlist[i].acc.getBalance()
 						+ ");";
 
 				stmt.executeUpdate(sql);
