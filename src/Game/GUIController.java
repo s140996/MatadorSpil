@@ -46,6 +46,8 @@ public class GUIController {
 	public void removeOwner(int fieldNumber)
 	{
 		GUI.removeOwner(fieldNumber);
+		GUI.setHouses(fieldNumber, 0);
+		GUI.setHotel(fieldNumber, false);
 	}
 
 	// *** Set Owner ***

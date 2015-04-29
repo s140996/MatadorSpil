@@ -310,6 +310,8 @@ public class GTerritory extends GOwnable {
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
 		super.setOwner(null);
 		GGUI.removeOwner(fieldnumber);
+		this.hasHotel = false;
+		this.houseCount = 0;
 	}
 
 	public int getBuildPrice() {
