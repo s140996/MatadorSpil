@@ -18,6 +18,8 @@ public class InPrison {
 		}
 		else
 		{
+			if(player.acc.getBalance() > 1000)
+			{
 			boolean reply = gui.boolButton("Betal 1000,- for din frihed eller kast terningerne og prøv lykken?", "Betal", "Kast");
 			if(reply == true)
 			{	
@@ -26,6 +28,25 @@ public class InPrison {
 				player.setConvict(false);
 			}
 			else{
+				for(int i = 2; i >= 0 && player.getConvict() == true; i--)
+				{
+					cup.roll();
+					gui.setDice(cup.getDieOne(), cup.getDieTwo());
+					if(cup.getDieOne() == cup.getDieTwo())
+					{
+						player.setConvict(false);
+						gui.showMessage("Du slog to ens og er løsladt!");
+					}
+					else
+					{
+						gui.showMessage("Du har " + i + " forsøg tilbage!");
+					}
+				}
+			}
+			}
+			else
+			{
+				gui.showMessage("Du har ikke råd til at betale dig ud, prøv i stedet lykken med terningerne!");
 				for(int i = 2; i >= 0 && player.getConvict() == true; i--)
 				{
 					cup.roll();
