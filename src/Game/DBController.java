@@ -74,8 +74,8 @@ public class DBController {
 			for (int i = 1; i < playerlist.length + 1; i++)
 			{
 				sql = "INSERT INTO Player VALUES ("
-						+ i
-						+ ", '" + playerlist[i].toString() + "', "
+						+ i + ", '" 
+						+ playerlist[i].toString() + "', "
 						+ playerlist[i].getPosition() + ", "
 						+ playerlist[i].getPrisonCard() + ", "
 						+ playerlist[i].getWorth() + ", "

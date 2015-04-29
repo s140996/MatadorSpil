@@ -134,5 +134,10 @@ public class GameLauncher {
 			}
 		}
 	}
+	
+	public void setAmountOfPlayers(int no)
+	{
+		this.amountOfPlayers = no;
+	}
 
 }
