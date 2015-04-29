@@ -51,7 +51,7 @@ public class GFleet extends GOwnable {
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
 
-		if (super.getPawn() == true && super.getOwner() == player)
+		if (super.getPawn() == true && super.getOwner() == player && player.acc.getBalance() > getPrice() / 2)
 		{
 			boolean reply = GGUI.boolButton("Vil du købe din pantsatte grund tilbage?", "Ja", "Nej");
 			if (reply == true)
@@ -69,7 +69,7 @@ public class GFleet extends GOwnable {
 		}
 		else
 		{
-			if (super.isOwned() == false)
+			if (super.isOwned() == false && player.acc.getBalance() > super.getPrice())
 			{
 				boolean reply = GGUI.boolButton("Vil du købe Færgen?", "Ja", "Nej");
 
