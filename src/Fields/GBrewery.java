@@ -85,10 +85,10 @@ public class GBrewery extends GOwnable {
 						if( player.acc.getBalance() < pay )
 						{
 							getOwner().acc.deposit(player.acc.getBalance());
+							GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
 							player.acc.setBalance(0);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
-							GGUI.showMessage("Du har ikke råd til at betale, og derfor ude af spillet");
 						}
 						
 						else if( player.acc.getBalance() > pay)

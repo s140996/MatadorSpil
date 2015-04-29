@@ -105,11 +105,24 @@ public class GFleet extends GOwnable {
 					else 
 					{
 						GGUI.showMessage("Du er landet på en Færge der er ejet af " + getOwner() + ", betal billetten på " + getRent() + ",-");
-						player.acc.withdraw(getRent());
-						super.getOwner().acc.deposit(getRent());
-
-						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
-						GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+						
+						if(player.acc.getBalance() < getRent())
+						{
+							getOwner().acc.deposit(player.acc.getBalance());
+							GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+							player.acc.setBalance(0);
+							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+							GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+						}
+						
+						else if(player.acc.getBalance() > getRent())
+						{
+							player.acc.withdraw(getRent());
+							super.getOwner().acc.deposit(getRent());
+							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+							GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+						}
+						
 					}
 				}	
 			}
