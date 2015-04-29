@@ -38,7 +38,7 @@ public class DBController {
 		}
 	}
 
-	public void save(Player[] playerlist)
+	public void save(Player[] playerlist, int amountOfPlayers)
 	{	
 		con = null;
 		stmt = null;
@@ -71,7 +71,7 @@ public class DBController {
 
 			stmt.executeUpdate(sql);
 
-			for (int i = 1; i < playerlist.length + 1; i++)
+			for (int i = 1; i < amountOfPlayers + 1; i++)
 			{
 				sql = "INSERT INTO Player VALUES ("
 						+ i + ", '" 
