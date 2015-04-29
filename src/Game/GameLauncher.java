@@ -144,7 +144,7 @@ public class GameLauncher {
 						pawn.pawnGround(playerlist[playerNo], gb, gui);
 						break;
 					case "Gem spil":
-						db.save(playerlist, this.amountOfPlayers);
+						db.save(playerlist, this.amountOfPlayers, gb);
 						break;
 					}
 				}

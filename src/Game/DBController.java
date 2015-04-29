@@ -38,7 +38,7 @@ public class DBController {
 		}
 	}
 
-	public void save(Player[] playerlist, int amountOfPlayers)
+	public void save(Player[] playerlist, int amountOfPlayers, GameBoard gb)
 	{	
 		con = null;
 		stmt = null;
@@ -103,11 +103,39 @@ public class DBController {
 					+ ");";
 
 			stmt.executeUpdate(sql);
-			
+
 			// ** Gemmer konto i DB **
 			for (int i = 1; i < amountOfPlayers + 1; i++)
 			{
 				sql = "INSERT INTO Account VALUES ("
+						+ "'" 
+						+ playerlist[i].toString() + "', "
+						+ playerlist[i].acc.getBalance()
+						+ ");";
+
+				stmt.executeUpdate(sql);
+			}
+
+			// ** Sletter GameBoard tabellen, hvis den eksisterer **
+			sql = "DROP TABLE IF EXISTS GameBoard;";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver konto tabellen **
+			sql = "CREATE TABLE GameBoard ("
+					+ "ID int primary key,"
+					+ "FieldName varchar(255),"
+					+ "Owner varchar(255),"
+					+ "Pawned tinyint(1),"
+					+ "House int,"
+					+ "Hotels int"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+			
+			for (int i = 1; i < amountOfPlayers + 1; i++)
+			{
+				sql = "INSERT INTO GameBoard VALUES ("
 						+ "'" 
 						+ playerlist[i].toString() + "', "
 						+ playerlist[i].acc.getBalance()
