@@ -12,6 +12,7 @@ public class DBController {
 	private String dbName = "MatadorGrp4";
 	private Connection con;
 	private Statement stmt;
+	private String sql;
 
 	public DBController() 
 	{
@@ -20,69 +21,84 @@ public class DBController {
 
 		try 
 		{
-		Class.forName(JDBC_driver);
+			Class.forName(JDBC_driver);
 
-		//Opretter forbindelse til databasen
-		con = DriverManager.getConnection(DB_url, USER, PASS);
+			//Opretter forbindelse til databasen
+			con = DriverManager.getConnection(DB_url, USER, PASS);
 
-		stmt = con.createStatement();
+			stmt = con.createStatement();
 
-		String sql = "CREATE DATABASE IF NOT EXISTS " + this.dbName;		
-		stmt.executeUpdate(sql);
+			sql = "CREATE DATABASE IF NOT EXISTS " + this.dbName;
+
+			stmt.executeUpdate(sql);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void save(Player[] playerlist)
 	{	
 		con = null;
 		stmt = null;
-		
+
 		try
 		{
-		Class.forName(JDBC_driver);
+			Class.forName(JDBC_driver);
 
-		//Opretter forbindelse til databasen
-		con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
+			//Opretter forbindelse til databasen
+			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
-		stmt = con.createStatement();
-		String sql = "DROP TABLE IF EXISTS Player;"
-				+ ""
-				+"CREATE TABLE Player ("
-				+ "Name varchar(255) primary key,"
-				+ "Position int,"
-				+ "Color varchar(255),"
-				+ "PrisonCard int,"
-				+ "worth int,"
-				+ "fleetsOwned int,"
-				+ "brewerysOwned int,"
-				+ "convict boolean,"
-				+ "alive boolean,"
-				+ ");";
-		
-		stmt.executeUpdate(sql);
-		
-		for (int i = 1; i < playerlist.length + 1; i++)
-		{
-			sql = "INSERT INTO Player VALUES ('" + playerlist[i].toString() + "', ";
-			
+			stmt = con.createStatement();
+
+			sql = "DROP TABLE IF EXISTS Player;";
+
 			stmt.executeUpdate(sql);
-		}
-		
+
+			sql = "CREATE TABLE Player ("
+					+ "ID int,"
+					+ "Name varchar(255) primary key,"
+					+ "Position int,"
+					+ "PrisonCard int,"
+					+ "worth int,"
+					+ "fleetsOwned int,"
+					+ "brewerysOwned int,"
+					// ** TINYINT(1) ** 0 = false ** 1 = true **
+					+ "convict tinyint(1),"
+					+ "alive tinyint(1)"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+
+			for (int i = 1; i < playerlist.length + 1; i++)
+			{
+				sql = "INSERT INTO Player VALUES ("
+						+ i
+						+ ", '" + playerlist[i].toString() + "', "
+						+ playerlist[i].getPosition() + ", "
+						+ playerlist[i].getPrisonCard() + ", "
+						+ playerlist[i].getWorth() + ", "
+						+ playerlist[i].getFleetsOwned() + ", "
+						+ playerlist[i].getBrewerysOwned() + ", "
+						+ playerlist[i].getConvictDB() + ", "
+						+ playerlist[i].getAliveDB()
+						+ ");";
+
+				stmt.executeUpdate(sql);
+			}
+
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void load()
 	{
-		
+
 	}
-	
+
 }
 

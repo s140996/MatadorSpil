@@ -120,6 +120,29 @@ public class Player {
 		return alive;
 	}
 	
+	public int getConvictDB()
+	{
+		if (this.convict == true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	
+	public int getAliveDB()
+	{
+		if (this.alive == true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
 	
 }
 

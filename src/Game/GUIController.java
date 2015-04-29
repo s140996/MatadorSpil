@@ -18,7 +18,7 @@ import desktop_resources.GUI;
 
 public class GUIController {
 
-	private Color[] color = {Color.RED, Color.blue, Color.green, Color.yellow, Color.black, Color.white};
+	private Color[] color = {Color.red, Color.blue, Color.green, Color.yellow, Color.black, Color.white};
 	private int i = 0;
 
 
