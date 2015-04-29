@@ -99,7 +99,7 @@ public class DBController {
 			// ** Laver konto tabellen **
 			sql = "CREATE TABLE Account ("
 					+ "Name varchar(255) primary key,"
-					+ "Balance int,"
+					+ "Balance int"
 					+ ");";
 
 			stmt.executeUpdate(sql);
