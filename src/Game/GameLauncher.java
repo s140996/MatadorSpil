@@ -95,7 +95,13 @@ public class GameLauncher {
 
 						//Spilleren lander på feltet
 						gb.getField(playerlist[playerNo].getPosition() - 1).landOnField(playerlist[playerNo], gui, cc, cup, gb);
-
+						
+						//Tjekker om spiller har tabt
+						if (playerlist[playerNo].acc.getBalance() == 0)
+						{
+							
+						}
+						
 						if (cup.getDieOne() == cup.getDieTwo() && playerlist[playerNo].getConvict() == false)
 						{
 							if (cup.getDoubleRoll() == 3)
