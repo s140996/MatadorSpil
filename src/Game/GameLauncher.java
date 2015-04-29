@@ -1,6 +1,8 @@
 package Game;
 import ChanceCard.ChanceCardList;
 import Die.Cup;
+import Fields.GField;
+import Fields.GTerritory;
 import Fields.InPrison;
 import Fields.Pawn;
 import Player.Player;
@@ -100,6 +102,49 @@ public class GameLauncher {
 						if (playerlist[playerNo].acc.getBalance() == 0)
 						{
 							
+							gui.playerLost(playerlist[playerNo].toString());
+							
+							playerlist[playerNo].setAlive(false);
+							
+							for(int i = 0; i < 40; i++)
+							{
+								GField field = gb.getField(i);
+								if (field.getType() == "Territory")
+								{
+									GTerritory territory = (GTerritory) field;
+									if (territory.getOwner() == playerlist[playerNo])
+									{
+										gui.removeOwner(i);
+										territory.removeOwner(playerlist[playerNo], i, gui);
+									}
+								}
+						}
+							for(int i = 0; i < 40; i++)
+							{
+								GField field = gb.getField(i);
+								if (field.getType() == "Fleet")
+								{
+									GTerritory fleet = (GTerritory) field;
+									if (fleet.getOwner() == playerlist[playerNo])
+									{
+										gui.removeOwner(i);
+										fleet.removeOwner(playerlist[playerNo], i, gui);
+									}
+								}
+							}
+							for(int i = 0; i < 40; i++)
+							{
+								GField field = gb.getField(i);
+								if (field.getType() == "Brewery")
+								{
+									GTerritory brewery = (GTerritory) field;
+									if (brewery.getOwner() == playerlist[playerNo])
+									{
+										gui.removeOwner(i);
+										brewery.removeOwner(playerlist[playerNo], i, gui);
+									}
+								}
+							}
 						}
 						
 						if (cup.getDieOne() == cup.getDieTwo() && playerlist[playerNo].getConvict() == false)
