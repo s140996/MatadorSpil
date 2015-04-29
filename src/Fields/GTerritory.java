@@ -39,15 +39,15 @@ public class GTerritory extends GOwnable {
 
 	@Override
 	public int getRent() {
-		// TODO Auto-generated method stub
+		
 		return this.rent;
 	}
 
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
-		// TODO Auto-generated method stub
+	
 
-		if (super.getPawn() == true && super.getOwner() == player)
+		if (super.getPawn() == true && super.getOwner() == player && player.acc.getBalance() > getPrice() / 2)
 		{
 			boolean reply = GGUI.boolButton("Vil du købe din pantsatte grund tilbage?", "Ja", "Nej");
 			if (reply == true)
@@ -65,7 +65,7 @@ public class GTerritory extends GOwnable {
 		}
 		else
 		{
-			if (super.getOwner() == null) 
+			if (super.getOwner() == null && player.acc.getBalance() > getPrice()) 
 			{
 				boolean reply = GGUI.boolButton("Vil du købe grunden?", "Køb grunden", "Nej tak");
 
@@ -89,7 +89,7 @@ public class GTerritory extends GOwnable {
 
 				if (checkFields(gb) == true)
 				{
-					if (houseCount == 0)
+					if (houseCount == 0 && player.acc.getBalance() > buildPrice)
 					{
 						boolean reply = GGUI.boolButton("Da du ejer alle grundene, kan du købe hus. Vil du det?", "Køb huset", "Nej tak");
 
@@ -106,7 +106,7 @@ public class GTerritory extends GOwnable {
 					boolean run = true;
 
 					while (run == true) {
-						if (0 < houseCount && houseCount < 4)
+						if (0 < houseCount && houseCount < 4 && player.acc.getBalance() > buildPrice)
 						{
 							boolean reply = GGUI.boolButton("Vil du købe endnu et hus på denne grund?", "Køb et hus", "Nej tak");
 
@@ -130,7 +130,7 @@ public class GTerritory extends GOwnable {
 
 					}
 
-					if (checkHouse(gb) == true && this.hasHotel == false)
+					if (checkHouse(gb) == true && this.hasHotel == false && player.acc.getBalance() > buildPrice)
 					{
 						boolean reply = GGUI.boolButton("Du har bygget 4 huse på alle grundene. Vil du købe et hotel på denne?", "Køb hotellet", "Nej tak");
 
@@ -161,59 +161,144 @@ public class GTerritory extends GOwnable {
 						if (this.hasHotel == true)
 						{
 							GGUI.showMessage("Du er landet på et felt der er ejet af " + super.getOwner().toString() + " og vedkommende har et hotel på grunden, du skal derfor betale " + this.hotelRent + ",- i husleje");
+							
+							if(player.acc.getBalance() < this.hotelRent)
+							{
+								getOwner().acc.deposit(player.acc.getBalance());
+								GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+								player.acc.setBalance(0);
+								GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+								GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+							}
+							else
+							{
 							player.acc.withdraw(this.hotelRent);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							super.getOwner().acc.deposit(this.hotelRent);
 							GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
+							}
 						}
 						else if (houseCount == 4)
 						{
 							GGUI.showMessage("Du er landet på et felt der er ejet af " + super.getOwner().toString() + " og vedkommende har fire huse på grunden, du skal derfor betale " + this.houseRent4 + ",- i husleje");
+							
+							if(player.acc.getBalance() < this.houseRent4)
+							{
+								getOwner().acc.deposit(player.acc.getBalance());
+								GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+								player.acc.setBalance(0);
+								GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+								GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+							}
+							else
+							{
 							player.acc.withdraw(this.houseRent4);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							super.getOwner().acc.deposit(this.houseRent4);
 							GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
-						}
+							}
+							
+							}
 						else if (houseCount == 3)
 						{
 							GGUI.showMessage("Du er landet på et felt der er ejet af " + super.getOwner().toString() + " og vedkommende har tre huse på grunden, du skal derfor betale " + this.houseRent3 + ",- i husleje");
+							
+							if(player.acc.getBalance() < this.houseRent3)
+							{
+								getOwner().acc.deposit(player.acc.getBalance());
+								GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+								player.acc.setBalance(0);
+								GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+								GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+							}
+							else
+							{
 							player.acc.withdraw(this.houseRent3);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							super.getOwner().acc.deposit(this.houseRent3);
 							GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
+							}
 						}
 						else if (houseCount == 2)
 						{
 							GGUI.showMessage("Du er landet på et felt der er ejet af " + super.getOwner().toString() + " og vedkommende har to huse på grunden, du skal derfor betale " + this.houseRent2 + ",- i husleje");
+							
+							if(player.acc.getBalance() < this.houseRent2)
+							{
+								getOwner().acc.deposit(player.acc.getBalance());
+								GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+								player.acc.setBalance(0);
+								GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+								GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+							}
+							else
+							{
 							player.acc.withdraw(this.houseRent2);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							super.getOwner().acc.deposit(this.houseRent2);
 							GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
+							}
 						}
 						else if (houseCount == 1)
 						{
 							GGUI.showMessage("Du er landet på et felt der er ejet af " + super.getOwner().toString() + " og vedkommende har et hus på grunden, du skal derfor betale " + this.houseRent + ",- i husleje");
+							
+							if(player.acc.getBalance() < this.houseRent)
+							{
+								getOwner().acc.deposit(player.acc.getBalance());
+								GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+								player.acc.setBalance(0);
+								GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+								GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+							}
+							else
+							{
 							player.acc.withdraw(this.houseRent);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							super.getOwner().acc.deposit(this.houseRent);
 							GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
+							}
 						}
 						else if (houseCount == 0)
 						{	
 							GGUI.showMessage("Du er landet på et felt der er ejet af " + super.getOwner().toString() + " og skal derfor betale " + rent * 2 + ",-");
+							
+							if(player.acc.getBalance() < rent * 2)
+							{
+								getOwner().acc.deposit(player.acc.getBalance());
+								GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+								player.acc.setBalance(0);
+								GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+								GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+							}
+							else
+							{
 							player.acc.withdraw(rent * 2);
 							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 							super.getOwner().acc.deposit(rent * 2);
 							GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
+							}
 						}
 					}
 					else
 					{
 						GGUI.showMessage("Du er landet på et felt der er ejet af " + super.getOwner().toString() + " og skal derfor betale " + rent + ",-");
+						
+						if(player.acc.getBalance() < rent)
+						{
+							getOwner().acc.deposit(player.acc.getBalance());
+							GGUI.showMessage("Du har ikke råd til at betale, og er derfor ude af spillet");
+							player.acc.setBalance(0);
+							GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+							GGUI.setGUIBalance(super.getOwner().acc.getBalance(), super.getOwner().toString());
+						}
+						else
+						{
 						player.acc.withdraw(rent);
 						GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 						super.getOwner().acc.deposit(rent);
 						GGUI.setGUIBalance(getOwner().acc.getBalance(), getOwner().toString());
+						}
 					}
 				}
 			}
@@ -223,7 +308,7 @@ public class GTerritory extends GOwnable {
 
 	@Override
 	public void removeOwner(Player player, int fieldnumber, GUIController GGUI) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
