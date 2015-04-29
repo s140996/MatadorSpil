@@ -116,13 +116,9 @@ public class GUIController {
 	}
 	
 	// *** Player loose ***
-	public void playerLost(Player player, GameBoard gb)
+	public void playerLost(String name)
 	{
-			GUI.removeCar(player.getPosition(), player.toString());
-			
-			/*for (i = 0; i < 40; i++) {
-				if (gb.getField(i).);
-			}*/
+		GUI.removeAllCars(name);
 	}
 
 	// *** Create GameBoard ***
