@@ -133,22 +133,80 @@ public class DBController {
 					+ ");";
 
 			stmt.executeUpdate(sql);
-			
+
 			for (int i = 0; i < 40; i++)
 			{
-				GOwnable own= (GOwnable) gb.getField(i);
-				GTerritory territory = (GTerritory) gb.getField(i);
-				
-				
-				sql = "INSERT INTO GameBoard VALUES ("
-						+ ""
-						+ gb.getField(i).getID() + ", '"
-						+ gb.getField(i).getName() + "','"
-						+ own.getOwner().toString() + "',"
-						+ own.getPawnDB() + ","
-						+ territory.getHouseCount() + ","
-						+ territory.getHotelCount()
-						+ ");";
+
+				if(gb.getField(i).getType() == "Territory")
+				{
+					GTerritory territory = (GTerritory) gb.getField(i);
+					GOwnable own= (GOwnable) gb.getField(i);
+					if(own.isOwned() == true)
+					{
+						sql = "INSERT INTO GameBoard VALUES ("
+								+ ""
+								+ gb.getField(i).getID() + ", '"
+								+ gb.getField(i).getName() + "','"
+								+ own.getOwner().toString() + "',"
+								+ own.getPawnDB() + ","
+								+ territory.getHouseCount() + ","
+								+ territory.getHotelCount()
+								+ ");";
+					}
+					else
+					{
+						sql = "INSERT INTO GameBoard VALUES ("
+								+ ""
+								+ gb.getField(i).getID() + ", '"
+								+ gb.getField(i).getName() + "','"
+								+ "null',"
+								+ own.getPawnDB() + ","
+								+ territory.getHouseCount() + ","
+								+ territory.getHotelCount()
+								+ ");";
+					}
+				}
+				else if (gb.getField(i).getType() != "Territory" && gb.getField(i).getType() != "Brewery" && gb.getField(i).getType() != "Fleet")
+				{
+					sql = "INSERT INTO GameBoard VALUES ("
+							+ ""
+							+ gb.getField(i).getID() + ", '"
+							+ gb.getField(i).getName() + "','"
+							+ "null',"
+							+ 0 + ","
+							+ 0 + ","
+							+ 0
+							+ ");";
+				}
+				else if(gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
+				{
+					GOwnable own= (GOwnable) gb.getField(i);
+					if(own.isOwned() == true)
+					{
+						sql = "INSERT INTO GameBoard VALUES ("
+								+ ""
+								+ gb.getField(i).getID() + ", '"
+								+ gb.getField(i).getName() + "','"
+								+ own.getOwner().toString() + "',"
+								+ own.getPawnDB() + ","
+								+ 0 + ","
+								+ 0
+								+ ");";	
+					}
+					else
+					{
+						sql = "INSERT INTO GameBoard VALUES ("
+								+ ""
+								+ gb.getField(i).getID() + ", '"
+								+ gb.getField(i).getName() + "','"
+								+ "null',"
+								+ own.getPawnDB() + ","
+								+ 0 + ","
+								+ 0
+								+ ");";
+					}
+				}
+
 
 				stmt.executeUpdate(sql);
 			}
