@@ -23,6 +23,18 @@ public abstract class GOwnable extends GField {
 		return this.pawn;
 	}
 	
+	public int getPawnDB()
+	{
+		if (this.pawn == true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	
 	public void setPrice(int price) {
 		this.price = price;
 	}

@@ -1,6 +1,7 @@
 package Game;
 import java.sql.*;
 
+import Fields.*;
 import Player.Player;
 
 public class DBController {
@@ -121,7 +122,7 @@ public class DBController {
 
 			stmt.executeUpdate(sql);
 
-			// ** Laver konto tabellen **
+			// ** Laver GameBoard tabellen **
 			sql = "CREATE TABLE GameBoard ("
 					+ "ID int primary key,"
 					+ "FieldName varchar(255),"
@@ -133,12 +134,18 @@ public class DBController {
 
 			stmt.executeUpdate(sql);
 			
-			for (int i = 1; i < amountOfPlayers + 1; i++)
+			for (int i = 0; i < 40; i++)
 			{
+				GOwnable own= (GOwnable) gb.getField(i);
+				
+				
+				
 				sql = "INSERT INTO GameBoard VALUES ("
-						+ "'" 
-						+ playerlist[i].toString() + "', "
-						+ playerlist[i].acc.getBalance()
+						+ ""
+						+ gb.getField(i).getID() + ", '"
+						+ gb.getField(i).getName() + "','"
+						+ own.getOwner().toString() + "',"
+						+ own.getPawn()
 						+ ");";
 
 				stmt.executeUpdate(sql);
