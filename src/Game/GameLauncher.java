@@ -153,6 +153,7 @@ public class GameLauncher {
 								else
 								{
 									db.save(playerlist, this.amountOfPlayers, this.playerNo, gb);
+									gui.showMessage("Du har nu gemt spillet.");
 								}
 								
 								break;

@@ -354,7 +354,7 @@ public class DBController {
 					{ 
 						System.out.println(playerlist[j].toString());
 						System.out.println(owner);
-						if (playerlist[j].toString() == owner)
+						if (playerlist[j].toString() == owner + " ")
 						{
 							field.setOwner(playerlist[j]);
 							gui.setOwner(field.getID(), owner);
