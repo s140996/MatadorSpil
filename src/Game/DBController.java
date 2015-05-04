@@ -328,14 +328,14 @@ public class DBController {
 
 			stmt = con.createStatement();
 			
-			String owner = "";
-			boolean pawned = false;
-			int house = 0;
-			int hotel = 0;
-			
 			for(int i = 0; i < 40; i++)
 			{
-				sql = "SELECT * FROM Ownable NATURAL LEFT OUTER JOIN Building WHERE ID =" + gb.getField(i).getID() + ";";
+				String owner = "";
+				boolean pawned = false;
+				int house = 0;
+				int hotel = 0;
+				
+				sql = "SELECT * FROM Ownable NATURAL LEFT OUTER JOIN Building WHERE ID = " + gb.getField(i).getID() + ";";
 				rs = stmt.executeQuery(sql);
 				
 				if(gb.getField(i).getType() == "Territory" || gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
@@ -348,12 +348,11 @@ public class DBController {
 						pawned = rs.getBoolean("Pawned");
 					}
 					
-					System.out.println(owner);
-					
 					field.setPawn(pawned);
 					
 					for (int j = 1; j < amountOfPlayers + 1; j++)
 					{ 
+						System.out.println(playerlist[j].toString() == owner);
 						if (playerlist[j].toString() == owner)
 						{
 							field.setOwner(playerlist[j]);
