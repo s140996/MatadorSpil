@@ -70,8 +70,8 @@ public class GTax extends GField {
 			player.acc.withdraw((int) pay);
 		}
 		
-		GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 		GGUI.showMessage("Det betyder, at du skal betale " + (int) pay  + ",-");
+		GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 	}
 	
 
