@@ -39,7 +39,7 @@ public class DBController {
 		}
 	}
 
-	public void save(Player[] playerlist, int amountOfPlayers, GameBoard gb)
+	public void save(Player[] playerlist, int amountOfPlayers, int playerNo, GameBoard gb)
 	{	
 		con = null;
 		stmt = null;
@@ -60,8 +60,8 @@ public class DBController {
 
 			// ** Laver spiller tabellen **
 			sql = "CREATE TABLE Player ("
-					+ "ColorID int,"
-					+ "Name varchar(255) primary key,"
+					+ "ID int,"
+					+ "Name varchar(255) PRIMARY KEY,"
 					+ "Position int,"
 					+ "PrisonCard int,"
 					+ "worth int,"
@@ -117,100 +117,88 @@ public class DBController {
 				stmt.executeUpdate(sql);
 			}
 
-			// ** Sletter GameBoard tabellen, hvis den eksisterer **
-			sql = "DROP TABLE IF EXISTS GameBoard;";
+			// ** Sletter Ownable tabellen, hvis den eksisterer **
+			sql = "DROP TABLE IF EXISTS Ownable;";
 
 			stmt.executeUpdate(sql);
 
-			// ** Laver GameBoard tabellen **
-			sql = "CREATE TABLE GameBoard ("
-					+ "ID int primary key,"
+			// ** Laver Ownable tabellen **
+			sql = "CREATE TABLE Ownable ("
+					+ "ID int PRIMARY KEY,"
 					+ "FieldName varchar(255),"
 					+ "Owner varchar(255),"
 					+ "Pawned tinyint(1),"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+
+			// ** Sletter Building tabellen, hvis den eksisterer **
+			sql = "DROP TABLE IF EXISTS Building;";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver Building tabellen **
+			sql = "CREATE TABLE Building ("
+					+ "ID int PRIMARY KEY,"
+					+ "FieldName varchar(255),"
 					+ "House int,"
-					+ "Hotels int"
+					+ "Hotels int,"
+					+ "FOREIGN KEY (FieldName) REFERENCES Ownable(FieldName)"
 					+ ");";
 
 			stmt.executeUpdate(sql);
 
 			for (int i = 0; i < 40; i++)
 			{
+				if(gb.getField(i).getType() == "Territory" || gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
+				{
+					GOwnable own = (GOwnable) gb.getField(i);
+					if(own.isOwned() == true)
+					{
+						sql = "INSERT INTO Ownable VALUES ("
+								+ gb.getField(i).getID() + ", '"
+								+ gb.getField(i).getName() + "','"
+								+ own.getOwner().toString() + "',"
+								+ own.getPawnDB()
+								+ ");";
+					}
 
-				if(gb.getField(i).getType() == "Territory")
+					stmt.executeUpdate(sql);
+				}
+
+				if (gb.getField(i).getType() == "Territory")
 				{
 					GTerritory territory = (GTerritory) gb.getField(i);
-					GOwnable own= (GOwnable) gb.getField(i);
-					if(own.isOwned() == true)
-					{
-						sql = "INSERT INTO GameBoard VALUES ("
-								+ ""
-								+ gb.getField(i).getID() + ", '"
-								+ gb.getField(i).getName() + "','"
-								+ own.getOwner().toString() + "',"
-								+ own.getPawnDB() + ","
-								+ territory.getHouseCount() + ","
-								+ territory.getHotelCount()
-								+ ");";
-					}
-					else
-					{
-						sql = "INSERT INTO GameBoard VALUES ("
-								+ ""
-								+ gb.getField(i).getID() + ", '"
-								+ gb.getField(i).getName() + "','"
-								+ "null',"
-								+ own.getPawnDB() + ","
-								+ territory.getHouseCount() + ","
-								+ territory.getHotelCount()
-								+ ");";
-					}
-				}
-				else if (gb.getField(i).getType() != "Territory" && gb.getField(i).getType() != "Brewery" && gb.getField(i).getType() != "Fleet")
-				{
-					sql = "INSERT INTO GameBoard VALUES ("
-							+ ""
+					sql = "INSERT INTO Building VALUES ("
 							+ gb.getField(i).getID() + ", '"
 							+ gb.getField(i).getName() + "','"
-							+ "null',"
-							+ 0 + ","
-							+ 0 + ","
-							+ 0
+							+ territory.getHouseCount() + ","
+							+ territory.getHotelCount()
 							+ ");";
 				}
-				else if(gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
-				{
-					GOwnable own= (GOwnable) gb.getField(i);
-					if(own.isOwned() == true)
-					{
-						sql = "INSERT INTO GameBoard VALUES ("
-								+ ""
-								+ gb.getField(i).getID() + ", '"
-								+ gb.getField(i).getName() + "','"
-								+ own.getOwner().toString() + "',"
-								+ own.getPawnDB() + ","
-								+ 0 + ","
-								+ 0
-								+ ");";	
-					}
-					else
-					{
-						sql = "INSERT INTO GameBoard VALUES ("
-								+ ""
-								+ gb.getField(i).getID() + ", '"
-								+ gb.getField(i).getName() + "','"
-								+ "null',"
-								+ own.getPawnDB() + ","
-								+ 0 + ","
-								+ 0
-								+ ");";
-					}
-				}
 
-
-				stmt.executeUpdate(sql);
 			}
 
+			// ** Sletter Game tabellen, hvis den eksisterer **
+			sql = "DROP TABLE IF EXISTS Game;";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver Game tabellen **
+			sql = "CREATE TABLE Game ("
+					+ "PlayerNo int,"
+					+ "AmountOfPlayers int"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+			
+			// ** Indsætter i Game tabellen **
+			sql = "INSERT INTO Game VALUES ("
+					+ playerNo + ", "
+					+ amountOfPlayers
+					+ ");";
+			
+			stmt.executeUpdate(sql);
 		}
 		catch (Exception e)
 		{
@@ -218,9 +206,28 @@ public class DBController {
 		}
 	}
 
+
 	public void load()
 	{
+		con = null;
+		stmt = null;
 
+		try
+		{
+			Class.forName(JDBC_driver);
+
+			//Opretter forbindelse til databasen
+			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
+
+			stmt = con.createStatement();
+
+
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

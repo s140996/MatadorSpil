@@ -35,11 +35,7 @@ public class GameLauncher {
 			break;
 		}
 
-		boolean gameOn = true;
-		while (gameOn == true)
-		{
-			turn();
-		}
+		turn();	
 	}
 
 	public void newGame()
@@ -136,7 +132,7 @@ public class GameLauncher {
 								{
 									con = false;
 								}
-
+								
 								break;
 							case "Sælg hotel":
 								pawn.sellHotel(playerlist[playerNo], gb, gui);
@@ -148,7 +144,15 @@ public class GameLauncher {
 								pawn.pawnGround(playerlist[playerNo], gb, gui);
 								break;
 							case "Gem spil":
-								db.save(playerlist, this.amountOfPlayers, gb);
+								if (cup.getDoubleRoll() > 0)
+								{
+									gui.showMessage("Du skal spille din tur færdig før du kan gemme spillet.");
+								}
+								else
+								{
+									db.save(playerlist, this.amountOfPlayers, this.playerNo, gb);
+								}
+								
 								break;
 							}
 						}
