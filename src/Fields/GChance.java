@@ -100,8 +100,8 @@ public class GChance extends GField {
 			if(player.getWorth() <= 15000)
 			{
 				player.acc.deposit(40000);
-				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				GGUI.showMessage("Da din samlede formue er under 15000,- modtager du 40000,-");
+				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			}
 			else
 			{
@@ -154,9 +154,9 @@ public class GChance extends GField {
 					pay = 2 * fleet.getRent();
 					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
-					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 				}
 				else
 				{
@@ -185,9 +185,9 @@ public class GChance extends GField {
 					pay = 2 * fleet.getRent();
 					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
-					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 				}
 				else
 				{
@@ -212,9 +212,9 @@ public class GChance extends GField {
 					pay = 2 * fleet.getRent();
 					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
-					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 				}
 				else
 				{
@@ -239,9 +239,9 @@ public class GChance extends GField {
 					pay = 2 * fleet.getRent();
 					player.acc.withdraw(pay);
 					fleet.getOwner().acc.deposit(pay);
+					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 					GGUI.setGUIBalance(fleet.getOwner().acc.getBalance(), fleet.getOwner().toString());
-					GGUI.showMessage(player.toString() + " skal betale " + pay + ",- til " + fleet.getOwner().toString());
 				}
 				else
 				{
