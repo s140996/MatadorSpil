@@ -53,7 +53,7 @@ public class GameLauncher {
 
 	public void turn()
 	{
-		if (lastManStanding() == false)
+		while (lastManStanding() == false)
 		{
 			for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
 			{	
@@ -160,10 +160,8 @@ public class GameLauncher {
 				}
 			}
 		}
-		else if (lastManStanding() == true)
-		{
-			gui.showMessage("Tillykke!!!!! Du har vundet spillet.");
-		}
+		
+		gui.showMessage("Tillykke!!!!! Du har vundet spillet.");
 	}
 
 	public void setAmountOfPlayers(int no)
