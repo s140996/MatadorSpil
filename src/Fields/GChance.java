@@ -101,6 +101,11 @@ public class GChance extends GField {
 			{
 				player.acc.deposit(40000);
 				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+				GGUI.showMessage("Da din samlede formue er under 15000,- modtager du 40000,-");
+			}
+			else
+			{
+				GGUI.showMessage("Da din samlede formue er over 15000,- modtager du ikke 40000,-");
 			}
 
 			break;
