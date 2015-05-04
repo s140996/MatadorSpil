@@ -54,7 +54,7 @@ public class DBController {
 
 			stmt = con.createStatement();
 
-			// ** Sletter spiller tabellen, hvis den eksisterer **
+			// ** Sletter tabellerne, hvis de eksisterer **
 			sql = "DROP TABLE IF EXISTS Player, Account, Building, Game, Ownable CASCADE;";
 
 			stmt.executeUpdate(sql);
@@ -348,6 +348,8 @@ public class DBController {
 						pawned = rs.getBoolean("Pawned");
 					}
 					
+					System.out.println(owner);
+					
 					field.setPawn(pawned);
 					
 					for (int j = 1; j < amountOfPlayers + 1; j++)
@@ -355,7 +357,7 @@ public class DBController {
 						if (playerlist[j].toString() == owner)
 						{
 							field.setOwner(playerlist[j]);
-							gui.setOwner(i, owner);
+							gui.setOwner(field.getID(), owner);
 						}
 					}
 					
@@ -372,9 +374,9 @@ public class DBController {
 					}
 					
 					territory.setHouse(house);
-					gui.setHouses(i, house);
+					gui.setHouses(territory.getID(), house);
 					territory.setHotel(hotel);
-					gui.setHotel(i, territory.getHotel());
+					gui.setHotel(territory.getID(), territory.getHotel());
 				}
 				
 			}
