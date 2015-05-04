@@ -2,13 +2,21 @@ package Test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
+
 import Player.Account;
+
 
 
 public class AccountTest {
 
-	Account Account = new Account(5000);
+	private Account Account;
+
+	@Before
+	public void setUp(){
+	this.Account = new Account(5000);
+	}
 	
 	@Test
 	public void testAccount() {
@@ -32,6 +40,12 @@ public class AccountTest {
 	public void testdeposit() {
 		Account.deposit(5000);
 		assertEquals(Account.getBalance(),10000);
+	}
+	
+	@Test
+	public void testwithdraw() {
+		Account.withdraw(2000);
+		assertEquals(Account.getBalance(),3000);
 	}
 
 }
