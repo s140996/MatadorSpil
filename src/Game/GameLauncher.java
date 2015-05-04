@@ -161,7 +161,7 @@ public class GameLauncher {
 			}
 		}
 		
-		gui.showMessage("Tillykke!!!!! Du har vundet spillet.");
+		gui.showMessage("Tillykke!!!!! " + lastManStandingName() + " har vundet spillet.");
 	}
 
 	public void setAmountOfPlayers(int no)
@@ -189,6 +189,19 @@ public class GameLauncher {
 		{
 			return false;
 		}
+	}
+	
+	public String lastManStandingName()
+	{
+		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
+		{
+			if (playerlist[playerNo].getAlive() == true)
+			{
+				return playerlist[playerNo].toString();
+			}
+		}
+		
+		return "";
 	}
 
 }
