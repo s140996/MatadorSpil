@@ -10,7 +10,7 @@ import Player.Player;
 public abstract class GField {
 	
 	private String name;
-	public int id;
+	private int id;
 	private String type;
 	private Color color;
 	

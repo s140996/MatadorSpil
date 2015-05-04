@@ -355,7 +355,7 @@ public class DBController {
 						if (playerlist[j].toString() == owner)
 						{
 							field.setOwner(playerlist[j]);
-							gui.setOwner(field.getID(), owner);
+							gui.setOwner(i, owner);
 						}
 					}
 					
@@ -372,9 +372,9 @@ public class DBController {
 					}
 					
 					territory.setHouse(house);
-					gui.setHouses(territory.id, house);
+					gui.setHouses(i, house);
 					territory.setHotel(hotel);
-					gui.setHotel(territory.id, territory.getHotel());
+					gui.setHotel(i, territory.getHotel());
 				}
 				
 			}
