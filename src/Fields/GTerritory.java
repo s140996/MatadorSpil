@@ -360,7 +360,7 @@ public class GTerritory extends GOwnable {
 			if (field.getType() == "Territory")
 			{
 				GTerritory territory = (GTerritory) field;
-				if (territory.getColor().equals(super.getColor()) && territory.getOwner() == super.getOwner() && territory.getHouseCount() == 4)
+				if (territory.getColor().equals(super.getColor()) && territory.getOwner() == super.getOwner() && territory.getHouseCount() == 4 || territory.getColor().equals(super.getColor()) && territory.getOwner() == super.getOwner() && territory.getHotelCount() == 1)
 				{
 					count++;
 				}
@@ -404,9 +404,26 @@ public class GTerritory extends GOwnable {
 		this.houseCount = this.houseCount + house;
 	}
 	
+	public void setHotel(int hotel)
+	{
+		if (hotel == 1)
+		{
+			this.hasHotel = true;
+		}
+		else
+		{
+			this.hasHotel = false;
+		}
+	}
+	
 	public void removeHotel()
 	{
 		this.hasHotel = false;
+	}
+	
+	public boolean getHotel()
+	{
+		return this.hasHotel;
 	}
 
 }

@@ -33,7 +33,7 @@ public class GameLauncher {
 		case "Load spil":
 			this.amountOfPlayers = db.loadAmountOfPlayers();
 			playerlist = db.loadPlayer(amountOfPlayers, gui);
-			db.loadgb(gb, playerlist);
+			db.loadgb(gb, playerlist, gui, amountOfPlayers);
 			break;
 		}
 

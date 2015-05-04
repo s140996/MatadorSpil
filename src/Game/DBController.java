@@ -163,12 +163,7 @@ public class DBController {
 							stmt.executeUpdate(sql);
 						}
 					}
-
-
 				}
-
-
-
 			}
 
 
@@ -288,7 +283,7 @@ public class DBController {
 
 			for (int i = 1; i < playerNo; i++)
 			{
-				sql = "SELECT * FROM Player NATURAL JOIN Account WHERE Player.ID = " + i;
+				sql = "SELECT * FROM Player NATURAL JOIN Account WHERE ID = " + i;
 				rs = stmt.executeQuery(sql);
 
 				while(rs.next())
@@ -319,7 +314,7 @@ public class DBController {
 		return playerlist;
 	}
 	
-	public void loadgb(GameBoard gb, Player[] playerlist)
+	public void loadgb(GameBoard gb, Player[] playerlist, GUIController gui, int amountOfPlayers)
 	{
 		con = null;
 		stmt = null;
@@ -333,13 +328,54 @@ public class DBController {
 
 			stmt = con.createStatement();
 			
-			sql = "SELECT * FROM Ownable NATURAL LEFT OUTER JOIN Building;";
-			rs = stmt.executeQuery(sql);
+			String owner = "";
+			boolean pawned = false;
+			int house = 0;
+			int hotel = 0;
 			
 			for(int i = 0; i < 40; i++)
 			{
+				sql = "SELECT * FROM Ownable NATURAL LEFT OUTER JOIN Building WHERE ID =" + gb.getField(i).getID() + ";";
+				rs = stmt.executeQuery(sql);
 				
+				if(gb.getField(i).getType() == "Territory" || gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
+				{
+					GOwnable field = (GOwnable) gb.getField(i);
+					
+					while(rs.next())
+					{
+						owner = rs.getString("Owner");
+						pawned = rs.getBoolean("Pawned");
+					}
+					
+					field.setPawn(pawned);
+					
+					for (int j = 1; j < amountOfPlayers + 1; j++)
+					{ 
+						if (playerlist[j].toString() == owner)
+						{
+							field.setOwner(playerlist[j]);
+							gui.setOwner(field.getID(), owner);
+						}
+					}
+					
+				}
 				
+				if(gb.getField(i).getType() == "Territory")
+				{
+					GTerritory territory = (GTerritory) gb.getField(i);
+					
+					while(rs.next())
+					{
+						house = rs.getInt("House");
+						hotel = rs.getInt("Hotels");
+					}
+					
+					territory.setHouse(house);
+					gui.setHouses(territory.id, house);
+					territory.setHotel(hotel);
+					gui.setHotel(territory.id, territory.getHotel());
+				}
 				
 			}
 		}
