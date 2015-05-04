@@ -193,11 +193,13 @@ public class DBController {
 	}
 
 
-	public void load()
+	public int loadAmountOfPlayers()
 	{
 		con = null;
 		stmt = null;
 
+		int rtn = 0;
+		
 		try
 		{
 			Class.forName(JDBC_driver);
@@ -207,13 +209,48 @@ public class DBController {
 
 			stmt = con.createStatement();
 
-
-
+			sql = "SELECT AmountOfPlayers FROM Game;";
+			
+			rtn = stmt.executeUpdate(sql);
+			
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+		
+		return rtn;
+	}
+	
+	public Player[] loadPlayer(int amountOfPlayers)
+	{
+		con = null;
+		stmt = null;
+
+		Player[] playerlist = new Player[amountOfPlayers + 1];
+		
+		try
+		{
+			Class.forName(JDBC_driver);
+
+			//Opretter forbindelse til databasen
+			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
+
+			stmt = con.createStatement();
+			
+			sql = "SELECT PlayerNo FROM Game;";
+						
+			int playerNo = stmt.executeUpdate(sql);;
+
+			stmt.executeUpdate(sql);
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return playerlist;
 	}
 
 }

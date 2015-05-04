@@ -31,7 +31,8 @@ public class GameLauncher {
 			newGame();
 			break;
 		case "Load spil":
-			db.load();
+			this.amountOfPlayers = db.loadAmountOfPlayers();
+			
 			break;
 		}
 
