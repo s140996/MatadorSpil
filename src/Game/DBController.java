@@ -54,7 +54,7 @@ public class DBController {
 			stmt = con.createStatement();
 
 			// ** Sletter spiller tabellen, hvis den eksisterer **
-			sql = "DROP TABLE IF EXISTS Player;";
+			sql = "DROP TABLE IF EXISTS Player, Account, Building, Game, Ownable CASCADE;";
 
 			stmt.executeUpdate(sql);
 
@@ -92,11 +92,7 @@ public class DBController {
 				stmt.executeUpdate(sql);
 			}
 
-			// ** Sletter konto tabellen, hvis den eksisterer **
-			sql = "DROP TABLE IF EXISTS Account;";
-
-			stmt.executeUpdate(sql);
-
+			
 			// ** Laver konto tabellen **
 			sql = "CREATE TABLE Account ("
 					+ "Name varchar(255) primary key,"
@@ -117,39 +113,30 @@ public class DBController {
 				stmt.executeUpdate(sql);
 			}
 
-			// ** Sletter Ownable tabellen, hvis den eksisterer **
-			sql = "DROP TABLE IF EXISTS Ownable;";
-
-			stmt.executeUpdate(sql);
 
 			// ** Laver Ownable tabellen **
 			sql = "CREATE TABLE Ownable ("
 					+ "ID int PRIMARY KEY,"
 					+ "FieldName varchar(255),"
 					+ "Owner varchar(255),"
-					+ "Pawned tinyint(1),"
+					+ "Pawned tinyint(1)"
 					+ ");";
-
-			stmt.executeUpdate(sql);
-
-			// ** Sletter Building tabellen, hvis den eksisterer **
-			sql = "DROP TABLE IF EXISTS Building;";
 
 			stmt.executeUpdate(sql);
 
 			// ** Laver Building tabellen **
 			sql = "CREATE TABLE Building ("
 					+ "ID int PRIMARY KEY,"
-					+ "FieldName varchar(255),"
 					+ "House int,"
 					+ "Hotels int,"
-					+ "FOREIGN KEY (FieldName) REFERENCES Ownable(FieldName)"
+					+ "FOREIGN KEY (ID) REFERENCES Ownable(ID)"
 					+ ");";
 
 			stmt.executeUpdate(sql);
 
 			for (int i = 0; i < 40; i++)
 			{
+				
 				if(gb.getField(i).getType() == "Territory" || gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
 				{
 					GOwnable own = (GOwnable) gb.getField(i);
@@ -161,28 +148,27 @@ public class DBController {
 								+ own.getOwner().toString() + "',"
 								+ own.getPawnDB()
 								+ ");";
+						stmt.executeUpdate(sql);
+						
+						if (gb.getField(i).getType() == "Territory")
+						{
+							GTerritory territory = (GTerritory) own;
+							sql = "INSERT INTO Building VALUES ("
+									+ gb.getField(i).getID() + ", "
+									+ territory.getHouseCount() + ", "
+									+ territory.getHotelCount()
+									+ ");";
+							stmt.executeUpdate(sql);
+						}
 					}
 
-					stmt.executeUpdate(sql);
+					
 				}
 
-				if (gb.getField(i).getType() == "Territory")
-				{
-					GTerritory territory = (GTerritory) gb.getField(i);
-					sql = "INSERT INTO Building VALUES ("
-							+ gb.getField(i).getID() + ", '"
-							+ gb.getField(i).getName() + "','"
-							+ territory.getHouseCount() + ","
-							+ territory.getHotelCount()
-							+ ");";
-				}
+				
 
 			}
 
-			// ** Sletter Game tabellen, hvis den eksisterer **
-			sql = "DROP TABLE IF EXISTS Game;";
-
-			stmt.executeUpdate(sql);
 
 			// ** Laver Game tabellen **
 			sql = "CREATE TABLE Game ("
