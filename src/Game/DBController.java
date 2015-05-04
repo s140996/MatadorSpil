@@ -259,7 +259,7 @@ public class DBController {
 				playerNo = rs.getInt("PlayerNo");
 			}
 
-			for (int i = playerNo; i < amountOfPlayers; i++)
+			for (int i = playerNo; i < amountOfPlayers + 1; i++)
 			{
 				sql = "SELECT * FROM Player WHERE ID = " + i;
 				rs = stmt.executeQuery(sql);
@@ -271,7 +271,7 @@ public class DBController {
 					position = rs.getInt("Position");
 					prisonCard = rs.getInt("PrisonCard");
 					fleets = rs.getInt("FleetsOwned");
-					brewery = rs.getInt("breweryOwned");
+					brewery = rs.getInt("brewerysOwned");
 					convict = rs.getBoolean("convict");
 					alive = rs.getBoolean("alive");
 				}
@@ -292,7 +292,7 @@ public class DBController {
 					position = rs.getInt("Position");
 					prisonCard = rs.getInt("PrisonCard");
 					fleets = rs.getInt("FleetsOwned");
-					brewery = rs.getInt("breweryOwned");
+					brewery = rs.getInt("brewerysOwned");
 					convict = rs.getBoolean("convict");
 					alive = rs.getBoolean("alive");
 				}
