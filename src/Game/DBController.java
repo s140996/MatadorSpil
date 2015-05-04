@@ -352,7 +352,8 @@ public class DBController {
 					
 					for (int j = 1; j < amountOfPlayers + 1; j++)
 					{ 
-						System.out.println(playerlist[j].toString() == owner);
+						System.out.println(playerlist[j].toString());
+						System.out.println(owner);
 						if (playerlist[j].toString() == owner)
 						{
 							field.setOwner(playerlist[j]);
