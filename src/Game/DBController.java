@@ -259,6 +259,7 @@ public class DBController {
 				playerNo = rs.getInt("PlayerNo");
 			}
 
+			int j = 1;
 			for (int i = playerNo; i < amountOfPlayers + 1; i++)
 			{
 				sql = "SELECT * FROM Player WHERE ID = " + i;
@@ -276,8 +277,9 @@ public class DBController {
 					alive = rs.getBoolean("alive");
 				}
 
-				playerlist[i] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
+				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
 				gui.loadPlayer(name, 30000, position);
+				j++;
 			}
 
 			for (int i = 1; i < playerNo; i++)
@@ -297,8 +299,9 @@ public class DBController {
 					alive = rs.getBoolean("alive");
 				}
 
-				playerlist[i] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
+				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
 				gui.loadPlayer(name, 30000, position);
+				j++;
 			}
 
 		}
