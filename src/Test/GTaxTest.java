@@ -1,63 +1,60 @@
 package Test;
 
-import static org.junit.Assert.*;
-
-import java.awt.Color;
-
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-
-import Player.Player;
-import Player.Account;
-import Game.GameBoard;
-import Fields.GField;
+import ChanceCard.ChanceCardList;
+import Die.Cup;
+import Fields.GOwnable;
 import Fields.GTax;
+import Game.GUIController;
+import Game.GameBoard;
+import Player.Player;
 
 
 
 public class GTaxTest {
 	
-	GTax GTax = new GTax(1, "Hej", 2000, 10);
-	
-	private String name;
-	private int worth = 10000;
-	private int position = 1;
-	private int prisonCard;
-	private int fleetsOwned;
-	private int brewerysOwned;
-	private int houseCount;
-	private int hotelCount;
-	private boolean convict = false;
-	private boolean alive = true;
-	
-	Player Player = new Player(name, worth, position, prisonCard, fleetsOwned, brewerysOwned, convict, alive);
-	Account Account = new Account(10000);
-	
-	@Test
-	public void BaseTaxTest() {
-		
-		GTax.getBasetax();
-		assertEquals(GTax.getBasetax(),2000);
-		
-	}
-		
-		@Test
-		public void PercentageTaxTest() {
-			
-			GTax.getPercentageTax();
-			assertSame(GTax.getPercentageTax(), 10);
-		
-		
-		}
-	
-	@Test
-	public void PercentageTaTest(){
-		
-		GTax.landOnField(Player, null, null, null, null);
-		
-		
-		
-		
-	}
+	private GUIController GGUI;
+	private ChanceCardList cc;
+	private Cup cup;
+	private Player player;
+	private Player owner;
+	private GameBoard gameBoard;
+	private GOwnable Gownable;
+	private GTax Gtax;
 
+	
+@Before
+public void setUp(){
+
+	this.gameBoard = new GameBoard();
+	this.player = new Player("Tester", 40000, 0, 0, 0, 0, false, true);
+	this.owner = new Player("Ejeren", 10000, 0, 0, 0, 0, false, true);
+	
+	this.gameBoard.getField(4);
+	this.gameBoard.getField(38);
+	
+	}
+	
+@Test
+public void TestLandOnField(){
+	
+	int expected = 30000;
+	int actual = this.player.acc.getBalance();
+	Assert.assertEquals(expected, actual);
+	
+	
+	
+	Gtax.landOnField(player, GGUI, cc, cup, gameBoard);
+	expected = 30000-4000;
+	actual = this.player.acc.getBalance();
+	Assert.assertEquals(expected, actual);
+	
+	
+	
+	
+}
+	
 }

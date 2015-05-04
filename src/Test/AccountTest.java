@@ -37,13 +37,13 @@ public class AccountTest {
 	}
 	
 	@Test
-	public void testdeposit() {
+	public void testDeposit() {
 		Account.deposit(5000);
 		assertEquals(Account.getBalance(),10000);
 	}
 	
 	@Test
-	public void testwithdraw() {
+	public void testWithdraw() {
 		Account.withdraw(2000);
 		assertEquals(Account.getBalance(),3000);
 	}
