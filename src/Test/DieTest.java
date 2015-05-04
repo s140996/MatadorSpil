@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import Die.Die;
 
-public class TestsDie {
+public class DieTest {
 
 	@Before
 	public void setUp() throws Exception {
