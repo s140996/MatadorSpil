@@ -92,6 +92,11 @@ public class GChance extends GField {
 					player.setPrisonCard(1);	
 				}
 
+				if(c.getPosition() == 0)
+				{
+					player.acc.deposit(c.getCash());
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+				}
 			}
 
 			break;
