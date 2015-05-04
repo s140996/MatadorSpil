@@ -55,7 +55,7 @@ public class DBController {
 			stmt = con.createStatement();
 
 			// ** Sletter tabellerne, hvis de eksisterer **
-			sql = "DROP TABLE IF EXISTS Player, Account, Building, Game, Ownable CASCADE;";
+			sql = "DROP TABLE IF EXISTS Player; DROP TABLE IF EXISTS Account CASCADE; DROP TABLE IF EXISTS Building CASCADE; DROP TABLE IF EXISTS Game; DROP TABLE IF EXISTS Ownable;";
 
 			stmt.executeUpdate(sql);
 
@@ -274,7 +274,7 @@ public class DBController {
 					alive = rs.getBoolean("alive");
 					balance = rs.getInt("Balance");
 				}
-				
+
 				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
 				playerlist[j].acc.setBalance(balance);
 				gui.loadPlayer(name, balance, position);
@@ -298,7 +298,7 @@ public class DBController {
 					alive = rs.getBoolean("alive");
 					balance = rs.getInt("Balance");
 				}
-				
+
 				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
 				playerlist[j].acc.setBalance(balance);
 				gui.loadPlayer(name, balance, position);
@@ -313,7 +313,7 @@ public class DBController {
 
 		return playerlist;
 	}
-	
+
 	public void loadgb(GameBoard gb, Player[] playerlist, GUIController gui, int amountOfPlayers)
 	{
 		con = null;
@@ -327,58 +327,60 @@ public class DBController {
 			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
 			stmt = con.createStatement();
-			
+
 			for(int i = 0; i < 40; i++)
 			{
 				String owner = "";
 				boolean pawned = false;
 				int house = 0;
 				int hotel = 0;
-				
+
 				sql = "SELECT * FROM Ownable NATURAL LEFT OUTER JOIN Building WHERE ID = " + gb.getField(i).getID() + ";";
 				rs = stmt.executeQuery(sql);
-				
+
 				if(gb.getField(i).getType() == "Territory" || gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
 				{
 					GOwnable field = (GOwnable) gb.getField(i);
-					
+
 					while(rs.next())
 					{
 						owner = rs.getString("Owner");
 						pawned = rs.getBoolean("Pawned");
 					}
-					
+
 					field.setPawn(pawned);
-					
+
 					for (int j = 1; j < amountOfPlayers + 1; j++)
 					{ 
-						System.out.println(playerlist[j].toString());
-						System.out.println(owner);
-						if (playerlist[j].toString() == owner + " ")
+						owner = owner.replaceAll("\\s+", "");
+						String playerName = playerlist[j].toString().replaceAll("\\s+", "");
+						
+						if (playerName == owner)
 						{
 							field.setOwner(playerlist[j]);
-							gui.setOwner(field.getID(), owner);
+							gui.setOwner(field.getID(), playerlist[j].toString());
+							System.out.println("hej");
 						}
 					}
-					
+
 				}
-				
+
 				if(gb.getField(i).getType() == "Territory")
 				{
 					GTerritory territory = (GTerritory) gb.getField(i);
-					
+
 					while(rs.next())
 					{
 						house = rs.getInt("House");
 						hotel = rs.getInt("Hotels");
 					}
-					
+
 					territory.setHouse(house);
 					gui.setHouses(territory.getID(), house);
 					territory.setHotel(hotel);
 					gui.setHotel(territory.getID(), territory.getHotel());
 				}
-				
+
 			}
 		}
 		catch (Exception e)
