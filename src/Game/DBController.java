@@ -96,8 +96,9 @@ public class DBController {
 
 			// ** Laver konto tabellen **
 			sql = "CREATE TABLE Account ("
-					+ "Name varchar(255) primary key,"
-					+ "Balance int"
+					+ "Name varchar(255) PRIMARY KEY,"
+					+ "Balance int, "
+					+ "FOREIGN KEY (Name) REFERENCES Player(Name)"
 					+ ");";
 
 			stmt.executeUpdate(sql);
@@ -251,6 +252,7 @@ public class DBController {
 			int brewery = 0;
 			boolean convict = false;
 			boolean alive = false;
+			int balance = 0;
 
 			sql = "SELECT PlayerNo FROM Game;";
 			rs = stmt.executeQuery(sql);
@@ -262,7 +264,7 @@ public class DBController {
 			int j = 1;
 			for (int i = playerNo; i < amountOfPlayers + 1; i++)
 			{
-				sql = "SELECT * FROM Player WHERE ID = " + i;
+				sql = "SELECT * FROM Player NATURAL JOIN Account WHERE Player.ID = " + i;
 				rs = stmt.executeQuery(sql);
 
 				while(rs.next())
@@ -275,16 +277,18 @@ public class DBController {
 					brewery = rs.getInt("brewerysOwned");
 					convict = rs.getBoolean("convict");
 					alive = rs.getBoolean("alive");
+					balance = rs.getInt("Balance");
 				}
-
+				
 				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
-				gui.loadPlayer(name, 30000, position);
+				playerlist[j].acc.setBalance(balance);
+				gui.loadPlayer(name, balance, position);
 				j++;
 			}
 
 			for (int i = 1; i < playerNo; i++)
 			{
-				sql = "SELECT * FROM Player WHERE ID = " + i;
+				sql = "SELECT * FROM Player NATURAL JOIN Account WHERE Player.ID = " + i;
 				rs = stmt.executeQuery(sql);
 
 				while(rs.next())
@@ -297,10 +301,12 @@ public class DBController {
 					brewery = rs.getInt("brewerysOwned");
 					convict = rs.getBoolean("convict");
 					alive = rs.getBoolean("alive");
+					balance = rs.getInt("Balance");
 				}
-
+				
 				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
-				gui.loadPlayer(name, 30000, position);
+				playerlist[j].acc.setBalance(balance);
+				gui.loadPlayer(name, balance, position);
 				j++;
 			}
 
@@ -311,6 +317,36 @@ public class DBController {
 		}
 
 		return playerlist;
+	}
+	
+	public void loadgb(GameBoard gb, Player[] playerlist)
+	{
+		con = null;
+		stmt = null;
+
+		try
+		{
+			Class.forName(JDBC_driver);
+
+			//Opretter forbindelse til databasen
+			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
+
+			stmt = con.createStatement();
+			
+			sql = "SELECT * FROM Ownable NATURAL LEFT OUTER JOIN Building;";
+			rs = stmt.executeQuery(sql);
+			
+			for(int i = 0; i < 40; i++)
+			{
+				
+				
+				
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

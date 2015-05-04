@@ -23,8 +23,8 @@ public class Player {
 		this.prisonCard = prisonCard;
 		this.fleetsOwned = fleetsOwned;
 		this.brewerysOwned = brewerysOwned;
-		this.convict = false;
-		this.alive = true;
+		this.convict = convict;
+		this.alive = alive;
 	}
 	
 	public void setPosition(int newPosition)
