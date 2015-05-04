@@ -14,6 +14,7 @@ public class DBController {
 	private Connection con;
 	private Statement stmt;
 	private String sql;
+	private ResultSet rs;
 
 	public DBController() 
 	{
@@ -92,7 +93,7 @@ public class DBController {
 				stmt.executeUpdate(sql);
 			}
 
-			
+
 			// ** Laver konto tabellen **
 			sql = "CREATE TABLE Account ("
 					+ "Name varchar(255) primary key,"
@@ -136,7 +137,7 @@ public class DBController {
 
 			for (int i = 0; i < 40; i++)
 			{
-				
+
 				if(gb.getField(i).getType() == "Territory" || gb.getField(i).getType() == "Brewery" || gb.getField(i).getType() == "Fleet")
 				{
 					GOwnable own = (GOwnable) gb.getField(i);
@@ -149,7 +150,7 @@ public class DBController {
 								+ own.getPawnDB()
 								+ ");";
 						stmt.executeUpdate(sql);
-						
+
 						if (gb.getField(i).getType() == "Territory")
 						{
 							GTerritory territory = (GTerritory) own;
@@ -162,10 +163,10 @@ public class DBController {
 						}
 					}
 
-					
+
 				}
 
-				
+
 
 			}
 
@@ -177,13 +178,13 @@ public class DBController {
 					+ ");";
 
 			stmt.executeUpdate(sql);
-			
+
 			// ** Indsætter i Game tabellen **
 			sql = "INSERT INTO Game VALUES ("
 					+ playerNo + ", "
 					+ amountOfPlayers
 					+ ");";
-			
+
 			stmt.executeUpdate(sql);
 		}
 		catch (Exception e)
@@ -199,7 +200,7 @@ public class DBController {
 		stmt = null;
 
 		int rtn = 0;
-		
+
 		try
 		{
 			Class.forName(JDBC_driver);
@@ -210,25 +211,28 @@ public class DBController {
 			stmt = con.createStatement();
 
 			sql = "SELECT AmountOfPlayers FROM Game;";
-			
-			rtn = stmt.executeUpdate(sql);
-			
+			rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				rtn = rs.getInt("AmountOfPlayers");
+			}
+
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		
+
 		return rtn;
 	}
-	
-	public Player[] loadPlayer(int amountOfPlayers)
+
+	public Player[] loadPlayer(int amountOfPlayers, GUIController gui)
 	{
 		con = null;
 		stmt = null;
 
 		Player[] playerlist = new Player[amountOfPlayers + 1];
-		
+
 		try
 		{
 			Class.forName(JDBC_driver);
@@ -237,19 +241,72 @@ public class DBController {
 			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
 			stmt = con.createStatement();
-			
-			sql = "SELECT PlayerNo FROM Game;";
-						
-			int playerNo = stmt.executeUpdate(sql);;
 
-			stmt.executeUpdate(sql);
-			
+			int playerNo = 0;
+			String name = "";
+			int worth = 0;
+			int position = 0;
+			int prisonCard = 0;
+			int fleets = 0;
+			int brewery = 0;
+			boolean convict = false;
+			boolean alive = false;
+
+			sql = "SELECT PlayerNo FROM Game;";
+			rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				playerNo = rs.getInt("PlayerNo");
+			}
+
+			for (int i = playerNo; i < amountOfPlayers; i++)
+			{
+				sql = "SELECT * FROM Player WHERE ID = " + i;
+				rs = stmt.executeQuery(sql);
+
+				while(rs.next())
+				{
+					name = rs.getString("Name");
+					worth = rs.getInt("worth");		
+					position = rs.getInt("Position");
+					prisonCard = rs.getInt("PrisonCard");
+					fleets = rs.getInt("FleetsOwned");
+					brewery = rs.getInt("breweryOwned");
+					convict = rs.getBoolean("convict");
+					alive = rs.getBoolean("alive");
+				}
+
+				playerlist[i] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
+				gui.loadPlayer(name, 30000, position);
+			}
+
+			for (int i = 1; i < playerNo; i++)
+			{
+				sql = "SELECT * FROM Player WHERE ID = " + i;
+				rs = stmt.executeQuery(sql);
+
+				while(rs.next())
+				{
+					name = rs.getString("Name");
+					worth = rs.getInt("worth");		
+					position = rs.getInt("Position");
+					prisonCard = rs.getInt("PrisonCard");
+					fleets = rs.getInt("FleetsOwned");
+					brewery = rs.getInt("breweryOwned");
+					convict = rs.getBoolean("convict");
+					alive = rs.getBoolean("alive");
+				}
+
+				playerlist[i] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
+				gui.loadPlayer(name, 30000, position);
+			}
+
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		
+
 		return playerlist;
 	}
 

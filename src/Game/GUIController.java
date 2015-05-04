@@ -34,6 +34,19 @@ public class GUIController {
 		GUI.addPlayer(name, 30000, car);
 		GUI.setCar(1, name);
 	}
+	
+	// *** Load Player ***
+		public void loadPlayer(String name, int balance, int position)
+		{
+			Car car = new Car.Builder()
+			.primaryColor(color[i])
+			.typeRacecar()
+			.build();
+			i++;
+
+			GUI.addPlayer(name, balance, car);
+			GUI.setCar(position, name);
+		}
 
 	// *** Move Car ***
 	public void moveCar(int position, String name)
