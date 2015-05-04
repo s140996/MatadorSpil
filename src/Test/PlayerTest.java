@@ -38,4 +38,11 @@ public class PlayerTest {
 		assertEquals(testPlay.toString(),"PlayerOne");
 	}
 
+		// *** Test - Startamount
+	
+	@Test
+	public void testStartBalance() {
+		assertEquals(testPlay.acc.getBalance(), 30000);
+	}
+	
 }
