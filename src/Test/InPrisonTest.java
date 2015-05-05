@@ -37,6 +37,10 @@ public class InPrisonTest {
 		
 		// *** Tjekker om spilleren har brugt sit prison card ***
 		assertEquals(0 , player.getPrisonCard());
+		
+		// *** Tjekker om spilleren stadig er convict ***
+		boolean expectedBool = false;
+		assertEquals(expectedBool, player.getConvict());
 	}
 
 	@Test 
