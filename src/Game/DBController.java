@@ -30,10 +30,6 @@ public class DBController {
 
 			stmt = con.createStatement();
 
-//			sql = "DROP DATABASE " + this.dbName + ";";
-//			
-//			stmt.executeUpdate(sql);
-			
 			sql = "CREATE DATABASE IF NOT EXISTS " + this.dbName;
 
 			stmt.executeUpdate(sql);
@@ -76,7 +72,8 @@ public class DBController {
 					+ "ID int PRIMARY KEY,"
 					+ "FieldName varchar(255),"
 					+ "Owner varchar(255),"
-					+ "Pawned tinyint(1)"
+					+ "Pawned tinyint(1),"
+					+ "FOREIGN KEY (Owner) REFERENCES Player(Name)"
 					+ ");";
 
 			stmt.executeUpdate(sql);
@@ -93,8 +90,10 @@ public class DBController {
 
 			// ** Laver Game tabellen **
 			sql = "CREATE TABLE IF NOT EXISTS Game ("
-					+ "PlayerNo int,"
-					+ "AmountOfPlayers int"
+					+ "PlayerTurnName varchar(255),"
+					+ "PlayerTurnID int,"
+					+ "AmountOfPlayers int,"
+					+ "FOREIGN KEY (PlayerTurnName) REFERENCES Player(Name)"
 					+ ");";
 
 			stmt.executeUpdate(sql);
@@ -105,7 +104,7 @@ public class DBController {
 		}
 	}
 
-	public void save(Player[] playerlist, int amountOfPlayers, int playerNo, GameBoard gb)
+	public void save(Player[] playerlist, int amountOfPlayers, int PlayerTurnID, GameBoard gb)
 	{	
 		con = null;
 		stmt = null;
@@ -215,7 +214,8 @@ public class DBController {
 
 			// ** Indsætter i Game tabellen **
 			sql = "INSERT INTO Game VALUES ("
-					+ playerNo + ", "
+					+ "'" + playerlist[PlayerTurnID].toString() + "', "
+					+ PlayerTurnID + ", "
 					+ amountOfPlayers
 					+ ");";
 
@@ -276,7 +276,7 @@ public class DBController {
 
 			stmt = con.createStatement();
 
-			int playerNo = 0;
+			int PlayerTurnID = 0;
 			String name = "";
 			int worth = 0;
 			int position = 0;
@@ -288,15 +288,15 @@ public class DBController {
 			boolean alive = false;
 			int balance = 0;
 
-			sql = "SELECT PlayerNo FROM Game;";
+			sql = "SELECT PlayerTurnID FROM Game;";
 			rs = stmt.executeQuery(sql);
 			while(rs.next())
 			{
-				playerNo = rs.getInt("PlayerNo");
+				PlayerTurnID = rs.getInt("PlayerTurnID");
 			}
 
 			int j = 1;
-			for (int i = playerNo; i < amountOfPlayers + 1; i++)
+			for (int i = PlayerTurnID; i < amountOfPlayers + 1; i++)
 			{
 				sql = "SELECT * FROM Player NATURAL JOIN Account WHERE Player.ID = " + i;
 				rs = stmt.executeQuery(sql);
@@ -321,7 +321,7 @@ public class DBController {
 				j++;
 			}
 
-			for (int i = 1; i < playerNo; i++)
+			for (int i = 1; i < PlayerTurnID; i++)
 			{
 				sql = "SELECT * FROM Player NATURAL JOIN Account WHERE ID = " + i;
 				rs = stmt.executeQuery(sql);
