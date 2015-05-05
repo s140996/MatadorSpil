@@ -33,7 +33,7 @@ public class DBController {
 			sql = "CREATE DATABASE IF NOT EXISTS " + this.dbName;
 
 			stmt.executeUpdate(sql);
-			
+
 			Class.forName(JDBC_driver);
 
 			//Opretter forbindelse til databasen
@@ -116,15 +116,15 @@ public class DBController {
 			stmt = con.createStatement();
 
 			// ** Sletter tabellerne, hvis de eksisterer **
-			
+
 			sql = "SET FOREIGN_KEY_CHECKS = 0;";
-			
+
 			stmt.executeUpdate(sql);
-			
+
 			sql = "DELETE FROM Player;";
-			
+
 			stmt.executeUpdate(sql);
-			
+
 			sql = "DELETE FROM Account;";
 
 			stmt.executeUpdate(sql);
@@ -140,9 +140,9 @@ public class DBController {
 			sql = "DELETE FROM Game;";
 
 			stmt.executeUpdate(sql);
-			
+
 			sql = "SET FOREIGN_KEY_CHECKS = 1;";
-			
+
 			stmt.executeUpdate(sql);
 
 			// ** Gemmer spiller i DB **
@@ -389,9 +389,6 @@ public class DBController {
 
 					for (int j = 1; j < amountOfPlayers + 1; j++)
 					{ 
-						System.out.println(playerlist[j].toString());
-						System.out.println(owner);
-						
 						if (playerlist[j].toString().equals(owner))
 						{
 							field.setOwner(playerlist[j]);
@@ -405,16 +402,20 @@ public class DBController {
 				{
 					GTerritory territory = (GTerritory) gb.getField(i);
 
-					while(rs.next())
+					while(rs.previous())
 					{
 						house = rs.getInt("House");
 						hotel = rs.getInt("Hotels");
 					}
 
-					territory.setHouse(house);
-					gui.setHouses(territory.getID(), house);
 					territory.setHotel(hotel);
 					gui.setHotel(territory.getID(), territory.getHotel());
+					if (territory.getHotel() == false)
+					{
+						territory.setHouse(house);
+						gui.setHouses(territory.getID(), house);
+					}
+
 				}
 
 			}
@@ -440,11 +441,11 @@ public class DBController {
 			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
 			stmt = con.createStatement();
-		
+
 			sql = "SELECT COUNT(*) AS RowCnt FROM Player";
-			
+
 			rs = stmt.executeQuery(sql);
-			
+
 			while (rs.next())
 			{
 				rws = rs.getRow();
@@ -454,7 +455,7 @@ public class DBController {
 		{
 			e.printStackTrace();
 		}
-		
+
 		if (rws == 0)
 		{
 			return false;
@@ -464,6 +465,6 @@ public class DBController {
 			return true;
 		}
 	}
-	
+
 }
 
