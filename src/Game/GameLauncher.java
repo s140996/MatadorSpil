@@ -1,4 +1,5 @@
 package Game;
+
 import ChanceCard.ChanceCardList;
 import Die.Cup;
 import Fields.*;
@@ -50,13 +51,46 @@ public class GameLauncher {
 
 	public void newGame()
 	{	
+		String name;
+		boolean rnd;
+		boolean check;
+		Player player;
+
 		amountOfPlayers = gui.amountOfPlayers();
 		playerlist = new Player[amountOfPlayers + 1];
 
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
-		{ 
-			playerlist[playerNo] = new Player(gui.newPlayer(playerNo), 0, 1, 0, 0, 0, false, false, true);
-			gui.addPlayer(playerlist[playerNo].toString());
+		{
+			rnd = true;
+
+			while (rnd == true)
+			{
+				name = gui.newPlayer(playerNo);
+				check = false;
+				player = new Player(name, 0, 1, 0, 0, 0, false, false, true);
+
+				for (int i = 1; i < amountOfPlayers + 1; i++)
+				{
+					if (playerlist[i] != null)
+					{
+						if (player.toString().compareToIgnoreCase(playerlist[i].toString()) == 0)
+						{
+							check = true;
+						}
+					}
+				}
+
+				if (check == true)
+				{
+					gui.showMessage("Der er allerede en spiller med dette navn.");
+				}
+				else if (check == false)
+				{
+					playerlist[playerNo] = player;
+					gui.addPlayer(playerlist[playerNo].toString());
+					rnd = false;
+				}
+			}
 		}
 
 	}
