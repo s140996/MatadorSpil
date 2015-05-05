@@ -73,7 +73,7 @@ public class GameLauncher {
 				{
 					if (playerlist[i] != null)
 					{
-						if (player.toString().compareTo(playerlist[i].toString()) == 0)
+						if (player.toString().compareToIgnoreCase(playerlist[i].toString()) == 0)
 						{
 							check = true;
 						}
