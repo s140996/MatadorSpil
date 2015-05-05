@@ -31,9 +31,17 @@ public class GameLauncher {
 			newGame();
 			break;
 		case "Load spil":
-			this.amountOfPlayers = db.loadAmountOfPlayers();
-			playerlist = db.loadPlayer(amountOfPlayers, gui);
-			db.loadgb(gb, playerlist, gui, amountOfPlayers);
+			if (db.isThereASavedGame() == false)
+			{
+				gui.showMessage("Der er ikke noget gemt spil, så derfor startes et nyt spil.");
+				newGame();
+			}
+			else
+			{
+				this.amountOfPlayers = db.loadAmountOfPlayers();
+				playerlist = db.loadPlayer(amountOfPlayers, gui);
+				db.loadgb(gb, playerlist, gui, amountOfPlayers);
+			}
 			break;
 		}
 
@@ -134,7 +142,7 @@ public class GameLauncher {
 								{
 									con = false;
 								}
-								
+
 								break;
 							case "Sælg hotel":
 								pawn.sellHotel(playerlist[playerNo], gb, gui);
@@ -155,7 +163,7 @@ public class GameLauncher {
 									db.save(playerlist, this.amountOfPlayers, this.playerNo, gb);
 									gui.showMessage("Du har nu gemt spillet.");
 								}
-								
+
 								break;
 							}
 						}
@@ -163,7 +171,7 @@ public class GameLauncher {
 				}
 			}
 		}
-		
+
 		gui.showMessage("Tillykke!!!!! " + lastManStandingName() + " har vundet spillet.");
 	}
 
@@ -193,7 +201,7 @@ public class GameLauncher {
 			return false;
 		}
 	}
-	
+
 	public String lastManStandingName()
 	{
 		for (playerNo = 1; playerNo < amountOfPlayers + 1; playerNo++)
@@ -203,7 +211,7 @@ public class GameLauncher {
 				return playerlist[playerNo].toString();
 			}
 		}
-		
+
 		return "";
 	}
 

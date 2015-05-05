@@ -425,5 +425,45 @@ public class DBController {
 		}
 	}
 
+	public boolean isThereASavedGame()
+	{
+		con = null;
+		stmt = null;
+
+		int rws = 0;
+
+		try
+		{
+			Class.forName(JDBC_driver);
+
+			//Opretter forbindelse til databasen
+			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
+
+			stmt = con.createStatement();
+		
+			sql = "SELECT COUNT(*) AS RowCnt FROM Player";
+			
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next())
+			{
+				rws = rs.getRow();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		if (rws == 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
 }
 
