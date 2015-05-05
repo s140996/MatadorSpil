@@ -20,7 +20,7 @@ public class GStart extends GField {
 	
 	@Override
 	public void landOnField(Player player, GUIController GGUI, ChanceCardList cc, Cup cup, GameBoard gb) {
-		GGUI.showMessage("Modtag 4000,-");
+		GGUI.showMessage("Modtag 4000,- når du passerer start");
 		
 	}
 
