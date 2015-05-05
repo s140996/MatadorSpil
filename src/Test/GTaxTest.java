@@ -30,8 +30,8 @@ public class GTaxTest {
 public void setUp(){
 
 	this.gameBoard = new GameBoard();
-	this.player = new Player("Tester", 40000, 0, 0, 0, 0, false, true);
-	this.owner = new Player("Ejeren", 10000, 0, 0, 0, 0, false, true);
+	this.player = new Player("Tester", 40000, 0, 0, 0, 0, false, false, true);
+	this.owner = new Player("Ejeren", 10000, 0, 0, 0, 0, false, false, true);
 	
 	this.gameBoard.getField(4);
 	this.gameBoard.getField(38);

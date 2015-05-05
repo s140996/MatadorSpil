@@ -20,8 +20,8 @@ public class FleetTest {
 	@Before
 	public void setup() throws Exception{
 		
-		owner = new Player("Owner", 0, 0, 0, 0, 0, false, true);
-		lander = new Player("Lander", 0, 0, 0, 0, 0, false, true);
+		owner = new Player("Owner", 0, 0, 0, 0, 0, false ,false, true);
+		lander = new Player("Lander", 0, 0, 0, 0, 0, false, false, true);
 		FleetOne = new GFleet(6, "LB Færgerne", 4000, 500);
 		FleetTwo = new GFleet(16, "Danmark", 4000, 500);
 		FleetThree = new GFleet(26, "Mols-Linien A/S", 4000, 500);

@@ -12,7 +12,7 @@ public class PlayerTest {
 	
 	@Before
 	public void setup() throws Exception{
-	testPlay = new Player("PlayerOne", 0, 0, 0, 0, 0, false, false);
+	testPlay = new Player("PlayerOne", 0, 0, 0, 0, 0, false, false, false);
 	}
 	
 		// *** Checking if the contruct is made with the correct name. ***
