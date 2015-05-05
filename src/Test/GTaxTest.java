@@ -29,19 +29,17 @@ public class GTaxTest {
 		
 	
 		lander = new Player("Lander", 0, 0, 0, 0, 0, false, false, true);
-		TaxOne = new GTax(4, "Tax1", 3000, 10);
+		TaxOne = new GTax(4, "Tax1", 4000, 10);
 		cup = new Cup();
 		gb = new GameBoard();
 		cc = new ChanceCardList();
 		GGUI = new GUIController();
-	
+		GGUI.createGameboard(gb);
 	}
 	
 	@Test 
 	public void testPercentageTax() 
 	{
-		
-		cup.roll();
 		int expected = 30000 - lander.getWorth() * 10/100;
 		
 		
@@ -54,8 +52,6 @@ public class GTaxTest {
 	@Test 
 	public void testBaseTax() 
 	{
-		
-		cup.roll();
 		int expected = 30000 - TaxOne.getBasetax();
 		
 		
