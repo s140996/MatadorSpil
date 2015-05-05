@@ -1,60 +1,69 @@
 package Test;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import ChanceCard.ChanceCardList;
-import Die.Cup;
-import Fields.GOwnable;
-import Fields.GTax;
+import Fields.*;
 import Game.GUIController;
 import Game.GameBoard;
 import Player.Player;
-
-
+import ChanceCard.ChanceCardList;
+import Die.*;
 
 public class GTaxTest {
-	
-	private GUIController GGUI;
-	private ChanceCardList cc;
-	private Cup cup;
-	private Player player;
-	private Player owner;
-	private GameBoard gameBoard;
-	private GOwnable Gownable;
-	private GTax Gtax;
 
 	
-@Before
-public void setUp(){
-
-	this.gameBoard = new GameBoard();
-	this.player = new Player("Tester", 40000, 0, 0, 0, 0, false, false, true);
-	this.owner = new Player("Ejeren", 10000, 0, 0, 0, 0, false, false, true);
 	
-	this.gameBoard.getField(4);
-	this.gameBoard.getField(38);
+	Player lander;
+	GTax TaxOne;
+	GTax TaxTwo;
+	GUIController GGUI;
+	ChanceCardList cc;
+	Cup cup;
+	GameBoard gb;
+	
+	@Before
+	public void setup() throws Exception{
+		
+	
+		lander = new Player("Lander", 0, 0, 0, 0, 0, false, false, true);
+		TaxOne = new GTax(4, "Tax1", 3000, 10);
+		cup = new Cup();
+		gb = new GameBoard();
+		cc = new ChanceCardList();
+		GGUI = new GUIController();
 	
 	}
 	
-@Test
-public void TestLandOnField(){
+	@Test 
+	public void testPercentageTax() 
+	{
+		
+		cup.roll();
+		int expected = 30000 - lander.getWorth() * 10/100;
+		
+		
+		TaxOne.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af resultat ***
+		assertEquals(expected, lander.getWorth());
+	}
 	
-	int expected = 30000;
-	int actual = this.player.acc.getBalance();
-	Assert.assertEquals(expected, actual);
+	@Test 
+	public void testBaseTax() 
+	{
+		
+		cup.roll();
+		int expected = 30000 - TaxOne.getBasetax();
+		
+		
+		TaxOne.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af resultat ***
+		assertEquals(expected, lander.getWorth());
+	}
 	
-	
-	
-	Gtax.landOnField(player, GGUI, cc, cup, gameBoard);
-	expected = 30000-4000;
-	actual = this.player.acc.getBalance();
-	Assert.assertEquals(expected, actual);
-	
-	
-	
-	
-}
 	
 }
