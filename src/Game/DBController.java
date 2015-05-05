@@ -30,6 +30,10 @@ public class DBController {
 
 			stmt = con.createStatement();
 
+//			sql = "DROP DATABASE " + this.dbName + ";";
+//			
+//			stmt.executeUpdate(sql);
+			
 			sql = "CREATE DATABASE IF NOT EXISTS " + this.dbName;
 
 			stmt.executeUpdate(sql);
