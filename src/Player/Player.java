@@ -9,13 +9,14 @@ public class Player {
 	private int prisonCard;
 	private int fleetsOwned;
 	private int brewerysOwned;
+	private boolean lastPosition;
 	private boolean convict;
 	private boolean alive;
 	
 	
 	public Account acc = new Account(30000);
 	
-	public Player(String name, int worth, int position, int prisonCard, int fleetsOwned, int brewerysOwned, boolean convict, boolean alive)
+	public Player(String name, int worth, int position, int prisonCard, int fleetsOwned, int brewerysOwned, boolean lastPosition, boolean convict, boolean alive)
 	{
 		this.name = name;
 		this.worth = worth;
@@ -23,6 +24,7 @@ public class Player {
 		this.prisonCard = prisonCard;
 		this.fleetsOwned = fleetsOwned;
 		this.brewerysOwned = brewerysOwned;
+		this.lastPosition = lastPosition;
 		this.convict = convict;
 		this.alive = alive;
 	}
@@ -41,12 +43,25 @@ public class Player {
 	{
 		this.position = this.position + diceRoll;
 		
-		if (this.position > 40)
+		if (this.lastPosition == true)
+		{
+			this.lastPosition = false;
+			this.acc.deposit(4000);
+			GGUI.setGUIBalance(this.acc.getBalance(), this.name);
+		}
+		
+		if (this.position == 41)
+		{
+			this.position = this.position - 40;
+			this.lastPosition = true;
+		}
+		else if (this.position > 40)
 		{
 			this.position = this.position - 40;
 			this.acc.deposit(4000);
 			GGUI.setGUIBalance(this.acc.getBalance(), this.name);
 		}
+		
 	}
 	
 	public void setName(String name)
@@ -142,6 +157,12 @@ public class Player {
 		{
 			return 0;
 		}
+	}
+	
+	public void goToStart()
+	{
+		this.lastPosition = true;
+		this.position = 1;
 	}
 	
 }

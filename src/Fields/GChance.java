@@ -39,10 +39,10 @@ public class GChance extends GField {
 			// Gå til start
 			if(c.getPosition() == 1)
 			{
-				player.setPosition(1);
+				player.goToStart();
 				GGUI.moveCar(1, player.toString());
-				player.acc.deposit(4000);
-				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+//				player.acc.deposit(4000);
+//				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			}
 			//Ryk tre frem/tilbage
 			if(c.getPosition() == 3 || c.getPosition() == -3)
