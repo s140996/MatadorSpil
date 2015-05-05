@@ -46,13 +46,21 @@ public class BreweryTest {
 		
 		// *** Lander slår med terninger ***
 		cup.roll();
+		
+		// *** Forventet balance for lander ***
 		int expected = 30000 - cup.getLastRoll() * 100;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + cup.getLastRoll() * 100;
 		
 		// *** Lander betaler for det første ***
 		BreweryOne.landOnField(lander, GGUI, cc, cup, gb);
 		
-		// *** Check af resultat ***
+		// *** Check lander balance ***
 		assertEquals(expected, lander.acc.getBalance() );
+		
+		// *** Check owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
 	}
 	
 	@Test 
@@ -65,13 +73,21 @@ public class BreweryTest {
 		
 		// *** Lander slår med terninger ***
 		cup.roll();
+		
+		// *** Forventet balance for lander ***
 		int expected = 30000 - cup.getLastRoll() * 200;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + cup.getLastRoll() * 200;
 		
 		// *** Lander betaler for det første ***
 		BreweryOne.landOnField(lander, GGUI, cc, cup, gb);
 		
-		// *** Check af resultat ***
+		// *** Check lander balance ***
 		assertEquals(expected, lander.acc.getBalance() );
+		
+		// *** Check owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
 	}
 	
 	
