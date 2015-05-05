@@ -34,19 +34,19 @@ public class GUIController {
 		GUI.addPlayer(name, 30000, car);
 		GUI.setCar(1, name);
 	}
-	
-	// *** Load Player ***
-		public void loadPlayer(String name, int balance, int position)
-		{
-			Car car = new Car.Builder()
-			.primaryColor(color[i])
-			.typeRacecar()
-			.build();
-			i++;
 
-			GUI.addPlayer(name, balance, car);
-			GUI.setCar(position, name);
-		}
+	// *** Load Player ***
+	public void loadPlayer(String name, int balance, int position)
+	{
+		Car car = new Car.Builder()
+		.primaryColor(color[i])
+		.typeRacecar()
+		.build();
+		i++;
+
+		GUI.addPlayer(name, balance, car);
+		GUI.setCar(position, name);
+	}
 
 	// *** Move Car ***
 	public void moveCar(int position, String name)
@@ -129,7 +129,7 @@ public class GUIController {
 		boolean reply = GUI.getUserLeftButtonPressed(msg, trueButton, falseButton);
 		return reply;
 	}
-	
+
 	// *** Player loose ***
 	public void playerLost(String name)
 	{
@@ -249,13 +249,13 @@ public class GUIController {
 
 		GUI.create(fields);
 	}
-	
+
 	// *** Choose number of players ***
 	public int amountOfPlayers()
 	{
 		int pick = 0;
 		String ans = GUI.getUserButtonPressed("Vælg antal spillere:", "2", "3", "4", "5", "6");
-		
+
 		switch (ans) {
 		case "2": pick = 2; break;
 		case "3": pick = 3; break;
@@ -263,29 +263,45 @@ public class GUIController {
 		case "5": pick = 5; break;
 		case "6": pick = 6; break;
 		}
-		
+
 		return pick;
 	}
 
 	// *** Type player name ***
 	public String newPlayer(int playerNo)
 	{
-		String ans = GUI.getUserString("Skriv navnet på spiller " + playerNo + ":");
+		boolean dauda = true;
+		String ans = "";
+
+		while (dauda == true)
+		{
+			ans = GUI.getUserString("Skriv navnet på spiller " + playerNo + ":");
+
+			if(ans.equals(""))
+			{
+				showMessage("Du skal indtaste et navn!");
+			}
+			else
+			{
+				dauda = false;
+			}
+		}
+
 		return ans;
 	}
-	
+
 	// *** Turn overview ***
 	public String turn(Player player)
 	{
 		String ans = GUI.getUserButtonPressed("Det er " + player.toString() + "'s tur!", "Kast terninger", "Pantsæt", "Sælg huse", "Sælg hotel", "Gem spil");
 		return ans;
 	}
-	
+
 	// *** Startup ***
 	public String startMenu()
 	{
 		String ans = GUI.getUserButtonPressed("Velkommen!", "Nyt spil", "Load spil");
 		return ans;
 	}
-	
+
 }
