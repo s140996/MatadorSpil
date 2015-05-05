@@ -34,18 +34,27 @@ public class GChance extends GField {
 		switch(c.getType())
 		{
 		case 1: 
-			player.acc.deposit(c.getCash());
-			GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+			if(c.getPosition() == 0)
+			{
+				if(c.getCash() < 0)
+				{
+					player.acc.withdraw(- c.getCash());
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+				}
+				else
+				{
+					player.acc.deposit(c.getCash());
+					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
+				}
+			}
 			// Gå til start
-			if(c.getPosition() == 1)
+			else if(c.getPosition() == 1)
 			{
 				player.goToStart();
 				GGUI.moveCar(1, player.toString());
-//				player.acc.deposit(4000);
-//				GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 			}
 			//Ryk tre frem/tilbage
-			if(c.getPosition() == 3 || c.getPosition() == -3)
+			else if(c.getPosition() == 3 || c.getPosition() == -3)
 			{
 				if(player.getPosition() < 4 && c.getPosition() == -3)
 				{
@@ -63,7 +72,7 @@ public class GChance extends GField {
 
 			}
 			//Ryk frem til bestemt felt
-			if(c.getPosition() > 3 && c.getPosition() != 11)
+			else if(c.getPosition() > 3 && c.getPosition() != 11)
 			{
 				if(c.getPosition() < player.getPosition())
 				{
@@ -76,12 +85,12 @@ public class GChance extends GField {
 
 			}
 			//Ryk i fængsel
-			if(c.getPosition() == 11)
+			else if(c.getPosition() == 11)
 			{
 				gb.getField(31 - 1).landOnField(player, GGUI, cc, cup, gb);
 			}
 			//Benådes for fængsel
-			if(c.toString() == "CHANCEKORT: Du benådes for fængsel")
+			else if(c.toString() == "CHANCEKORT: Du benådes for fængsel")
 			{
 				if(player.getPrisonCard() == 1)
 				{
@@ -90,12 +99,6 @@ public class GChance extends GField {
 				else
 				{
 					player.setPrisonCard(1);	
-				}
-
-				if(c.getPosition() == 0)
-				{
-					player.acc.deposit(c.getCash());
-					GGUI.setGUIBalance(player.acc.getBalance(), player.toString());
 				}
 			}
 
