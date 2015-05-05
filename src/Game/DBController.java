@@ -431,8 +431,8 @@ public class DBController {
 		con = null;
 		stmt = null;
 
-		int rws = 0;
-
+		boolean rtn = false;
+		
 		try
 		{
 			Class.forName(JDBC_driver);
@@ -442,28 +442,26 @@ public class DBController {
 
 			stmt = con.createStatement();
 
-			sql = "SELECT COUNT(*) AS RowCnt FROM Player";
+			sql = "SELECT * FROM Player";
 
 			rs = stmt.executeQuery(sql);
 
-			while (rs.next())
+			if (!rs.next())
 			{
-				rws = rs.getRow();
+				rtn = false;
 			}
+			else
+			{
+				rtn = true;
+			}
+			
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-
-		if (rws == 0)
-		{
-			return false;
-		}
-		else
-		{
-			return true;
-		}
+		
+		return rtn;
 	}
 
 }
