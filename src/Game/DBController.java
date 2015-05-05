@@ -33,6 +33,67 @@ public class DBController {
 			sql = "CREATE DATABASE IF NOT EXISTS " + this.dbName;
 
 			stmt.executeUpdate(sql);
+			
+			Class.forName(JDBC_driver);
+
+			//Opretter forbindelse til databasen
+			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
+
+			stmt = con.createStatement();
+
+			// ** Laver spiller tabellen **
+			sql = "CREATE TABLE IF NOT EXISTS Player ("
+					+ "ID int,"
+					+ "Name varchar(255) PRIMARY KEY,"
+					+ "Position int,"
+					+ "PrisonCard int,"
+					+ "worth int,"
+					+ "fleetsOwned int,"
+					+ "brewerysOwned int,"
+					// ** TINYINT(1) ** 0 = false ** 1 = true **
+					+ "lastPosition tinyint(1),"
+					+ "convict tinyint(1),"
+					+ "alive tinyint(1)"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver konto tabellen **
+			sql = "CREATE TABLE IF NOT EXISTS Account ("
+					+ "Name varchar(255) PRIMARY KEY,"
+					+ "Balance int, "
+					+ "FOREIGN KEY (Name) REFERENCES Player(Name)"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver Ownable tabellen **
+			sql = "CREATE TABLE IF NOT EXISTS Ownable ("
+					+ "ID int PRIMARY KEY,"
+					+ "FieldName varchar(255),"
+					+ "Owner varchar(255),"
+					+ "Pawned tinyint(1)"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver Building tabellen **
+			sql = "CREATE TABLE IF NOT EXISTS Building ("
+					+ "ID int PRIMARY KEY,"
+					+ "House int,"
+					+ "Hotels int,"
+					+ "FOREIGN KEY (ID) REFERENCES Ownable(ID)"
+					+ ");";
+
+			stmt.executeUpdate(sql);
+
+			// ** Laver Game tabellen **
+			sql = "CREATE TABLE IF NOT EXISTS Game ("
+					+ "PlayerNo int,"
+					+ "AmountOfPlayers int"
+					+ ");";
+
+			stmt.executeUpdate(sql);
 		}
 		catch (Exception e)
 		{
@@ -55,42 +116,33 @@ public class DBController {
 			stmt = con.createStatement();
 
 			// ** Sletter tabellerne, hvis de eksisterer **
-//			sql = "DROP TABLE IF EXISTS Player; DROP TABLE IF EXISTS Account CASCADE; DROP TABLE IF EXISTS Building CASCADE; DROP TABLE IF EXISTS Game; DROP TABLE IF EXISTS Ownable;";
-			sql = "IF EXISTS DELETE * FROM Player;";
+			
+			sql = "SET FOREIGN_KEY_CHECKS = 0;";
 			
 			stmt.executeUpdate(sql);
 			
-			sql = "DELETE * FROM Account IF EXISTS;";
+			sql = "DELETE FROM Player;";
+			
+			stmt.executeUpdate(sql);
+			
+			sql = "DELETE FROM Account;";
+
+			stmt.executeUpdate(sql);
+
+			sql = "DELETE FROM Building;";
+
+			stmt.executeUpdate(sql);
+
+			sql = "DELETE FROM Ownable;";
+
+			stmt.executeUpdate(sql);
+
+			sql = "DELETE FROM Game;";
 
 			stmt.executeUpdate(sql);
 			
-			sql = "DELETE * FROM Building IF EXISTS;";
+			sql = "SET FOREIGN_KEY_CHECKS = 1;";
 			
-			stmt.executeUpdate(sql);
-			
-			sql = "DELETE * FROM Ownable IF EXISTS;";
-			
-			stmt.executeUpdate(sql);
-			
-			sql = "DELETE * FROM Game IF EXISTS;";
-			
-			stmt.executeUpdate(sql);
-
-			// ** Laver spiller tabellen **
-			sql = "CREATE TABLE IF NOT EXISTS Player ("
-					+ "ID int,"
-					+ "Name varchar(255) PRIMARY KEY,"
-					+ "Position int,"
-					+ "PrisonCard int,"
-					+ "worth int,"
-					+ "fleetsOwned int,"
-					+ "brewerysOwned int,"
-					// ** TINYINT(1) ** 0 = false ** 1 = true **
-					+ "lastPosition tinyint(1) "
-					+ "convict tinyint(1),"
-					+ "alive tinyint(1)"
-					+ ");";
-
 			stmt.executeUpdate(sql);
 
 			// ** Gemmer spiller i DB **
@@ -113,15 +165,6 @@ public class DBController {
 			}
 
 
-			// ** Laver konto tabellen **
-			sql = "CREATE TABLE IF NOT EXISTS Account ("
-					+ "Name varchar(255) PRIMARY KEY,"
-					+ "Balance int, "
-					+ "FOREIGN KEY (Name) REFERENCES Player(Name)"
-					+ ");";
-
-			stmt.executeUpdate(sql);
-
 			// ** Gemmer konto i DB **
 			for (int i = 1; i < amountOfPlayers + 1; i++)
 			{
@@ -134,26 +177,6 @@ public class DBController {
 				stmt.executeUpdate(sql);
 			}
 
-
-			// ** Laver Ownable tabellen **
-			sql = "CREATE TABLE IF NOT EXISTS Ownable ("
-					+ "ID int PRIMARY KEY,"
-					+ "FieldName varchar(255),"
-					+ "Owner varchar(255),"
-					+ "Pawned tinyint(1)"
-					+ ");";
-
-			stmt.executeUpdate(sql);
-
-			// ** Laver Building tabellen **
-			sql = "CREATE TABLE IF NOT EXISTS Building ("
-					+ "ID int PRIMARY KEY,"
-					+ "House int,"
-					+ "Hotels int,"
-					+ "FOREIGN KEY (ID) REFERENCES Ownable(ID)"
-					+ ");";
-
-			stmt.executeUpdate(sql);
 
 			for (int i = 0; i < 40; i++)
 			{
@@ -185,14 +208,6 @@ public class DBController {
 				}
 			}
 
-
-			// ** Laver Game tabellen **
-			sql = "CREATE TABLE Game ("
-					+ "PlayerNo int,"
-					+ "AmountOfPlayers int"
-					+ ");";
-
-			stmt.executeUpdate(sql);
 
 			// ** Indsætter i Game tabellen **
 			sql = "INSERT INTO Game VALUES ("
@@ -374,14 +389,13 @@ public class DBController {
 
 					for (int j = 1; j < amountOfPlayers + 1; j++)
 					{ 
-						owner = owner.replaceAll("\\s+", "");
-						String playerName = playerlist[j].toString().replaceAll("\\s+", "");
+						System.out.println(playerlist[j].toString());
+						System.out.println(owner);
 						
-						if (playerName == owner)
+						if (playerlist[j].toString().equals(owner))
 						{
 							field.setOwner(playerlist[j]);
 							gui.setOwner(field.getID(), playerlist[j].toString());
-							System.out.println("hej");
 						}
 					}
 
