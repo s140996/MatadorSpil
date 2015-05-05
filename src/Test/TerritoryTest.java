@@ -111,4 +111,56 @@ public class TerritoryTest {
 		// *** Check af owner balance ***
 		assertEquals(expected2, owner.acc.getBalance());
 	}
+	
+	@Test 
+	public void testRentFourHouse() 
+	{
+		// *** Owner ejer et Territory med 1 hus på ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		t1.setHouse(4);
+		
+		// *** Forventet balance for lander ***
+		int expected = 30000 - 15000;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + 15000;
+		
+		// *** Lander betaler for det første ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af lander balance ***
+		assertEquals(expected, lander.acc.getBalance() );
+		
+		// *** Check af owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
+	}
+	
+	@Test 
+	public void testRentHotel() 
+	{
+		// *** Owner ejer et Territory med 1 hus på ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		t1.setHotel(1);
+		t2.setHotel(1);
+		t3.setHotel(1);
+		
+		// *** Forventet balance for lander ***
+		int expected = 30000 - 19000;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + 19000;
+		
+		// *** Lander betaler for det første ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af lander balance ***
+		assertEquals(expected, lander.acc.getBalance() );
+		
+		// *** Check af owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
+	}
 }
