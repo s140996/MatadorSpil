@@ -31,14 +31,14 @@ public class TerritoryTest {
 		
 		owner = new Player("Owner", 0, 0, 0, 0, 0, false ,false, true);
 		lander = new Player("Lander", 0, 0, 0, 0, 0, false, false, true);
-		t1 = new GTerritory(17, "Bernstorfsvej", 3600, 300, 2000, 1400, 4000, 11000, 15000, 19000, new Color(129, 129, 129));
-		t2 = new GTerritory(19, "Hellerupvej", 3600, 300, 2000, 1400, 4000, 11000, 15000, 19000, new Color(129, 129, 129));
-		t3 = new GTerritory(20, "Strandvej", 4000, 350, 2000, 1600, 4400, 12000, 16000, 20000, new Color(129, 129, 129));
-		cup = new Cup();
-		gb = new GameBoard();
-		cc = new ChanceCardList();
 		GGUI = new GUIController();
+		gb = new GameBoard();
 		GGUI.createGameboard(gb);
+		t1 = (GTerritory) gb.getField(16); //new GTerritory(17, "Bernstorfsvej", 3600, 300, 2000, 1400, 4000, 11000, 15000, 19000, new Color(129, 129, 129));
+		t2 = (GTerritory) gb.getField(18); //GTerritory(19, "Hellerupvej", 3600, 300, 2000, 1400, 4000, 11000, 15000, 19000, new Color(129, 129, 129));
+		t3 = (GTerritory) gb.getField(19); //new GTerritory(20, "Strandvej", 4000, 350, 2000, 1600, 4400, 12000, 16000, 20000, new Color(129, 129, 129));
+		cup = new Cup();
+		cc = new ChanceCardList();
 	}
 	
 	@Test 
