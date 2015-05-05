@@ -60,11 +60,12 @@ public class BreweryTest {
 	{
 		// *** Owner ejer ét Brewery ***
 		BreweryOne.setOwner(owner);
-		owner.setBrewerysOwned(1);
+		BreweryTwo.setOwner(owner);
+		owner.setBrewerysOwned(2);
 		
 		// *** Lander slår med terninger ***
 		cup.roll();
-		int expected = 30000 - cup.getLastRoll() * 100;
+		int expected = 30000 - cup.getLastRoll() * 200;
 		
 		// *** Lander betaler for det første ***
 		BreweryOne.landOnField(lander, GGUI, cc, cup, gb);
