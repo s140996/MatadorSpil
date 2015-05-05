@@ -165,6 +165,11 @@ public class Player {
 		this.position = 1;
 	}
 	
+	public boolean getLastPosition()
+	{
+		return this.lastPosition;
+	}
+	
 }
 
 

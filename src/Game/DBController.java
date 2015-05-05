@@ -55,12 +55,29 @@ public class DBController {
 			stmt = con.createStatement();
 
 			// ** Sletter tabellerne, hvis de eksisterer **
-			sql = "DROP TABLE IF EXISTS Player; DROP TABLE IF EXISTS Account CASCADE; DROP TABLE IF EXISTS Building CASCADE; DROP TABLE IF EXISTS Game; DROP TABLE IF EXISTS Ownable;";
+//			sql = "DROP TABLE IF EXISTS Player; DROP TABLE IF EXISTS Account CASCADE; DROP TABLE IF EXISTS Building CASCADE; DROP TABLE IF EXISTS Game; DROP TABLE IF EXISTS Ownable;";
+			sql = "IF EXISTS DELETE * FROM Player;";
+			
+			stmt.executeUpdate(sql);
+			
+			sql = "DELETE * FROM Account IF EXISTS;";
 
+			stmt.executeUpdate(sql);
+			
+			sql = "DELETE * FROM Building IF EXISTS;";
+			
+			stmt.executeUpdate(sql);
+			
+			sql = "DELETE * FROM Ownable IF EXISTS;";
+			
+			stmt.executeUpdate(sql);
+			
+			sql = "DELETE * FROM Game IF EXISTS;";
+			
 			stmt.executeUpdate(sql);
 
 			// ** Laver spiller tabellen **
-			sql = "CREATE TABLE Player ("
+			sql = "CREATE TABLE IF NOT EXISTS Player ("
 					+ "ID int,"
 					+ "Name varchar(255) PRIMARY KEY,"
 					+ "Position int,"
@@ -69,6 +86,7 @@ public class DBController {
 					+ "fleetsOwned int,"
 					+ "brewerysOwned int,"
 					// ** TINYINT(1) ** 0 = false ** 1 = true **
+					+ "lastPosition tinyint(1) "
 					+ "convict tinyint(1),"
 					+ "alive tinyint(1)"
 					+ ");";
@@ -86,6 +104,7 @@ public class DBController {
 						+ playerlist[i].getWorth() + ", "
 						+ playerlist[i].getFleetsOwned() + ", "
 						+ playerlist[i].getBrewerysOwned() + ", "
+						+ playerlist[i].getLastPosition() + ", "
 						+ playerlist[i].getConvictDB() + ", "
 						+ playerlist[i].getAliveDB()
 						+ ");";
@@ -95,7 +114,7 @@ public class DBController {
 
 
 			// ** Laver konto tabellen **
-			sql = "CREATE TABLE Account ("
+			sql = "CREATE TABLE IF NOT EXISTS Account ("
 					+ "Name varchar(255) PRIMARY KEY,"
 					+ "Balance int, "
 					+ "FOREIGN KEY (Name) REFERENCES Player(Name)"
@@ -117,7 +136,7 @@ public class DBController {
 
 
 			// ** Laver Ownable tabellen **
-			sql = "CREATE TABLE Ownable ("
+			sql = "CREATE TABLE IF NOT EXISTS Ownable ("
 					+ "ID int PRIMARY KEY,"
 					+ "FieldName varchar(255),"
 					+ "Owner varchar(255),"
@@ -127,7 +146,7 @@ public class DBController {
 			stmt.executeUpdate(sql);
 
 			// ** Laver Building tabellen **
-			sql = "CREATE TABLE Building ("
+			sql = "CREATE TABLE IF NOT EXISTS Building ("
 					+ "ID int PRIMARY KEY,"
 					+ "House int,"
 					+ "Hotels int,"
@@ -245,6 +264,7 @@ public class DBController {
 			int prisonCard = 0;
 			int fleets = 0;
 			int brewery = 0;
+			boolean lastPos = false;
 			boolean convict = false;
 			boolean alive = false;
 			int balance = 0;
@@ -270,12 +290,13 @@ public class DBController {
 					prisonCard = rs.getInt("PrisonCard");
 					fleets = rs.getInt("FleetsOwned");
 					brewery = rs.getInt("brewerysOwned");
+					lastPos = rs.getBoolean("lastPosition");
 					convict = rs.getBoolean("convict");
 					alive = rs.getBoolean("alive");
 					balance = rs.getInt("Balance");
 				}
 
-				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
+				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, lastPos, convict, alive);
 				playerlist[j].acc.setBalance(balance);
 				gui.loadPlayer(name, balance, position);
 				j++;
@@ -294,12 +315,13 @@ public class DBController {
 					prisonCard = rs.getInt("PrisonCard");
 					fleets = rs.getInt("FleetsOwned");
 					brewery = rs.getInt("brewerysOwned");
+					lastPos = rs.getBoolean("lastPosition");
 					convict = rs.getBoolean("convict");
 					alive = rs.getBoolean("alive");
 					balance = rs.getInt("Balance");
 				}
 
-				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, convict, alive);
+				playerlist[j] = new Player(name, worth, position, prisonCard, fleets, brewery, lastPos, convict, alive);
 				playerlist[j].acc.setBalance(balance);
 				gui.loadPlayer(name, balance, position);
 				j++;
