@@ -7,7 +7,6 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-import Fields.GBrewery;
 import Fields.GTerritory;
 import Game.GUIController;
 import Game.GameBoard;
@@ -39,7 +38,7 @@ public class TerritoryTest {
 		gb = new GameBoard();
 		cc = new ChanceCardList();
 		GGUI = new GUIController();
-	
+		GGUI.createGameboard(gb);
 	}
 	
 	@Test 
@@ -49,10 +48,10 @@ public class TerritoryTest {
 		t1.setOwner(owner);
 	
 		// *** Forventet balance for lander ***
-		int expected = 30000 - t1.getRent();
+		int expected = 30000 - 300;
 		
 		// *** Forventet balance for owner ***
-		int expected2 = 30000 + t1.getRent();
+		int expected2 = 30000 + 300;
 		
 		// *** Lander betaler for det første ***
 		t1.landOnField(lander, GGUI, cc, cup, gb);
@@ -64,4 +63,52 @@ public class TerritoryTest {
 		assertEquals(expected2, owner.acc.getBalance());
 	}
 	
+	@Test 
+	public void testRentThree() 
+	{
+		// *** Owner ejer tre Territory ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		
+		// *** Forventet balance for lander ***
+		int expected = 30000 - 300 * 2;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + 300 * 2;
+		
+		// *** Lander betaler for det første ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af lander balance ***
+		assertEquals(expected, lander.acc.getBalance());
+		
+		// *** Check af owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
+	}
+	
+	@Test 
+	public void testRentOneHouse() 
+	{
+		// *** Owner ejer et Territory med 1 hus på ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		t1.setHouse(1);
+		
+		// *** Forventet balance for lander ***
+		int expected = 30000 - 1400;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + 1400;
+		
+		// *** Lander betaler for det første ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af lander balance ***
+		assertEquals(expected, lander.acc.getBalance() );
+		
+		// *** Check af owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
+	}
 }
