@@ -31,7 +31,7 @@ public class InPrison {
 				for(int i = 2; i >= 0 && player.getConvict() == true; i--)
 				{
 					cup.roll();
-					gui.setDice(cup.getDieOne(), cup.getDieTwo());
+					gui.setDice(cup.getDieOne(), cup.getDieTwo()); 
 					if(cup.getDieOne() == cup.getDieTwo())
 					{
 						player.setConvict(false);
