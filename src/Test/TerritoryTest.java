@@ -138,7 +138,7 @@ public class TerritoryTest {
 	@Test 
 	public void testRentHotel() 
 	{
-		// *** Owner ejer et Territory med 1 hus på ***
+		// *** Owner ejer tre Territory med ét hotel på hver ***
 		t1.setOwner(owner);
 		t2.setOwner(owner);
 		t3.setOwner(owner);
@@ -160,5 +160,52 @@ public class TerritoryTest {
 		
 		// *** Check af owner balance ***
 		assertEquals(expected2, owner.acc.getBalance());
+	}
+	
+	@Test
+	public void testBuyHouse()
+	{
+		// *** Owner ejer alle af samme slags ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		
+		// *** Siger at man skal købe fire huse ***
+		GGUI.showMessage("Køb fire huse for test");
+		
+		// *** Owner lander på et ejet felt og skal købe fire huse ***
+		t1.landOnField(owner, GGUI, cc, cup, gb);
+		
+		// *** Forventet balance for owner efter køb af fire huse til en værdi på 2000 hver ***
+		int expected = 30000 - 2000*4;
+		
+		// *** Check af owner balance ***
+		assertEquals(expected, owner.acc.getBalance());
+	}
+	
+	@Test
+	public void testBuyHotel()
+	{
+		// *** Owner ejer alle af samme slags ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		
+		// *** Owner har fire huse på hver af sine grunde, for at kunne købe hotel ***
+		t1.setHouse(4);
+		t2.setHouse(4);
+		t3.setHouse(4);
+
+		// *** Siger at man skal købe hotel for test ***
+		GGUI.showMessage("Køb hotel for test");
+		
+		// *** Owner lander på et af sine felter for at købe hotel ***
+		t1.landOnField(owner, GGUI, cc, cup, gb);
+		
+		// *** Forventet balance for owner efter køb af hotel til en værdi 2000 ***
+		int expected = 30000 - 2000;
+		
+		// *** Check af owner balance ***
+		assertEquals(expected, owner.acc.getBalance());
 	}
 }
