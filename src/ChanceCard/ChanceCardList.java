@@ -85,21 +85,21 @@ public class ChanceCardList {
 	}
 
 	public void randomizer() {
-//		Collections.shuffle(list);
+		Collections.shuffle(list);
 	}
 
 	public ChanceCard draw()
 	{
 		ChanceCard c;
 		c = list.get(index);
-//		if(index == 31)
-//		{
-//			index = 0;
-//		}
-//		else
-//		{
-//			index++;
-//		}
+		if(index == 31)
+		{
+			index = 0;
+		}
+		else
+		{
+			index++;
+		}
 		return c;
 	}
 }
