@@ -14,7 +14,7 @@ public class GameLauncher {
 	private GameBoard gb = new GameBoard();
 	private Cup cup = new Cup();
 	private InPrison prison = new InPrison();
-	private Pawn pawn = new Pawn();
+	private Pawn pawn = new Pawn(); 
 
 	private Player[] playerlist;
 

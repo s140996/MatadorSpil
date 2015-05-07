@@ -98,7 +98,7 @@ public class DBController {
 
 			stmt.executeUpdate(sql);
 		}
-		catch (Exception e)
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
