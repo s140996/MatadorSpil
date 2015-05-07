@@ -208,4 +208,42 @@ public class TerritoryTest {
 		// *** Check af owner balance ***
 		assertEquals(expected, owner.acc.getBalance());
 	}
+	
+	@Test
+	public void testPawn()
+	{
+		// *** Owner ejer en grund som er pantsat ***
+		t1.setOwner(owner);
+		t1.setPawn(true);
+		
+		// *** Message så man ved hvad testen går ud på ***
+		GGUI.showMessage("Køb pantsat grund tilbage");
+		
+		// *** Owner lander på sin egen grund som er pantsat ***
+		t1.landOnField(owner, GGUI, cc, cup, gb);
+		
+		// *** Forventet værdi for owner efter køb af pantsat grund ***
+		int expected = 30000 - 1800;
+		
+		// *** Checker af owner balance ***
+		assertEquals(expected, owner.acc.getBalance());
+	}
+	
+	@Test
+	public void testLandOnPawned()
+	{
+		// *** Owner ejer en grund som er pantsat ***
+		t1.setOwner(owner);
+		t1.setPawn(true);
+		
+		// *** Lander lander på t1 som er pantsat af owner ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Forventet værdi efter lander har landet på feltet ***
+		int expected = 30000;
+		
+		// *** Checker om owner og lander har uændret balance ***
+		assertEquals(expected, owner.acc.getBalance());
+		assertEquals(expected, lander.acc.getBalance());
+	}
 }
