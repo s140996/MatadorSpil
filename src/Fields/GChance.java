@@ -127,7 +127,7 @@ public class GChance extends GField {
 					GTerritory territory = (GTerritory) field;
 					if(territory.isOwned() == true && territory.getPawn() == false)
 					{
-						int pay2 = territory.getHouseCount() * 500 + territory.getHotelCount() * 2300;
+						int pay2 = territory.getHouseCount() * 800 + territory.getHotelCount() * 2300;
 						territory.getOwner().acc.withdraw(pay2);
 						GGUI.setGUIBalance(territory.getOwner().acc.getBalance(), territory.getOwner().toString());
 						if(pay2 > 0)

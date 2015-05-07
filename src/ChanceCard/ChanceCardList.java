@@ -20,7 +20,7 @@ public class ChanceCardList {
 	private ChanceCard c11 = new ChanceCard("CHANCEKORT: Du har fundet en pung på gaden. Stjæl de 200,- der ligger i den.", 200, 0);
 	private ChanceCard c12 = new ChanceCard("CHANCEKORT: Du har modtaget anmodning på Mobilepay, efter hård tur i byen. Betal 1000,-.", -1000, 0);
 	// Ejendomsskat: 800 pr. hus og 2300 pr. hotel (Y)
-	private ChanceCard c13 = new ChanceCard(800, 2300, "CHANCEKORT: Ejendomsskatten er steget.", true);
+	private ChanceCard c13 = new ChanceCard(800, 2300, "CHANCEKORT: Ejendomsskatten er steget. Betal 800,- pr. hus og 2300,- pr. hotel.", true);
 	private ChanceCard c14 = new ChanceCard("CHANCEKORT: Ryk frem til Grønningen", 0, 25);
 	// Skal rykkes frem til nærmeste redderi og betale ejeren dobbelt leje
 	private ChanceCard c15 = new ChanceCard("CHANCEKORT: Ryk frem til nærmeste redderi og betal dobbelt leje.");
@@ -48,7 +48,7 @@ public class ChanceCardList {
 
 	public ChanceCardList()
 	{
-		index = 0;
+		index = 12;
 
 		list.add(0, c1);
 		list.add(1, c2);
@@ -85,21 +85,21 @@ public class ChanceCardList {
 	}
 
 	public void randomizer() {
-		Collections.shuffle(list);
+//		Collections.shuffle(list);
 	}
 
 	public ChanceCard draw()
 	{
 		ChanceCard c;
 		c = list.get(index);
-		if(index == 31)
-		{
-			index = 0;
-		}
-		else
-		{
-			index++;
-		}
+//		if(index == 31)
+//		{
+//			index = 0;
+//		}
+//		else
+//		{
+//			index++;
+//		}
 		return c;
 	}
 }
