@@ -66,7 +66,7 @@ public class GFleet extends GOwnable {
 		}
 		else if (super.getPawn() == true)
 		{
-			GGUI.showMessage("Dette felt er pantsat af " + player.toString() + ", så du skal ikke betale til ejeren.");
+			GGUI.showMessage("Dette felt er pantsat af " + super.getOwner() + ", så du skal ikke betale til ejeren.");
 		}
 		else
 		{
