@@ -328,7 +328,7 @@ public class TerritoryTest {
 	}
 	
 	@Test
-	public void TestRemoveOwner()
+	public void testRemoveOwner()
 	{
 		// *** Sætter owner som ejer af ét Territory ***
 		t1.setOwner(owner);
@@ -337,5 +337,44 @@ public class TerritoryTest {
 		t1.removeOwner(owner, t1.getID(), GGUI);
 		
 		assertEquals(t1.getOwner(), null);
+	}
+	
+	@Test
+	public void testPlayerLost()
+	{
+		// *** Ændrer balancen for lander så han ikke har råd til at lande på feltet ***
+		lander.acc.setBalance(200);
+		
+		// *** Sætter owner til ejer af et felt
+		t1.setOwner(owner);
+		
+		// *** Får lander til at lande på feltet ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Forventet værdi for lander og owner ***
+		int expectedO = 30000 + 200;
+		int expectedL = 0;
+		
+		// Checker værdierne stemmer overens ***
+		assertEquals(expectedO, owner.acc.getBalance());
+		assertEquals(expectedL, lander.acc.getBalance());
+	}
+	
+	@Test
+	public void testConvict()
+	{
+		// *** Sætter owner til ejer af et felt og convict til true ***
+		t1.setOwner(owner);
+		owner.setConvict(true);
+		
+		// *** Lander lander på feltet som owner ejer ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Forventet værdi for lander og owner ***
+		int expected = 30000;
+		
+		// *** Checker værdierne ***
+		assertEquals(expected, lander.acc.getBalance());
+		assertEquals(expected, owner.acc.getBalance());
 	}
 }
