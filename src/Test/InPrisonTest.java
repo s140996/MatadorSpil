@@ -60,4 +60,22 @@ public class InPrisonTest {
 			assertTrue(player.getConvict());
 		}
 	}
+
+	@Test 
+	public void testCantAffordPay() 
+	{
+		GGUI.showMessage("Test can't afford Betal");
+		player.acc.setBalance(500);
+		prison.inPrison(player, cup, GGUI);
+		int expected = 500;
+		assertEquals(player.acc.getBalance(), expected);
+		if (cup.getDieOne() == cup.getDieTwo())
+		{
+			assertFalse(player.getConvict());
+		}
+		else
+		{
+			assertTrue(player.getConvict());
+		}
+	}
 }

@@ -47,14 +47,4 @@ public class Cup {
 	{
 		return this.dieTwo;
 	}
-	
-	public void setDieOne(int dieOne)
-	{
-		this.dieOne = dieOne;
-	}
-	
-	public void setDieTwo(int dieTwo)
-	{
-		this.dieTwo = dieTwo;
-	}
 }
