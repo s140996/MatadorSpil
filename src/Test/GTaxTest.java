@@ -29,7 +29,8 @@ public class GTaxTest {
 		
 	
 		lander = new Player("Lander", 0, 0, 0, 0, 0, false, false, true);
-		TaxOne = new GTax(4, "Tax1", 4000, 10);
+		TaxOne = new GTax(4, "Tax1", 4000, 10); 
+		TaxTwo = new GTax(39,"Ekstra- ordinær statsskat", 2000, 0);
 		cup = new Cup();
 		gb = new GameBoard();
 		cc = new ChanceCardList();
@@ -40,26 +41,38 @@ public class GTaxTest {
 	@Test 
 	public void testPercentageTax() 
 	{
-		int expected = 30000 - lander.getWorth() * 10/100;
-		
-		
+		GGUI.showMessage("Test Percentage Tax");
+		int expected = 30000 - lander.getWorth() * 10 / 100; 
 		TaxOne.landOnField(lander, GGUI, cc, cup, gb);
-		
-		// *** Check af resultat ***
 		assertEquals(expected, lander.getWorth());
 	}
 	
 	@Test 
-	public void testBaseTax() 
+	public void testBaseTaxOne() 
 	{
+		GGUI.showMessage("Test Base Tax");
 		int expected = 30000 - TaxOne.getBasetax();
-		
-		
 		TaxOne.landOnField(lander, GGUI, cc, cup, gb);
-		
-		// *** Check af resultat ***
 		assertEquals(expected, lander.getWorth());
 	}
 	
+	@Test 
+	public void testLanderCantAffordBaseTax() 
+	{
+		GGUI.showMessage("Test can't afford Base Tax");
+		lander.acc.setBalance(3000);
+		int expected = 2700; 
+		TaxOne.landOnField(lander, GGUI, cc, cup, gb);
+		assertEquals(expected, lander.getWorth());
+	}
+
+	@Test 
+	public void testBaseTaxTwo() 
+	{
+		GGUI.showMessage("Test Base Tax");
+		int expected = 30000 - TaxTwo.getBasetax();
+		TaxTwo.landOnField(lander, GGUI, cc, cup, gb);
+		assertEquals(expected, lander.getWorth());
+	}
 	
 }

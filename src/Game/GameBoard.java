@@ -18,7 +18,7 @@ import Fields.GTerritory;
 		private GField[] list = new GField[40];
 
 		public GameBoard()
-		{
+		{ 
 			list[0] = new GStart(1);
 			list[1] = new GTerritory(2, "Rødovrevej", 1200, 50, 1000, 250, 750, 2250, 4000, 6000, new Color(77, 77, 242));
 			list[2] = new GChance(3, "Prøv lykken");
