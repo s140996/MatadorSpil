@@ -29,16 +29,10 @@ public class InPrisonTest {
 	@Test 
 	public void testPrisonCard() 
 	{
-		// *** Giver player et prison card ***
+		GGUI.showMessage("Test Prison Card");
 		player.setPrisonCard(1);
-		
-		// *** Tjekker om spilleren bruger sit fængselskort ***
 		prison.inPrison(player, cup, GGUI);
-		
-		// *** Tjekker om spilleren har brugt sit prison card ***
 		assertEquals(0 , player.getPrisonCard());
-		
-		// *** Tjekker om spilleren stadig er convict ***
 		boolean expectedBool = false;
 		assertEquals(expectedBool, player.getConvict());
 	}
@@ -46,33 +40,24 @@ public class InPrisonTest {
 	@Test 
 	public void testPay() 
 	{
-		// *** Kører inPrison, hvor spilleren skal betale sig ud ***
+		GGUI.showMessage("Test Betal");
 		prison.inPrison(player, cup, GGUI);
 		int expected = 30000 - 1000;
-		
-		// *** Tjekker om spillerens konto er faldet med 1000 ***
-		assertEquals(player.acc.getBalance(), expected);
+		assertEquals(player.acc.getBalance(), expected); 
 	}
 	
 	@Test 
 	public void testRoll() 
 	{
-		// *** Kører inPrison, hvor spilleren skal slå sig ud ***
+		GGUI.showMessage("Test slå med terninger");
 		prison.inPrison(player, cup, GGUI);
-		
-		// *** Tjekker om spilleren slår dobbelt ***
-		boolean expected = true;
-		
-		if (cup.getDoubleRoll() == 1)
+		if (cup.getDieOne() == cup.getDieTwo())
 		{
-			expected = false;
+			assertFalse(player.getConvict());
 		}
-		else if (cup.getDoubleRoll() == 0)
+		else
 		{
-			expected = true;
+			assertTrue(player.getConvict());
 		}
-		
-		// *** Tjekker om spilleren stadig er convict ***
-		assertEquals(expected, player.getConvict());
 	}
 }
