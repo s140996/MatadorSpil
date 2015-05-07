@@ -39,6 +39,19 @@ public class TerritoryTest {
 		cc = new ChanceCardList();
 	}
 	
+	@Test
+	public void testGetRent()
+	{
+		// *** Owner ejer ét Territory
+		t1.setOwner(owner);
+		
+		// *** Forventet værdi for rent ***
+		int expected = 300;
+		
+		// *** Checker om getRent() stemmer overens med forventede ***
+		assertEquals(expected, t1.getRent());
+	}
+	
 	@Test 
 	public void testRentOne() 
 	{
@@ -99,6 +112,56 @@ public class TerritoryTest {
 		
 		// *** Forventet balance for owner ***
 		int expected2 = 30000 + 1400;
+		
+		// *** Lander betaler for det første ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af lander balance ***
+		assertEquals(expected, lander.acc.getBalance() );
+		
+		// *** Check af owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
+	}
+	
+	@Test 
+	public void testRentTwoHouse() 
+	{
+		// *** Owner ejer et Territory med 2 huse på ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		t1.setHouse(2);
+		
+		// *** Forventet balance for lander ***
+		int expected = 30000 - 4000;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + 4000;
+		
+		// *** Lander betaler for det første ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Check af lander balance ***
+		assertEquals(expected, lander.acc.getBalance() );
+		
+		// *** Check af owner balance ***
+		assertEquals(expected2, owner.acc.getBalance());
+	}
+	
+	@Test 
+	public void testRentThreeHouse() 
+	{
+		// *** Owner ejer et Territory med 3 huse på ***
+		t1.setOwner(owner);
+		t2.setOwner(owner);
+		t3.setOwner(owner);
+		t1.setHouse(3);
+		
+		// *** Forventet balance for lander ***
+		int expected = 30000 - 11000;
+		
+		// *** Forventet balance for owner ***
+		int expected2 = 30000 + 11000;
 		
 		// *** Lander betaler for det første ***
 		t1.landOnField(lander, GGUI, cc, cup, gb);
@@ -245,5 +308,34 @@ public class TerritoryTest {
 		// *** Checker om owner og lander har uændret balance ***
 		assertEquals(expected, owner.acc.getBalance());
 		assertEquals(expected, lander.acc.getBalance());
+	}
+	
+	@Test
+	public void testBuyTerritory()
+	{
+		// *** Message om hvad testen går ud på ***
+		GGUI.showMessage("Køb Grunden");
+		
+		// *** Lander lander på feltet og køber det ***
+		t1.landOnField(lander, GGUI, cc, cup, gb);
+		
+		// *** Forventet balance for lander efter køb af territory til værdi af 3600 ***
+		int expected = 30000 - 3600;
+		
+		// *** Checker lander balance, og ser om lander er owner af t1 ***
+		assertEquals(expected, lander.acc.getBalance());
+		equals(t1.getOwner().equals(lander));
+	}
+	
+	@Test
+	public void TestRemoveOwner()
+	{
+		// *** Sætter owner som ejer af ét Territory ***
+		t1.setOwner(owner);
+		
+		// *** Fjerne owner som ejer ***
+		t1.removeOwner(owner, t1.getID(), GGUI);
+		
+		assertEquals(t1.getOwner(), null);
 	}
 }
