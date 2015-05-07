@@ -19,7 +19,7 @@ public class Player {
 	public Player(String name, int worth, int position, int prisonCard, int fleetsOwned, int brewerysOwned, boolean lastPosition, boolean convict, boolean alive)
 	{
 		this.name = name;
-		this.worth = worth;
+		this.worth = worth; 
 		this.position = position;
 		this.prisonCard = prisonCard;
 		this.fleetsOwned = fleetsOwned;

@@ -5,7 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ChanceCard.ChanceCardList;
+import Die.Cup;
 import Fields.GFleet;
+import Game.GUIController;
+import Game.GameBoard;
 import Player.Player;
 
 
@@ -16,6 +20,10 @@ public class FleetTest {
 	GFleet FleetOne;
 	GFleet FleetTwo;
 	GFleet FleetThree;
+	GUIController GGUI;
+	ChanceCardList cc;
+	Cup cup;
+	GameBoard gb;
 
 	@Before
 	public void setup() throws Exception{
@@ -25,6 +33,11 @@ public class FleetTest {
 		FleetOne = new GFleet(6, "LB Færgerne", 4000, 500);
 		FleetTwo = new GFleet(16, "Danmark", 4000, 500);
 		FleetThree = new GFleet(26, "Mols-Linien A/S", 4000, 500);
+		gb = new GameBoard();
+		GGUI = new GUIController();
+		cup = new Cup();
+		cc = new ChanceCardList();
+		
 	}
 	
 	@Test 
@@ -47,6 +60,34 @@ public class FleetTest {
 		int actual = FleetOne.getRent();
 		int expected = 2000;
 		assertEquals(actual, expected);
+	}
+	
+	@Test 
+	public void testBuyFleet()
+	{
+		int expected = 26000;
+		FleetOne.landOnField(lander, GGUI, cc, cup, gb);
+		assertEquals(expected, lander.acc.getBalance() );
+		assertNotNull(FleetOne.getOwner());
+	}
+	
+	@Test 
+	public void testDontBuyFleet()
+	{
+		int expected = 30000;
+		FleetOne.landOnField(lander, GGUI, cc, cup, gb);
+		assertEquals(expected, lander.acc.getBalance() );
+		assertNull(FleetOne.getOwner());
+	}
+	
+	@Test 
+	public void testCantAffordFleet()
+	{
+		int expected = 2000;
+		lander.acc.withdraw(28000);
+		FleetOne.landOnField(lander, GGUI, cc, cup, gb);
+		assertEquals(expected, lander.acc.getBalance() );
+		assertNull(FleetOne.getOwner());
 	}
 	
 	
