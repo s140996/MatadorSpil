@@ -26,7 +26,6 @@ public class GTaxTest {
 	
 	@Before
 	public void setup() throws Exception{
-		
 	
 		lander = new Player("Lander", 0, 0, 0, 0, 0, false, false, true);
 		TaxOne = new GTax(4, "Tax1", 4000, 10); 
