@@ -364,7 +364,7 @@ public class DBController {
 		{
 			Class.forName(JDBC_driver);
 
-			//Opretter forbindelse til databasen
+			//Opretter forbindelse til databasen 
 			con = DriverManager.getConnection(DB_url + dbName, USER, PASS);
 
 			stmt = con.createStatement();
