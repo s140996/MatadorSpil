@@ -74,7 +74,7 @@ public class BreweryTest {
 	}
 	
 	@Test 
-	public void testDontBuyFleet()
+	public void testDontBuyBrewery()
 	{
 		int expected = 30000;
 		GGUI.showMessage("Test Dont Buy Brewery");
